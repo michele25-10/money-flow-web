@@ -42,23 +42,23 @@ export const menu = [
       {
         id: 1,
         title: "Utente",
-        url: "/setting",
+        url: "/settings",
         icon: "user.svg",
       },
       {
         id: 2,
         title: "Configurazione",
-        url: "/",
+        url: "/settings",
         icon: "setting.svg",
       },
       {
         id: 3,
         title: "Autorizzazioni",
-        url: "/",
+        url: "/settings",
         icon: "element.svg",
       },
       {
-        id: 3,
+        id: 4,
         title: "Log",
         url: "/log",
         icon: "log.svg",

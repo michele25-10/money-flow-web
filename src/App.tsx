@@ -11,10 +11,11 @@ import Settings from "./pages/settings/Settings";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/login";
+import Log from "./pages/log/Log";
 
 //Component Common
 import Navbar from "./components/navbar/Navbar";
-import Footer from "./components/footer/footer";
+import Footer from "./components/footer/Footer";
 import Menu from "./components/menu/menu";
 
 function App() {
@@ -63,6 +64,10 @@ function App() {
         {
           path: "add-expense",
           element: <AddExpense />,
+        },
+        {
+          path: "log",
+          element: <Log />,
         },
       ],
     },
