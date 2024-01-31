@@ -3,7 +3,7 @@ import "./add-expense.scss";
 function AddExpense() {
   return (
     <>
-      <div className="home">AddExpense</div>
+      <div className="home">Navbar</div>
     </>
   );
 }
