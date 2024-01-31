@@ -1,6 +1,9 @@
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
+//scss
+import "./styles/global.scss";
+
 //pagine
 import ListExpense from "./pages/list-expense/List-Expense";
 import AddExpense from "./pages/add-expense/Add-Expense";
