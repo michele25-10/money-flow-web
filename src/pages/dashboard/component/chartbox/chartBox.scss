@@ -5,12 +5,6 @@
     .boxInfo {
         flex: 3;
         display: flex;
-
-        .title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
     }
 
     .chartInfo {
@@ -22,6 +16,7 @@
         .chart {
             width: 100%;
             height: 100%;
+            background-color: white;
         }
 
         .texts {

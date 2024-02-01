@@ -173,7 +173,7 @@ const dataMonth = [
 ];
 
 export const boxBar9 = {
-  title: "Totale Mensile",
+  title: "Totale Annuo",
   color: "#8884d8",
   dataKey: "tot",
   chartData: dataMonth,

@@ -1,5 +1,7 @@
 import { LineChart, Line, ResponsiveContainer, Tooltip } from "recharts";
 import { Link } from "react-router-dom";
+
+//SASS
 import "./chartBox.scss";
 
 type Props = {
@@ -17,9 +19,7 @@ const ChartBox = (props: Props) => {
     <div className="chartbox">
       <div className="boxInfo">
         <div className="title">
-          <span>
-            {props.name} {props.surname}
-          </span>
+          <span>{props.name + " " + props.surname}</span>
         </div>
         <h1>{props.amount}€</h1>
         <Link to="/">Visualizza Altro</Link>
