@@ -178,3 +178,16 @@ export const boxBar9 = {
   dataKey: "tot",
   chartData: dataMonth,
 };
+
+const pieData = [
+  { name: "Gian Luca Gabrieli", value: 400, color: "#0088fe" },
+  { name: "Elena Ferraresi", value: 300, color: "#00c49f" },
+  { name: "Michele Gabrieli", value: 300, color: "#ffbb28" },
+  { name: "Angela Gabrieli", value: 200, color: "#ff8042" },
+  { name: "Pietro Gabrieli", value: 200, color: "#8884d8" },
+];
+
+export const boxPie4 = {
+  title: "Divisione Spese",
+  chartData: pieData,
+};

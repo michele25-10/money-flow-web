@@ -2,11 +2,12 @@
 import BarChartBox from "./component/barChartBox/BarChartBox";
 import ChartBox from "./component/chartbox/ChartBox";
 import TopBox from "./component/topBox/TopBox";
+import PieChartBox from "./pieChartBox/PieChartBox";
 
 //CSS
 import "./dashboard.scss";
 
-import { box1, box2, box3, box4, boxBar8, boxBar9 } from "./data";
+import { box1, box2, box3, box4, boxBar8, boxBar9, boxPie4 } from "./data";
 
 function Dashboard() {
   return (
@@ -21,7 +22,9 @@ function Dashboard() {
         <div className="box box3">
           <ChartBox {...box2} />
         </div>
-        <div className="box box4">box4</div>
+        <div className="box box4">
+          <PieChartBox {...boxPie4} />
+        </div>
         <div className="box box5">
           <ChartBox {...box3} />
         </div>
