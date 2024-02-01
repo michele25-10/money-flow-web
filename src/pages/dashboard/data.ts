@@ -82,3 +82,99 @@ export const box4 = {
   percentuage: 15,
   chartData: data,
 };
+
+const dataSett = [
+  {
+    name: "Lunedì",
+    tot: 50,
+  },
+  {
+    name: "Martedì",
+    tot: 20,
+  },
+  {
+    name: "Mercoledì",
+    tot: 0,
+  },
+  {
+    name: "Giovedì",
+    tot: 0,
+  },
+  {
+    name: "Venerdì",
+    tot: 30,
+  },
+  {
+    name: "Sabato",
+    tot: 70,
+  },
+  {
+    name: "Domenica",
+    tot: 80,
+  },
+];
+
+export const boxBar8 = {
+  title: "Totale Settimanale",
+  color: "orange",
+  dataKey: "tot",
+  chartData: dataSett,
+};
+
+const dataMonth = [
+  {
+    name: "Gennaio",
+    tot: 3000,
+  },
+  {
+    name: "Febbraio",
+    tot: 2500,
+  },
+  {
+    name: "Marzo",
+    tot: 3500,
+  },
+  {
+    name: "Aprile",
+    tot: 4780,
+  },
+  {
+    name: "Maggio",
+    tot: 4400,
+  },
+  {
+    name: "Giugno",
+    tot: 6000,
+  },
+  {
+    name: "Luglio",
+    tot: 4000,
+  },
+  {
+    name: "Agosto",
+    tot: 7000,
+  },
+  {
+    name: "Settembre",
+    tot: 7500,
+  },
+  {
+    name: "Ottobre",
+    tot: 4000,
+  },
+  {
+    name: "Novembre",
+    tot: 3500,
+  },
+  {
+    name: "Dicembre",
+    tot: 5050,
+  },
+];
+
+export const boxBar9 = {
+  title: "Totale Mensile",
+  color: "#8884d8",
+  dataKey: "tot",
+  chartData: dataMonth,
+};
