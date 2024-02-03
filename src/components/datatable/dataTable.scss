@@ -1,0 +1,15 @@
+.dataTable {
+    .dataGrid {
+        background: white;
+
+        .action {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+    }
+
+    .MuiDataGrid-toolbarContainer {
+        flex-direction: row-reverse;
+    }
+}
