@@ -7,7 +7,8 @@ import PieChartBox from "./component/pieChartBox/PieChartBox";
 //CSS
 import "./dashboard.scss";
 
-import { box1, box2, box3, box4, boxBar8, boxBar9, boxPie4 } from "./data";
+import { box1, box2, box3, box4, boxBar7, boxBar8, boxBar9, boxPie4 } from "./data";
+import BigChartBox from "./component/bigChartBox/BigChartBox";
 
 function Dashboard() {
   return (
@@ -31,7 +32,9 @@ function Dashboard() {
         <div className="box box6">
           <ChartBox {...box4} />
         </div>
-        <div className="box box7">box7</div>
+        <div className="box box7">
+          <BigChartBox {...boxBar7} />
+        </div>
         <div className="box box8">
           <BarChartBox {...boxBar8} />
         </div>
