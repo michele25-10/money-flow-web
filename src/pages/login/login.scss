@@ -1,0 +1,45 @@
+@import "../../styles/variable.scss";
+
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("https://media.istockphoto.com/id/955408648/it/foto/grafici-finanziari-sfondo.jpg?s=612x612&w=0&k=20&c=-0vodxzItU2zSXq_VSMSNW-K6u0BXCn6VovAG8D0jBI=");
+    background-size: cover;
+
+    .containerLogin {
+        border-radius: 10px;
+        width: 300px;
+        height: 400px;
+        background-color: white;
+
+        .imgLogo {
+            padding: 20px;
+            text-align: center;
+
+            img {
+                border-radius: 50%;
+                height: 100px;
+                width: 100px;
+                object-fit: cover;
+            }
+        }
+
+        .formData {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+
+            .submit-button {
+                text-align: center;
+
+                button {
+                    border-color: $main-bg;
+                    background-color: $main-bg;
+                    color: white;
+                }
+            }
+        }
+    }
+}
