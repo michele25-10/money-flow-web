@@ -54,7 +54,7 @@ export const box1 = {
 };
 
 export const box2 = {
-  color: "pink",
+  color: "violet",
   icon: "pippo.svg",
   name: "Angela",
   surname: "Gabrieli",
@@ -64,7 +64,7 @@ export const box2 = {
 };
 
 export const box3 = {
-  color: "green",
+  color: "orange",
   icon: "pippo.svg",
   name: "Pietro",
   surname: "Gabrieli",
@@ -74,7 +74,7 @@ export const box3 = {
 };
 
 export const box4 = {
-  color: "yellow",
+  color: "aqua",
   icon: "pippo.svg",
   name: "Elena",
   surname: "Ferraresi",

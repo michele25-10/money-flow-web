@@ -16,7 +16,7 @@ type Props = {
 
 const ChartBox = (props: Props) => {
   return (
-    <div className="chartbox">
+    <div className="chartBox">
       <div className="boxInfo">
         <div className="title">
           <span>{props.name + " " + props.surname}</span>
@@ -26,8 +26,8 @@ const ChartBox = (props: Props) => {
       </div>
       <div className="chartInfo">
         <div className="chart">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart width={300} height={100} data={props.chartData}>
+          <ResponsiveContainer width="99%" height={140}>
+            <LineChart data={props.chartData}>
               <Tooltip
                 contentStyle={{ background: "transparent", border: "none" }}
                 labelStyle={{ display: "none" }}

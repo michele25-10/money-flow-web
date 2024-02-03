@@ -1,22 +1,24 @@
 .chartBox {
     display: flex;
     height: 100%;
+    width: 100%;
 
     .boxInfo {
-        flex: 3;
         display: flex;
+        flex: 3;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .chartInfo {
-        flex: 2;
         display: flex;
+        flex: 2;
         flex-direction: column;
         justify-content: space-between;
 
         .chart {
             width: 100%;
             height: 100%;
-            background-color: white;
         }
 
         .texts {
