@@ -23,7 +23,7 @@ function App() {
     return (
       <div className="main">
         <Navbar />
-        <div className="container">
+        <div className="containerApp">
           <div className="menuContainer">
             <Menu />
           </div>

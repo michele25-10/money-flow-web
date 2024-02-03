@@ -20,23 +20,8 @@ a {
   min-height: 100vh;
 }
 
-.container {
+.containerApp {
   display: flex;
-
-  @include xxl {
-  }
-
-  @include xl {
-  }
-
-  @include lg {
-  }
-
-  @include md {
-  }
-
-  @include sm {
-  }
 }
 
 .menuContainer {
