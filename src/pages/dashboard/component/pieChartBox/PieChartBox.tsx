@@ -10,7 +10,7 @@ const PieChartBox = (props: Props) => {
   return (
     <div className="pieChartBox">
       <div className="title">
-        <h1>{props.title}</h1>
+        <h2>{props.title}</h2>
       </div>
       <div className="chart">
         <ResponsiveContainer width="99%" height={300}>
