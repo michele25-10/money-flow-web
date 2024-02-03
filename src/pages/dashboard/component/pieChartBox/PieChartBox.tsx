@@ -35,12 +35,12 @@ const PieChartBox = (props: Props) => {
       </div>
       <div className="options">
         {props.chartData.map((item) => (
-          <div className="option">
+          <div className="option" key={item.name}>
             <div className="title">
               <div className="dot" style={{ backgroundColor: item.color }} />
               <span>{item.name}</span>
             </div>
-            <span>{item.value}</span>
+            <span>{item.value}€</span>
           </div>
         ))}
       </div>

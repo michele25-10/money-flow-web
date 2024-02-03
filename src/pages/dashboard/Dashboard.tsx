@@ -2,7 +2,7 @@
 import BarChartBox from "./component/barChartBox/BarChartBox";
 import ChartBox from "./component/chartbox/ChartBox";
 import TopBox from "./component/topBox/TopBox";
-import PieChartBox from "./pieChartBox/PieChartBox";
+import PieChartBox from "./component/pieChartBox/PieChartBox";
 
 //CSS
 import "./dashboard.scss";
