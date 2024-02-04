@@ -80,7 +80,7 @@ function Login() {
                   required
                 />
                 <span
-                  className="input-group-text bg-white"
+                  className="input-group-text bg-white text-decoration-none hover-pointer"
                   onClick={handleTogglePassword}
                 >
                   {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
