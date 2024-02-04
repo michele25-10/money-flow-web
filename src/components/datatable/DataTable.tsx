@@ -6,7 +6,7 @@ import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 import "./dataTable.scss";
 
 type Props = {
-  action: Boolean;
+  action: boolean;
   columns: GridColDef[];
   rows: object[];
 };

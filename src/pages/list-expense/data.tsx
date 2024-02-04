@@ -52,3 +52,83 @@ export const rowsTable = [
   { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
+
+const category = [
+  {
+    name: "Amici",
+    value: 0,
+  },
+  {
+    name: "Abbigliamento",
+    value: 1,
+  },
+  {
+    name: "Auto",
+    value: 2,
+  },
+  {
+    name: "Cibo",
+    value: 3,
+  },
+  {
+    name: "Mediche",
+    value: 4,
+  },
+];
+
+export const columnExpense: GridColDef[] = [
+  {
+    headerName: "luogo",
+    type: "text",
+    field: "Luogo...",
+    required: true,
+  },
+  {
+    headerName: "Data",
+    type: "date",
+    field: "Data...",
+    required: true,
+  },
+  {
+    headerName: "Importo",
+    type: "number",
+    field: "Importo...",
+    required: true,
+  },
+  {
+    headerName: "Descrizione",
+    type: "text",
+    field: "Descrizione...",
+    required: false,
+  },
+  {
+    headerName: "Tipo Pagamento",
+    type: "select",
+    field: "Tipo Pagamento...",
+    required: true,
+    options: [
+      {
+        field: "Contante",
+        value: 0,
+      },
+      {
+        field: " Bancomat",
+        value: 1,
+      },
+    ],
+  },
+  {
+    headerName: "Categoria",
+    type: "select",
+    field: "Categoria...",
+    required: true,
+    options: category,
+  },
+  {
+    headerName: "Documento",
+    type: "file",
+    field: "Documento...",
+    required: false,
+    options: category,
+  },
+];
