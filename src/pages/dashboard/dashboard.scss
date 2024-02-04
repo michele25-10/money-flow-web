@@ -19,8 +19,10 @@
     @include md {
         grid-template-columns: repeat(1, 1fr);
     }
+
     @include sm {
         grid-auto-rows: minmax(120px, auto);
+        grid-template-columns: repeat(1, 1fr);
     }
 
     .box {

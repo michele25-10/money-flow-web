@@ -30,8 +30,8 @@
                         display: none;
                     }
 
-                    @include lg {
-                        display: block;
+                    @include md {
+                        display: flex;
                     }
                 }
 
@@ -52,8 +52,8 @@
                             display: none;
                         }
 
-                        @include lg {
-                            display: block;
+                        @include sm {
+                            display: none;
                         }
                     }
                 }

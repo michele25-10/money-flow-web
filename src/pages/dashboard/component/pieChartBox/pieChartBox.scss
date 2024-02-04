@@ -23,6 +23,11 @@
         justify-content: space-between;
         gap: 10px;
         font-style: 14px;
+
+        @include md {
+            display: none;
+        }
+
         .option {
             display: flex;
             flex-direction: column;
@@ -33,6 +38,7 @@
                 display: flex;
                 align-items: center;
                 gap: 10px;
+                font-size: 14px;
 
                 .dot {
                     width: 10px;
