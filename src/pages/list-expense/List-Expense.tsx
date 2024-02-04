@@ -13,7 +13,7 @@ function ListExpense() {
       <div className="info">
         <h1>Elenco Spese Familiari</h1>
       </div>
-      <DataTable columns={columnsTable} rows={rowsTable} />
+      <DataTable columns={columnsTable} rows={rowsTable} action={true} />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 import "./dataTable.scss";
 
 type Props = {
+  action: Boolean;
   columns: GridColDef[];
   rows: object[];
 };
@@ -55,6 +56,7 @@ const DataTable = (props: Props) => {
             columns: {
               columnVisibilityModel: {
                 id: false,
+                action: props.action,
               },
             },
           }}

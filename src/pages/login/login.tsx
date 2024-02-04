@@ -38,7 +38,10 @@ function Login() {
           <form>
             <div className="mb-3">
               <div className="input-group mb-3">
-                <span className="input-group-text bg-white" id="basic-addon1">
+                <span
+                  className="input-group-text bg-white opacity-75"
+                  id="basic-addon1"
+                >
                   <GroupIcon />
                 </span>
                 <input
@@ -52,7 +55,10 @@ function Login() {
             </div>
             <div className="mb-3">
               <div className="input-group mb-3">
-                <span className="input-group-text bg-white" id="basic-addon1">
+                <span
+                  className="input-group-text bg-white opacity-75"
+                  id="basic-addon1"
+                >
                   <PersonIcon />
                 </span>
                 <input
@@ -67,7 +73,7 @@ function Login() {
             </div>
             <div className="mb-3">
               <div className="input-group mb-3">
-                <span className="input-group-text bg-white">
+                <span className="input-group-text bg-white opacity-75">
                   <LockIcon />
                 </span>
                 <input
@@ -80,7 +86,7 @@ function Login() {
                   required
                 />
                 <span
-                  className="input-group-text bg-white text-decoration-none hover-pointer"
+                  className="input-group-text bg-white opacity-75 text-decoration-none hover-pointer"
                   onClick={handleTogglePassword}
                 >
                   {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
