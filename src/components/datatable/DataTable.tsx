@@ -64,7 +64,7 @@ const DataTable = (props: Props) => {
           slotProps={{
             toolbar: {
               showQuickFilter: true,
-              quicKFilterProps: {
+              quickfilterprops: {
                 debouncMs: 500,
               },
             },

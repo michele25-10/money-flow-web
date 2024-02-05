@@ -81,32 +81,32 @@ export const columnExpense: GridColDef[] = [
     headerName: "luogo",
     type: "text",
     field: "Luogo...",
-    required: true,
+    //required: true,
   },
   {
     headerName: "Data",
     type: "date",
     field: "Data...",
-    required: true,
+    //required: true,
   },
   {
     headerName: "Importo",
     type: "number",
     field: "Importo...",
-    required: true,
+    //required: true,
   },
   {
     headerName: "Descrizione",
     type: "text",
     field: "Descrizione...",
-    required: false,
+    //required: false,
   },
   {
     headerName: "Tipo Pagamento",
     type: "select",
     field: "Tipo Pagamento...",
-    required: true,
-    options: [
+    //required: true,
+    /*options: [
       {
         field: "Contante",
         value: 0,
@@ -115,20 +115,20 @@ export const columnExpense: GridColDef[] = [
         field: " Bancomat",
         value: 1,
       },
-    ],
+    ],*/
   },
   {
     headerName: "Categoria",
     type: "select",
     field: "Categoria...",
-    required: true,
-    options: category,
+    //required: true,
+    //options: category,
   },
   {
     headerName: "Documento",
     type: "file",
     field: "Documento...",
-    required: false,
-    options: category,
+    //required: false,
+    //options: category,
   },
 ];
