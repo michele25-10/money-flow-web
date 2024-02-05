@@ -3,12 +3,21 @@ import BarChartBox from "../../components/barChartBox/BarChartBox";
 import ChartBox from "../../components/chartbox/ChartBox";
 import TopBox from "../../components/topBox/TopBox";
 import PieChartBox from "../../components/pieChartBox/PieChartBox";
-import BigChartBox from "../../components/bigChartBox/BigChartBox";
+import GridBox from "../../components/gridBox/GridBox";
 
 //CSS
 import "./home.scss";
 
-import { topBox, box1, box2, boxBar7, boxBar8, boxBar9, boxPie4 } from "./data";
+import {
+  topBox,
+  box1,
+  box2,
+  gridColumnsTable,
+  dataGridTable,
+  boxBar8,
+  boxBar9,
+  boxPie4,
+} from "./data";
 
 function Home() {
   return (
@@ -27,7 +36,12 @@ function Home() {
           <PieChartBox {...boxPie4} />
         </div>
         <div className="box box7">
-          <BigChartBox {...boxBar7} />
+          <GridBox
+            title="Ultime Spese"
+            action={false}
+            data={dataGridTable}
+            columns={gridColumnsTable}
+          />
         </div>
         <div className="box box8">
           <BarChartBox {...boxBar8} />

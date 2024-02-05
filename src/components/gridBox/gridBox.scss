@@ -1,0 +1,20 @@
+@import "../../styles/responsive.scss";
+
+.boxGrid {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .info {
+        padding: 20px;
+        @include md {
+            font-size: 20px;
+        }
+    }
+
+    .dataGrid {
+        height: 200px;
+        background-color: red;
+    }
+}

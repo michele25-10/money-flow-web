@@ -1,3 +1,5 @@
+import { GridColDef } from "@mui/x-data-grid";
+
 const data = [
   {
     name: "Page A",
@@ -176,109 +178,6 @@ export const boxPie4 = {
   chartData: pieData,
 };
 
-const dataBigChart = [
-  {
-    name: "Gennaio",
-    elena_ferraresi: 4420,
-    michele_gabrieli: 2693,
-    angela_gabrieli: 5400,
-    pietro_gabrieli: 1273,
-    gianluca_gabrieli: 4738,
-  },
-  {
-    name: "Febbraio",
-    elena_ferraresi: 4627,
-    michele_gabrieli: 4062,
-    angela_gabrieli: 5629,
-    pietro_gabrieli: 3267,
-    gianluca_gabrieli: 3930,
-  },
-  {
-    name: "Marzo",
-    elena_ferraresi: 5882,
-    michele_gabrieli: 4539,
-    angela_gabrieli: 2962,
-    pietro_gabrieli: 2822,
-    gianluca_gabrieli: 5762,
-  },
-  {
-    name: "Aprile",
-    elena_ferraresi: 3127,
-    michele_gabrieli: 4762,
-    angela_gabrieli: 1421,
-    pietro_gabrieli: 3921,
-    gianluca_gabrieli: 5486,
-  },
-  {
-    name: "Maggio",
-    elena_ferraresi: 5439,
-    michele_gabrieli: 2990,
-    angela_gabrieli: 5031,
-    pietro_gabrieli: 1286,
-    gianluca_gabrieli: 4406,
-  },
-  {
-    name: "Giugno",
-    elena_ferraresi: 5428,
-    michele_gabrieli: 1176,
-    angela_gabrieli: 4253,
-    pietro_gabrieli: 2209,
-    gianluca_gabrieli: 4470,
-  },
-  {
-    name: "Luglio",
-    elena_ferraresi: 1048,
-    michele_gabrieli: 2992,
-    angela_gabrieli: 4629,
-    pietro_gabrieli: 5385,
-    gianluca_gabrieli: 4386,
-  },
-  {
-    name: "Agosto",
-    elena_ferraresi: 1006,
-    michele_gabrieli: 3829,
-    angela_gabrieli: 3448,
-    pietro_gabrieli: 5292,
-    gianluca_gabrieli: 4253,
-  },
-  {
-    name: "Settembre",
-    elena_ferraresi: 5710,
-    michele_gabrieli: 4650,
-    angela_gabrieli: 5663,
-    pietro_gabrieli: 4844,
-    gianluca_gabrieli: 2263,
-  },
-  {
-    name: "Ottobre",
-    elena_ferraresi: 2532,
-    michele_gabrieli: 2845,
-    angela_gabrieli: 2370,
-    pietro_gabrieli: 5551,
-    gianluca_gabrieli: 2017,
-  },
-  {
-    name: "Novembre",
-    elena_ferraresi: 2086,
-    michele_gabrieli: 3630,
-    angela_gabrieli: 3317,
-    pietro_gabrieli: 5891,
-    gianluca_gabrieli: 4615,
-  },
-  {
-    name: "Dicembre",
-    elena_ferraresi: 5845,
-    michele_gabrieli: 3855,
-    angela_gabrieli: 1738,
-    pietro_gabrieli: 2753,
-    gianluca_gabrieli: 5456,
-  },
-];
-
-export const boxBar7 = {
-  chartData: dataBigChart,
-};
-
 export const topBox = [
   {
     id: 1,
@@ -310,4 +209,41 @@ export const topBox = [
     name: "Carburante",
     tot: 296,
   },
+];
+
+export const gridColumnsTable: GridColDef[] = [
+  { field: "id", headerName: "ID", width: 60 },
+  {
+    field: "local",
+    headerName: "Luogo",
+    width: 150,
+  },
+  {
+    field: "date",
+    headerName: "Data",
+    type: "date",
+    width: 110,
+  },
+  {
+    field: "import",
+    headerName: "Importo",
+    type: "number",
+    width: 110,
+  },
+];
+
+export const dataGridTable = [
+  {
+    id: 1,
+    local: "Tana del luppolo",
+    date: new Date("2024-12-15"),
+    import: 20,
+  },
+  { id: 2, local: "CastelBeach", date: new Date("2024-12-15"), import: 14 },
+  { id: 3, local: "Re Artu", date: new Date("2024-12-10"), import: 15 },
+  { id: 4, local: "Fun City Family", date: new Date("2023-10-15"), import: 10 },
+  { id: 5, local: "Gym Tonic", date: new Date("2022-10-02"), import: 100 },
+  { id: 6, local: "Caffè Grande", date: new Date("2024-7-15"), import: 2.5 },
+  { id: 7, local: "Paradise", date: new Date("2024-12-30"), import: 3.8 },
+  { id: 8, local: "Mc Donalds", date: new Date("2024-1-1"), import: 7.95 },
 ];
