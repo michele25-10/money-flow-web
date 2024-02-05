@@ -1,14 +1,23 @@
 //COMPONENT
-import BarChartBox from "./component/barChartBox/BarChartBox";
-import ChartBox from "./component/chartbox/ChartBox";
-import TopBox from "./component/topBox/TopBox";
-import PieChartBox from "./component/pieChartBox/PieChartBox";
+import BarChartBox from "../../components/barChartBox/BarChartBox";
+import ChartBox from "../../components/chartbox/ChartBox";
+import TopBox from "../../components/topBox/TopBox";
+import PieChartBox from "../../components/pieChartBox/PieChartBox";
+import BigChartBox from "../../components/bigChartBox/BigChartBox";
 
 //CSS
 import "./dashboard.scss";
 
-import { box1, box2, box3, box4, boxBar7, boxBar8, boxBar9, boxPie4 } from "./data";
-import BigChartBox from "./component/bigChartBox/BigChartBox";
+import {
+  box1,
+  box2,
+  box3,
+  box4,
+  boxBar7,
+  boxBar8,
+  boxBar9,
+  boxPie4,
+} from "./data";
 
 function Dashboard() {
   return (
