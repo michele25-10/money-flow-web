@@ -1,5 +1,8 @@
 import "./navbar.scss";
 
+//Material ICONS
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+
 function Navbar() {
   return (
     <>
@@ -16,7 +19,13 @@ function Navbar() {
             />
             <span>Michele Gabrieli</span>
           </div>
-          <div className="logout"></div>
+          <div className="logout">
+            <span>
+              <ExitToAppIcon
+                style={{ color: "tomato", height: "25px", width: "25px" }}
+              />
+            </span>
+          </div>
         </div>
       </div>
     </>

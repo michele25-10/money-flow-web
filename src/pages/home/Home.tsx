@@ -35,7 +35,7 @@ function Home() {
         <div className="box box4">
           <PieChartBox {...boxPie4} />
         </div>
-        <div className="box box7">
+        <div className="box gridBox">
           <GridBox
             title="Ultime Spese"
             action={false}
