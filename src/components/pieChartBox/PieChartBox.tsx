@@ -3,6 +3,7 @@ import "./pieChartBox.scss";
 
 type Props = {
   title: string;
+  legend: boolean;
   chartData: object[];
 };
 
@@ -34,15 +35,24 @@ const PieChartBox = (props: Props) => {
         </ResponsiveContainer>
       </div>
       <div className="options">
-        {props.chartData.map((item) => (
-          <div className="option" key={item.name}>
-            <div className="title">
-              <div className="dot" style={{ backgroundColor: item.color }} />
-              <span>{item.name}</span>
-            </div>
-            <span>{item.value}€</span>
-          </div>
-        ))}
+        {props.legend ? (
+          <>
+            {props.chartData.map((item) => (
+              <div className="option" key={item.name}>
+                <div className="title">
+                  <div
+                    className="dot"
+                    style={{ backgroundColor: item.color }}
+                  />
+                  <span>{item.name}</span>
+                </div>
+                <span>{item.value}€</span>
+              </div>
+            ))}
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

@@ -1,20 +1,23 @@
 import "./topBox.scss";
 
-import { category } from "../../pages/dashboard/data";
+type Props = {
+  title: string;
+  data: object[];
+};
 
-const TopBox = () => {
+const TopBox = (props: Props) => {
   return (
     <div className="topBox">
       <h1>Categoria</h1>
       <div className="list">
-        {category.map((user) => (
-          <div className="listItem" key={user.id}>
+        {props.data.map((category) => (
+          <div className="listItem" key={category.id}>
             <div className="category">
               <div className="categoryTexts">
-                <span className="name">{user.name}</span>
+                <span className="name">{category.name}</span>
               </div>
             </div>
-            <span className="amount">{user.tot}€</span>
+            <span className="amount">{category.tot}€</span>
           </div>
         ))}
       </div>

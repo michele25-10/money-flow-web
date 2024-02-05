@@ -9,6 +9,7 @@ import BigChartBox from "../../components/bigChartBox/BigChartBox";
 import "./dashboard.scss";
 
 import {
+  topBox,
   box1,
   box2,
   box3,
@@ -24,7 +25,7 @@ function Dashboard() {
     <>
       <div className="dashboard">
         <div className="box box1">
-          <TopBox />
+          <TopBox title="Categoria" data={topBox} />
         </div>
         <div className="box box2">
           <ChartBox {...box1} />

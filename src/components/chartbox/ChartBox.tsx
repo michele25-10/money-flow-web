@@ -12,6 +12,7 @@ type Props = {
   amount: number;
   percentuage: number;
   chartData: object[];
+  when: string;
 };
 
 const ChartBox = (props: Props) => {
@@ -51,7 +52,7 @@ const ChartBox = (props: Props) => {
           >
             {props.percentuage}%
           </span>
-          <span className="duration">Questo mese</span>
+          <span className="duration">{props.when}</span>
         </div>
       </div>
     </div>

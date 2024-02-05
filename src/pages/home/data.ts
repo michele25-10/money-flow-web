@@ -48,7 +48,7 @@ export const box1 = {
   icon: "pippo.svg",
   name: "Michele",
   surname: "Gabrieli",
-  amount: 500.5,
+  amount: 180.5,
   percentuage: 10,
   chartData: data,
   when: "Questo mese",
@@ -57,44 +57,22 @@ export const box1 = {
 export const box2 = {
   color: "violet",
   icon: "pippo.svg",
-  name: "Angela",
+  name: "Michele",
   surname: "Gabrieli",
-  amount: 200.5,
+  amount: 952.5,
   percentuage: -2,
   chartData: data,
-  when: "Questo mese",
-};
-
-export const box3 = {
-  color: "orange",
-  icon: "pippo.svg",
-  name: "Pietro",
-  surname: "Gabrieli",
-  amount: 158.5,
-  percentuage: -10,
-  chartData: data,
-  when: "Questo mese",
-};
-
-export const box4 = {
-  color: "aqua",
-  icon: "pippo.svg",
-  name: "Elena",
-  surname: "Ferraresi",
-  amount: 752.5,
-  percentuage: 15,
-  chartData: data,
-  when: "Questo mese",
+  when: "Questo anno",
 };
 
 const dataSett = [
   {
     name: "Lunedì",
-    tot: 50,
+    tot: 15,
   },
   {
     name: "Martedì",
-    tot: 20,
+    tot: 10,
   },
   {
     name: "Mercoledì",
@@ -106,15 +84,15 @@ const dataSett = [
   },
   {
     name: "Venerdì",
-    tot: 30,
+    tot: 0,
   },
   {
     name: "Sabato",
-    tot: 70,
+    tot: 25,
   },
   {
     name: "Domenica",
-    tot: 80,
+    tot: 5,
   },
 ];
 
@@ -128,51 +106,51 @@ export const boxBar8 = {
 const dataMonth = [
   {
     name: "Gennaio",
-    tot: 3000,
+    tot: 120,
   },
   {
     name: "Febbraio",
-    tot: 2500,
+    tot: 50,
   },
   {
     name: "Marzo",
-    tot: 3500,
+    tot: 200,
   },
   {
     name: "Aprile",
-    tot: 4780,
+    tot: 150,
   },
   {
     name: "Maggio",
-    tot: 4400,
+    tot: 169,
   },
   {
     name: "Giugno",
-    tot: 6000,
+    tot: 182,
   },
   {
     name: "Luglio",
-    tot: 4000,
+    tot: 147,
   },
   {
     name: "Agosto",
-    tot: 7000,
+    tot: 195,
   },
   {
     name: "Settembre",
-    tot: 7500,
+    tot: 300,
   },
   {
     name: "Ottobre",
-    tot: 4000,
+    tot: 322,
   },
   {
     name: "Novembre",
-    tot: 3500,
+    tot: 129,
   },
   {
     name: "Dicembre",
-    tot: 5050,
+    tot: 152,
   },
 ];
 
@@ -184,16 +162,17 @@ export const boxBar9 = {
 };
 
 const pieData = [
-  { name: "Gian Luca Gabrieli", value: 400, color: "#0088fe" },
-  { name: "Elena Ferraresi", value: 300, color: "#00c49f" },
-  { name: "Michele Gabrieli", value: 300, color: "#ffbb28" },
-  { name: "Angela Gabrieli", value: 200, color: "#ff8042" },
-  { name: "Pietro Gabrieli", value: 200, color: "#8884d8" },
+  { name: "Cibo", value: 480, color: "#0088fe" },
+  { name: "Elettronica", value: 50, color: "#00c49f" },
+  { name: "Amici", value: 227, color: "#ffbb28" },
+  { name: "Mediche", value: 100, color: "#ff8042" },
+  { name: "Abbigliamento", value: 450, color: "#8884d8" },
+  { name: "Carburante", value: 296, color: "purple" },
 ];
 
 export const boxPie4 = {
   title: "Divisione Spese",
-  legend: true,
+  legend: false,
   chartData: pieData,
 };
 
@@ -304,17 +283,17 @@ export const topBox = [
   {
     id: 1,
     name: "Cibo",
-    tot: 3500,
+    tot: 480,
   },
   {
     id: 2,
-    name: "Fatture elettriche",
-    tot: 450,
+    name: "Elettronica",
+    tot: 50,
   },
   {
     id: 3,
     name: "Amici",
-    tot: 200,
+    tot: 227,
   },
   {
     id: 4,
@@ -324,11 +303,11 @@ export const topBox = [
   {
     id: 5,
     name: "Abbigliamento",
-    tot: 250,
+    tot: 450,
   },
   {
     id: 6,
     name: "Carburante",
-    tot: 800,
+    tot: 296,
   },
 ];
