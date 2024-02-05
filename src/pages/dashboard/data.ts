@@ -294,3 +294,36 @@ const dataBigChart = [
 export const boxBar7 = {
   chartData: dataBigChart,
 };
+
+export const category = [
+  {
+    id: 1,
+    name: "Cibo",
+    tot: 3500,
+  },
+  {
+    id: 2,
+    name: "Fatture elettriche",
+    tot: 450,
+  },
+  {
+    id: 3,
+    name: "Amici",
+    tot: 200,
+  },
+  {
+    id: 4,
+    name: "Mediche",
+    tot: 100,
+  },
+  {
+    id: 5,
+    name: "Abbigliamento",
+    tot: 250,
+  },
+  {
+    id: 6,
+    name: "Carburante",
+    tot: 800,
+  },
+];
