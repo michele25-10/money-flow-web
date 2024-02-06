@@ -1,0 +1,17 @@
+.form {
+    .inputLayer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 20px;
+
+        input {
+            width: 80%;
+        }
+
+        select {
+            width: 80%;
+        }
+    }
+}
