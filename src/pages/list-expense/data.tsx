@@ -5,39 +5,39 @@ export const columnsTable: GridColDef[] = [
   {
     field: "name_surname",
     headerName: "Nome Cognome",
-    width: 150,
+    minWidth: 150,
   },
   {
     field: "local",
     headerName: "Luogo",
-    width: 150,
+    minWidth: 150,
   },
   {
     field: "date",
     headerName: "Data",
     type: "date",
-    width: 110,
+    minWidth: 110,
   },
   {
     field: "import",
     headerName: "Importo",
     type: "valuta",
-    width: 110,
+    minWidth: 110,
   },
   {
     field: "type_payment",
     headerName: "Pagamento",
-    width: 110,
+    minWidth: 110,
   },
   {
     field: "description",
     headerName: "Descrizione",
-    width: 150,
+    minWidth: 150,
   },
   {
     field: "category",
     headerName: "Categoria",
-    width: 110,
+    minWidth: 110,
   },
 ];
 

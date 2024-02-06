@@ -89,31 +89,31 @@ export const box4 = {
 
 const dataSett = [
   {
-    name: "Lunedì",
+    name: "L",
     tot: 50,
   },
   {
-    name: "Martedì",
+    name: "M",
     tot: 20,
   },
   {
-    name: "Mercoledì",
+    name: "M",
     tot: 0,
   },
   {
-    name: "Giovedì",
+    name: "G",
     tot: 0,
   },
   {
-    name: "Venerdì",
+    name: "V",
     tot: 30,
   },
   {
-    name: "Sabato",
+    name: "S",
     tot: 70,
   },
   {
-    name: "Domenica",
+    name: "D",
     tot: 80,
   },
 ];
@@ -122,56 +122,57 @@ export const boxBar8 = {
   title: "Totale Settimanale",
   color: "orange",
   dataKey: "tot",
+  xDataKey: "name",
   chartData: dataSett,
 };
 
 const dataMonth = [
   {
-    name: "Gennaio",
+    name: "Gen",
     tot: 3000,
   },
   {
-    name: "Febbraio",
+    name: "Feb",
     tot: 2500,
   },
   {
-    name: "Marzo",
+    name: "Mar",
     tot: 3500,
   },
   {
-    name: "Aprile",
+    name: "Apr",
     tot: 4780,
   },
   {
-    name: "Maggio",
+    name: "Mag",
     tot: 4400,
   },
   {
-    name: "Giugno",
+    name: "Giu",
     tot: 6000,
   },
   {
-    name: "Luglio",
+    name: "Lug",
     tot: 4000,
   },
   {
-    name: "Agosto",
+    name: "Ago",
     tot: 7000,
   },
   {
-    name: "Settembre",
+    name: "Set",
     tot: 7500,
   },
   {
-    name: "Ottobre",
+    name: "Ott",
     tot: 4000,
   },
   {
-    name: "Novembre",
+    name: "Nov",
     tot: 3500,
   },
   {
-    name: "Dicembre",
+    name: "Dic",
     tot: 5050,
   },
 ];
@@ -180,6 +181,7 @@ export const boxBar9 = {
   title: "Totale Annuo",
   color: "#8884d8",
   dataKey: "tot",
+  xDataKey: "name",
   chartData: dataMonth,
 };
 

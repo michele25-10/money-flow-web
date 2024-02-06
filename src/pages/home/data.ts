@@ -69,31 +69,31 @@ export const box2 = {
 
 const dataSett = [
   {
-    name: "Lunedì",
+    name: "L",
     tot: 15,
   },
   {
-    name: "Martedì",
+    name: "M",
     tot: 10,
   },
   {
-    name: "Mercoledì",
+    name: "M",
     tot: 0,
   },
   {
-    name: "Giovedì",
+    name: "G",
     tot: 0,
   },
   {
-    name: "Venerdì",
+    name: "V",
     tot: 0,
   },
   {
-    name: "Sabato",
+    name: "S",
     tot: 25,
   },
   {
-    name: "Domenica",
+    name: "D",
     tot: 5,
   },
 ];
@@ -102,56 +102,57 @@ export const boxBar8 = {
   title: "Totale Settimanale",
   color: "orange",
   dataKey: "tot",
+  xDataKey: "name",
   chartData: dataSett,
 };
 
 const dataMonth = [
   {
-    name: "Gennaio",
+    name: "Gen",
     tot: 120,
   },
   {
-    name: "Febbraio",
+    name: "Feb",
     tot: 50,
   },
   {
-    name: "Marzo",
+    name: "Mar",
     tot: 200,
   },
   {
-    name: "Aprile",
+    name: "Apr",
     tot: 150,
   },
   {
-    name: "Maggio",
+    name: "Mag",
     tot: 169,
   },
   {
-    name: "Giugno",
+    name: "Giu",
     tot: 182,
   },
   {
-    name: "Luglio",
+    name: "Lug",
     tot: 147,
   },
   {
-    name: "Agosto",
+    name: "Ago",
     tot: 195,
   },
   {
-    name: "Settembre",
+    name: "Set",
     tot: 300,
   },
   {
-    name: "Ottobre",
+    name: "Ott",
     tot: 322,
   },
   {
-    name: "Novembre",
+    name: "Nov",
     tot: 129,
   },
   {
-    name: "Dicembre",
+    name: "Dic",
     tot: 152,
   },
 ];
@@ -160,6 +161,7 @@ export const boxBar9 = {
   title: "Totale Annuo",
   color: "#8884d8",
   dataKey: "tot",
+  xDataKey: "name",
   chartData: dataMonth,
 };
 
@@ -216,19 +218,19 @@ export const gridColumnsTable: GridColDef[] = [
   {
     field: "local",
     headerName: "Luogo",
-    width: 150,
+    minWidth: 150,
   },
   {
     field: "date",
     headerName: "Data",
     type: "date",
-    width: 110,
+    minWidth: 110,
   },
   {
     field: "import",
     headerName: "Importo",
     type: "number",
-    width: 110,
+    minWidth: 110,
   },
 ];
 
