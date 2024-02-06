@@ -4,6 +4,15 @@ import "./addModal.scss";
 //Modal di bootstrap
 import { Modal } from "react-bootstrap";
 
+//icons
+import PlaceIcon from "@mui/icons-material/Place";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
+import TextFieldsIcon from "@mui/icons-material/TextFields";
+import PaymentIcon from "@mui/icons-material/Payment";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
+
 type Props = {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -37,7 +46,16 @@ const AddModal = (props: Props) => {
           <Modal.Body>
             <div className="form">
               <div className="inputLayer">
-                <label className="">
+                <label className="label">
+                  <PlaceIcon
+                    style={{
+                      color: "gray",
+                      height: "17px",
+                      width: "17px",
+                      alignItems: "center",
+                      marginRight: "5px",
+                    }}
+                  />
                   Luogo:
                   <CarattereObbligatiorio />
                 </label>
@@ -50,6 +68,15 @@ const AddModal = (props: Props) => {
               </div>
               <div className="inputLayer">
                 <label className="">
+                  <CalendarMonthIcon
+                    style={{
+                      color: "gray",
+                      height: "17px",
+                      width: "17px",
+                      alignItems: "center",
+                      marginRight: "5px",
+                    }}
+                  />
                   Data:
                   <CarattereObbligatiorio />
                 </label>
@@ -62,6 +89,15 @@ const AddModal = (props: Props) => {
               </div>
               <div className="inputLayer">
                 <label className="">
+                  <PointOfSaleIcon
+                    style={{
+                      color: "gray",
+                      height: "17px",
+                      width: "17px",
+                      alignItems: "center",
+                      marginRight: "5px",
+                    }}
+                  />
                   Importo:
                   <CarattereObbligatiorio />
                 </label>
@@ -73,7 +109,18 @@ const AddModal = (props: Props) => {
                 />
               </div>
               <div className="inputLayer">
-                <label className="">Descrizione:</label>
+                <label className="">
+                  <TextFieldsIcon
+                    style={{
+                      color: "gray",
+                      height: "17px",
+                      width: "17px",
+                      alignItems: "center",
+                      marginRight: "5px",
+                    }}
+                  />
+                  Descrizione:
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -83,6 +130,15 @@ const AddModal = (props: Props) => {
               </div>
               <div className="inputLayer">
                 <label className="">
+                  <PaymentIcon
+                    style={{
+                      color: "gray",
+                      height: "17px",
+                      width: "17px",
+                      alignItems: "center",
+                      marginRight: "5px",
+                    }}
+                  />
                   Tipo Pagamento:
                   <CarattereObbligatiorio />
                 </label>
@@ -94,6 +150,15 @@ const AddModal = (props: Props) => {
               </div>
               <div className="inputLayer">
                 <label className="">
+                  <FormatListBulletedIcon
+                    style={{
+                      color: "gray",
+                      height: "17px",
+                      width: "17px",
+                      alignItems: "center",
+                      marginRight: "5px",
+                    }}
+                  />
                   Categoria:
                   <CarattereObbligatiorio />
                 </label>
@@ -107,7 +172,18 @@ const AddModal = (props: Props) => {
                 </select>
               </div>
               <div className="inputLayer">
-                <label className="">Documento:</label>
+                <label className="">
+                  <DocumentScannerIcon
+                    style={{
+                      color: "gray",
+                      height: "17px",
+                      width: "17px",
+                      alignItems: "center",
+                      marginRight: "5px",
+                    }}
+                  />
+                  Documento:
+                </label>
                 <input
                   type="file"
                   className="form-control"
@@ -119,16 +195,7 @@ const AddModal = (props: Props) => {
           </Modal.Body>
           <Modal.Footer>
             <button
-              style={{
-                width: "100px",
-                fontSize: "18px",
-                borderRadius: "10px",
-                borderColor: "orange",
-
-                backgroundColor: "orange",
-                color: "white",
-                fontWeight: "400",
-              }}
+              className="btn btn-success"
               onClick={() => {
                 props.setShow(false);
                 props.callBack();
