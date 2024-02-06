@@ -5,7 +5,6 @@ import "./styles/global.scss";
 
 //pagine
 import ListExpense from "./pages/list-expense/List-Expense";
-import AddExpense from "./pages/add-expense/Add-Expense";
 import Settings from "./pages/settings/Settings";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Home from "./pages/home/Home";
@@ -59,10 +58,6 @@ function App() {
         {
           path: "list-expense",
           element: <ListExpense />,
-        },
-        {
-          path: "add-expense",
-          element: <AddExpense />,
         },
         {
           path: "log",
