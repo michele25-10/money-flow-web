@@ -23,12 +23,6 @@ export const menu = [
     listItems: [
       {
         id: 1,
-        title: "Aggiungi Spesa",
-        url: "/add-expense",
-        icon: "note.svg",
-      },
-      {
-        id: 2,
         title: "Lista spese",
         url: "/list-expense",
         icon: "post2.svg",
