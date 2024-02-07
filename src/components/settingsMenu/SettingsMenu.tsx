@@ -1,3 +1,6 @@
+import { useState } from "react";
+
+//sass
 import "./settingsMenu.scss";
 
 //icons
@@ -6,10 +9,11 @@ import PeopleIcon from "@mui/icons-material/People";
 type Props = {
   title: string;
   data: Data[];
+  setSelectedItem: React.Dispatch<React.SetStateAction<{}>>;
 };
 
 type Data = {
-  ids: string;
+  id: string;
   img: string;
   name_surname: string;
   email: string;
@@ -24,7 +28,11 @@ const SettingsMenu = (props: Props) => {
       </div>
       <div className="menu">
         {props.data.map((item) => (
-          <div className="item" key={item.ids}>
+          <div
+            className="item"
+            key={item.id}
+            onClick={() => props.setSelectedItem(item)}
+          >
             <div className="itemImg">
               <img src={item.img ? item.img : "/user.svg"} alt="" />
             </div>
