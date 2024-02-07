@@ -2,10 +2,6 @@
 .dataTable {
     width: 100%;
 
-    @include xxl {
-        width: 80%;
-    }
-
     .dataGrid {
         background: white;
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 //Import material grid
+import { ResponsiveContainer } from "recharts";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 
@@ -59,7 +60,7 @@ const DataTable = (props: Props) => {
 
   return (
     <div className="dataTable">
-      <Box sx={{ height: "70vh", width: "100%" }}>
+      <Box sx={{ height: "70vh", width: "75%" }}>
         <DataGrid
           className="dataGrid"
           rows={props.rows}

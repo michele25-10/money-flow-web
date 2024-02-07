@@ -25,12 +25,7 @@ function ListExpense() {
       <div className="info">
         <h1>Elenco Spese Familiari</h1>
         <div className="addIcon">
-          <span
-            onClick={() => {
-              console.log("click");
-              setModalShow(true);
-            }}
-          >
+          <span onClick={() => setModalShow(true)}>
             <AddIcon
               style={{
                 height: "30px",
