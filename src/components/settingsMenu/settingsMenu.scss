@@ -1,0 +1,53 @@
+@import "../../styles/variable.scss";
+@import "../../styles/responsive.scss";
+
+.settingsMenu {
+    .title {
+        display: flex;
+        font-size: 24px;
+        font-weight: 500;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .menu {
+        gap: 10px;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+
+        .item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+
+            .itemImg {
+                img {
+                    border-radius: 50%;
+                    height: 35px;
+                    width: 35px;
+                    object-fit: cover;
+                }
+            }
+
+            .itemData {
+                display: flex;
+                flex-direction: column;
+                .name {
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+                .email {
+                    font-size: 14px;
+                }
+            }
+
+            &:hover {
+                background-color: $soft-bg;
+                border-radius: 10px;
+            }
+        }
+    }
+}
