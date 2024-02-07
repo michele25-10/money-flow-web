@@ -10,6 +10,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/login";
 import Log from "./pages/log/Log";
+import Authorization from "./pages/authorization/Authorization";
 
 //Component Common
 import Navbar from "./components/navbar/Navbar";
@@ -54,6 +55,10 @@ function App() {
         {
           path: "settings",
           element: <Settings />,
+        },
+        {
+          path: "authorization",
+          element: <Authorization />,
         },
         {
           path: "list-expense",

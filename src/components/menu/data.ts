@@ -48,7 +48,7 @@ export const menu = [
       {
         id: 3,
         title: "Autorizzazioni",
-        url: "/settings",
+        url: "/authorization",
         icon: "element.svg",
       },
       {
