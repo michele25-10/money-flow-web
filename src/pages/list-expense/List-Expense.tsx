@@ -14,6 +14,9 @@ import AddIcon from "@mui/icons-material/Add";
 //SASS
 import "./list-expense.scss";
 
+//function
+import { deleteElement, editElement } from "./function/api";
+
 function ListExpense() {
   const [modalShow, setModalShow] = useState(false);
 
@@ -39,7 +42,13 @@ function ListExpense() {
           </span>
         </div>
       </div>
-      <DataTable columns={columnsTable} rows={rowsTable} action={true} />
+      <DataTable
+        columns={columnsTable}
+        rows={rowsTable}
+        action={true}
+        deleteCallback={deleteElement}
+        editCallback={editElement}
+      />
 
       <AddModal
         show={modalShow}

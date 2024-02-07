@@ -1,24 +1,28 @@
+import { useState } from "react";
+
 //Import material grid
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 
 //SASS
 import "./dataTable.scss";
+import DeleteModal from "../deleteModal/deleteModal";
+
+//components
 
 type Props = {
   action: boolean;
   columns: GridColDef[];
   rows: object[];
+  deleteCallback: (params: any) => any;
+  editCallback: () => boolean;
 };
 
 const DataTable = (props: Props) => {
-  const handleDelete = (id: number) => {
-    console.log(id + " elemento da eliminare");
-  };
-
-  const handleEdit = (id: number) => {
-    console.log(id + " Modal per modificare");
-  };
+  const [editModalShow, setEditModalShow] = useState(false);
+  const [dataEdit, setDataEdit] = useState({});
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [idDelete, setIdDelete] = useState(0);
 
   const actionColumn: GridColDef = {
     field: "action",
@@ -29,10 +33,22 @@ const DataTable = (props: Props) => {
     renderCell: (params) => {
       return (
         <div className="action">
-          <div className="edit" onClick={() => handleEdit(params.row.id)}>
+          <div
+            className="edit"
+            onClick={() => {
+              setDataEdit(params.row);
+              setEditModalShow(true);
+            }}
+          >
             <img src="/view.svg" alt="" />
           </div>
-          <div className="delete" onClick={() => handleDelete(params.row.id)}>
+          <div
+            className="delete"
+            onClick={() => {
+              setIdDelete(params.row.id);
+              setDeleteModalShow(true);
+            }}
+          >
             <img src="/delete.svg" alt="" />
           </div>
         </div>
@@ -76,6 +92,16 @@ const DataTable = (props: Props) => {
           disableColumnMenu
         />
       </Box>
+
+      <DeleteModal
+        title="Attenzione!"
+        body="Sei sicuro/a di voler effettuare questa operazione, le modifiche non potranno essere ripristinate."
+        show={deleteModalShow}
+        setShow={setDeleteModalShow}
+        id={idDelete}
+        callback={props.deleteCallback}
+      />
+      
     </div>
   );
 };
