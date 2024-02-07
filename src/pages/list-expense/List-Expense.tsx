@@ -15,7 +15,7 @@ import AddIcon from "@mui/icons-material/Add";
 import "./list-expense.scss";
 
 //function
-import { deleteElement, editElement } from "./function/api";
+import { deleteElement, editElement, addElement } from "./function/api";
 
 function ListExpense() {
   const [modalShow, setModalShow] = useState(false);
@@ -53,7 +53,8 @@ function ListExpense() {
       <AddModal
         show={modalShow}
         setShow={setModalShow}
-        callBack={() => console.log("Inserito")}
+        callback={addElement}
+        data={{}}
         edit={false}
       />
     </div>

@@ -10,3 +10,11 @@ export const deleteElement = (id: number) => {
   console.log("Eliminazione item: " + id);
   return;
 };
+
+export const addElement = (data: any) => {
+  console.log("Aggiunti i seguenti dati:");
+  for (const i in data) {
+    console.log(i + ": " + data[i]);
+  }
+  return;
+};

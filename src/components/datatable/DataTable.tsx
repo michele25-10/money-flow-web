@@ -6,16 +6,17 @@ import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 
 //SASS
 import "./dataTable.scss";
-import DeleteModal from "../deleteModal/deleteModal";
 
 //components
+import DeleteModal from "../deleteModal/deleteModal";
+import AddModal from "../../pages/list-expense/components/addModal/AddModal";
 
 type Props = {
   action: boolean;
   columns: GridColDef[];
   rows: object[];
   deleteCallback: (params: any) => any;
-  editCallback: () => boolean;
+  editCallback: (params: any) => any;
 };
 
 const DataTable = (props: Props) => {
@@ -101,7 +102,14 @@ const DataTable = (props: Props) => {
         id={idDelete}
         callback={props.deleteCallback}
       />
-      
+
+      <AddModal
+        show={editModalShow}
+        setShow={setEditModalShow}
+        callback={props.editCallback}
+        data={dataEdit}
+        edit={true}
+      />
     </div>
   );
 };

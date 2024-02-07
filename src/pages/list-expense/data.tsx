@@ -8,7 +8,7 @@ export const columnsTable: GridColDef[] = [
     minWidth: 150,
   },
   {
-    field: "local",
+    field: "place",
     headerName: "Luogo",
     minWidth: 150,
   },
@@ -21,7 +21,7 @@ export const columnsTable: GridColDef[] = [
   {
     field: "import",
     headerName: "Importo",
-    type: "valuta",
+    type: "number",
     minWidth: 110,
   },
   {
@@ -42,8 +42,26 @@ export const columnsTable: GridColDef[] = [
 ];
 
 export const rowsTable = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 14 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 31 },
+  {
+    id: 1,
+    name_surname: "Michele Gabrieli",
+    place: "Tana del luppolo",
+    date: new Date(),
+    import: 50,
+    type_payment: "Contante",
+    description: "blablabla",
+    category: "Amici",
+  },
+  {
+    id: 2,
+    name_surname: "Angela Gabrieli",
+    place: "OVS",
+    date: new Date(),
+    import: 125,
+    type_payment: "Bancomat",
+    description: "blablabla",
+    category: "Abbigliamento",
+  },
   { id: 3, lastName: "Lannister", firstName: "Jaime", age: 31 },
   { id: 4, lastName: "Stark", firstName: "Arya", age: 11 },
   { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
@@ -51,84 +69,4 @@ export const rowsTable = [
   { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
   { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-];
-
-const category = [
-  {
-    name: "Amici",
-    value: 0,
-  },
-  {
-    name: "Abbigliamento",
-    value: 1,
-  },
-  {
-    name: "Auto",
-    value: 2,
-  },
-  {
-    name: "Cibo",
-    value: 3,
-  },
-  {
-    name: "Mediche",
-    value: 4,
-  },
-];
-
-export const columnExpense: GridColDef[] = [
-  {
-    headerName: "luogo",
-    type: "text",
-    field: "Luogo...",
-    //required: true,
-  },
-  {
-    headerName: "Data",
-    type: "date",
-    field: "Data...",
-    //required: true,
-  },
-  {
-    headerName: "Importo",
-    type: "number",
-    field: "Importo...",
-    //required: true,
-  },
-  {
-    headerName: "Descrizione",
-    type: "text",
-    field: "Descrizione...",
-    //required: false,
-  },
-  {
-    headerName: "Tipo Pagamento",
-    type: "select",
-    field: "Tipo Pagamento...",
-    //required: true,
-    /*options: [
-      {
-        field: "Contante",
-        value: 0,
-      },
-      {
-        field: " Bancomat",
-        value: 1,
-      },
-    ],*/
-  },
-  {
-    headerName: "Categoria",
-    type: "select",
-    field: "Categoria...",
-    //required: true,
-    //options: category,
-  },
-  {
-    headerName: "Documento",
-    type: "file",
-    field: "Documento...",
-    //required: false,
-    //options: category,
-  },
 ];

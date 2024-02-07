@@ -16,8 +16,21 @@ import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
 type Props = {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
-  callBack: () => void;
+  callback: (params: any) => any;
+  data: Data;
   edit: boolean;
+};
+
+type Data = {
+  id: number;
+  name_surname: string;
+  place: string;
+  date: Date;
+  import: number;
+  type_payment: string;
+  description: string;
+  category: string;
+  document: HTMLInputElement;
 };
 
 const CarattereObbligatiorio = () => {
@@ -27,6 +40,14 @@ const CarattereObbligatiorio = () => {
 };
 
 const AddModal = (props: Props) => {
+  const styleIcon = {
+    color: "gray",
+    height: "17px",
+    width: "17px",
+    alignItems: "center",
+    marginRight: "4px",
+  };
+
   return (
     <div className="addModal">
       <Modal
@@ -47,15 +68,9 @@ const AddModal = (props: Props) => {
             <div className="form">
               <div className="inputLayer">
                 <label className="label">
-                  <PlaceIcon
-                    style={{
-                      color: "gray",
-                      height: "17px",
-                      width: "17px",
-                      alignItems: "center",
-                      marginRight: "5px",
-                    }}
-                  />
+                  <div className="iconInput">
+                    <PlaceIcon style={styleIcon} />
+                  </div>
                   Luogo:
                   <CarattereObbligatiorio />
                 </label>
@@ -64,19 +79,14 @@ const AddModal = (props: Props) => {
                   className="form-control"
                   aria-describedby="Luogo"
                   placeholder="Luogo..."
+                  value={props.data.place ? props.data.place : ""}
                 />
               </div>
               <div className="inputLayer">
                 <label className="">
-                  <CalendarMonthIcon
-                    style={{
-                      color: "gray",
-                      height: "17px",
-                      width: "17px",
-                      alignItems: "center",
-                      marginRight: "5px",
-                    }}
-                  />
+                  <div className="iconInput">
+                    <CalendarMonthIcon style={styleIcon} />
+                  </div>
                   Data:
                   <CarattereObbligatiorio />
                 </label>
@@ -85,19 +95,14 @@ const AddModal = (props: Props) => {
                   className="form-control"
                   aria-describedby="Data"
                   placeholder="Data..."
+                  value={props.data.date ? new Date(props.data.date) : null}
                 />
               </div>
               <div className="inputLayer">
                 <label className="">
-                  <PointOfSaleIcon
-                    style={{
-                      color: "gray",
-                      height: "17px",
-                      width: "17px",
-                      alignItems: "center",
-                      marginRight: "5px",
-                    }}
-                  />
+                  <div className="iconInput">
+                    <PointOfSaleIcon style={styleIcon} />
+                  </div>
                   Importo:
                   <CarattereObbligatiorio />
                 </label>
@@ -106,19 +111,14 @@ const AddModal = (props: Props) => {
                   className="form-control"
                   aria-describedby="Importo"
                   placeholder="Importo..."
+                  value={props.data.import ? props.data.import : ""}
                 />
               </div>
               <div className="inputLayer">
                 <label className="">
-                  <TextFieldsIcon
-                    style={{
-                      color: "gray",
-                      height: "17px",
-                      width: "17px",
-                      alignItems: "center",
-                      marginRight: "5px",
-                    }}
-                  />
+                  <div className="iconInput">
+                    <TextFieldsIcon style={styleIcon} />
+                  </div>
                   Descrizione:
                 </label>
                 <input
@@ -126,45 +126,36 @@ const AddModal = (props: Props) => {
                   className="form-control"
                   aria-describedby="Descrizione"
                   placeholder="Descrizione..."
+                  value={props.data.description ? props.data.description : ""}
                 />
               </div>
               <div className="inputLayer">
                 <label className="">
-                  <PaymentIcon
-                    style={{
-                      color: "gray",
-                      height: "17px",
-                      width: "17px",
-                      alignItems: "center",
-                      marginRight: "5px",
-                    }}
-                  />
+                  <div className="iconInput">
+                    <PaymentIcon style={styleIcon} />
+                  </div>
                   Tipo Pagamento:
                   <CarattereObbligatiorio />
                 </label>
                 <select className="form-select" aria-label="Tipo Pagamento">
-                  <option selected>Tipo Pagamento...</option>
-                  <option value="0">Contante</option>
+                  <option value="0" selected>
+                    Contante
+                  </option>
                   <option value="1">Bancomat</option>
                 </select>
               </div>
               <div className="inputLayer">
                 <label className="">
-                  <FormatListBulletedIcon
-                    style={{
-                      color: "gray",
-                      height: "17px",
-                      width: "17px",
-                      alignItems: "center",
-                      marginRight: "5px",
-                    }}
-                  />
+                  <div className="iconInput">
+                    <FormatListBulletedIcon style={styleIcon} />
+                  </div>
                   Categoria:
                   <CarattereObbligatiorio />
                 </label>
                 <select className="form-select" aria-label="Tipo Pagamento">
-                  <option selected>Categoria...</option>
-                  <option value="0">Amici</option>
+                  <option value="0" selected>
+                    Amici
+                  </option>
                   <option value="1">Fattura elettricità</option>
                   <option value="2">Abbigliamento</option>
                   <option value="3">Cibo</option>
@@ -173,15 +164,9 @@ const AddModal = (props: Props) => {
               </div>
               <div className="inputLayer">
                 <label className="">
-                  <DocumentScannerIcon
-                    style={{
-                      color: "gray",
-                      height: "17px",
-                      width: "17px",
-                      alignItems: "center",
-                      marginRight: "5px",
-                    }}
-                  />
+                  <div className="iconInput">
+                    <DocumentScannerIcon style={styleIcon} />
+                  </div>
                   Documento:
                 </label>
                 <input
@@ -189,16 +174,17 @@ const AddModal = (props: Props) => {
                   className="form-control"
                   aria-describedby="Documento"
                   placeholder="Documento..."
+                  accept=".pdf"
                 />
               </div>
             </div>
           </Modal.Body>
           <Modal.Footer>
             <button
-              className="btn btn-success"
+              className={props.edit ? "btn btn-warning" : "btn btn-success"}
               onClick={() => {
                 props.setShow(false);
-                props.callBack();
+                props.callback(props.data);
               }}
             >
               Salva
