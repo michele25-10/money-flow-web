@@ -31,8 +31,17 @@
     .auth {
         padding: 20px;
         grid-column: span 3;
-
         border: 2px solid $soft-bg;
         border-radius: 10px;
+    }
+
+    .avvisoUtente {
+        padding: 20px;
+        grid-column: span 3;
+        border: 2px solid $soft-bg;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

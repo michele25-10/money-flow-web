@@ -8,19 +8,25 @@ import "./authorization.scss";
 
 //dati
 import { users } from "./data";
-
-//function
-//import { getAuthUser } from "./function/api";
+import AuthBox from "../../components/authBox/AuthBox";
 
 const Authorization = () => {
-  const [item, setItem] = useState();
+  const [item, setItem] = useState({});
 
   return (
     <div className="authorization">
       <div className="users">
         <SettingsMenu title="Utenti" data={users} setSelectedItem={setItem} />
       </div>
-      {item ? <div className="auth">{item.name_surname}</div> : null}
+      {Object.keys(item).length > 0 ? (
+        <div className="auth">
+          <AuthBox itemData={item} />
+        </div>
+      ) : (
+        <div className="avvisoUtente">
+          <h5 className=".avviso">Seleziona utente</h5>
+        </div>
+      )}
     </div>
   );
 };

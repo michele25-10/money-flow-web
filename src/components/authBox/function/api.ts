@@ -3,17 +3,19 @@ export const getAuthUser = (id: any) => {
   return [
     {
       name: "Dashboard",
+      description: "Schermata di visualizzazione utente di tipo admin",
       value: true,
       id: 1,
     },
     {
       name: "Homepage",
+      description: "Visualizzazione proprie statistiche",
       value: true,
       id: 2,
     },
     {
       name: "Log",
-      value: true,
+      value: false,
       id: 3,
     },
     {

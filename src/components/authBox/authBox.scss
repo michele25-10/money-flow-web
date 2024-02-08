@@ -1,0 +1,44 @@
+.authBox {
+    .infoBox {
+        display: flex;
+        justify-content: left;
+        gap: 20px;
+        align-items: center;
+
+        .imgBox {
+            .profile {
+                height: 40px;
+                width: 40px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+    }
+    .listItem {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+
+        .item {
+            margin-left: 50px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 25px;
+
+            .iconBox {
+                cursor: pointer;
+            }
+
+            .infoItem {
+                width: 100%;
+
+                span {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
