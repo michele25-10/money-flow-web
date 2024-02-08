@@ -28,6 +28,12 @@
             align-items: center;
             gap: 25px;
 
+            .popoverBox {
+                span {
+                    cursor: pointer;
+                }
+            }
+
             .iconBox {
                 cursor: pointer;
             }

@@ -9,6 +9,7 @@ import { getAuthUser } from "./function/api";
 //icons
 import LockTwoToneIcon from "@mui/icons-material/LockTwoTone";
 import LockOpenTwoToneIcon from "@mui/icons-material/LockOpenTwoTone";
+import { OverlayTrigger, Popover } from "react-bootstrap";
 
 type Props = {
   itemData: Data;
@@ -23,7 +24,7 @@ type Data = {
 
 type AuthData = {
   name: string;
-  description: string;
+  description?: string;
   value: boolean;
   id: number;
 };
@@ -54,23 +55,74 @@ const AuthBox = (props: Props) => {
           ? authList.map((item: AuthData) => (
               <div className="item" key={item.id}>
                 <div className="iconBox">
-                  {item.value ? (
-                    <LockOpenTwoToneIcon
-                      style={{
-                        color: "limegreen",
-                        height: "40px",
-                        width: "40px",
-                      }}
-                    />
-                  ) : (
-                    <LockTwoToneIcon
-                      style={{
-                        color: "#fe0000",
-                        height: "40px",
-                        width: "40px",
-                      }}
-                    />
-                  )}
+                  <OverlayTrigger
+                    trigger="click"
+                    key="top"
+                    placement="top"
+                    overlay={
+                      <Popover id="popover-positioned-top">
+                        <Popover.Header
+                          as="h3"
+                          style={{
+                            backgroundColor: "#222b3c",
+                            color: "white",
+                            borderBottomColor: "white",
+                          }}
+                        >
+                          Gestione autorizzazione
+                        </Popover.Header>
+                        <Popover.Body
+                          style={{
+                            backgroundColor: "#222b3c",
+                            display: "flex",
+                            justifyContent: "center",
+                            flexDirection: "row",
+                            gap: "20px",
+                          }}
+                        >
+                          <div className="popoverBox">
+                            <span style={{ cursor: "pointer" }}>
+                              <LockOpenTwoToneIcon
+                                style={{
+                                  color: "limegreen",
+                                  height: "40px",
+                                  width: "40px",
+                                }}
+                              />
+                            </span>
+                            <span style={{ cursor: "pointer" }}>
+                              <LockTwoToneIcon
+                                style={{
+                                  color: "#fe0000",
+                                  height: "40px",
+                                  width: "40px",
+                                }}
+                              />
+                            </span>
+                          </div>
+                        </Popover.Body>
+                      </Popover>
+                    }
+                    rootClose
+                  >
+                    {item.value ? (
+                      <LockOpenTwoToneIcon
+                        style={{
+                          color: "limegreen",
+                          height: "40px",
+                          width: "40px",
+                        }}
+                      />
+                    ) : (
+                      <LockTwoToneIcon
+                        style={{
+                          color: "#fe0000",
+                          height: "40px",
+                          width: "40px",
+                        }}
+                      />
+                    )}
+                  </OverlayTrigger>
                 </div>
                 <div className="infoItem">
                   <h3>{item.name}</h3>
