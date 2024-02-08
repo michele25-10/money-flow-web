@@ -1,20 +1,44 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
+//dati
 import { menu } from "./data";
 
+//sass
 import "./menu.scss";
 
+//icons
+import ChevronLeftTwoToneIcon from "@mui/icons-material/ChevronLeftTwoTone";
+import ChevronRightTwoToneIcon from "@mui/icons-material/ChevronRightTwoTone";
+
 function Menu() {
+  const [open, setOpen] = useState(true);
+
+  const arrowIconStyle = {
+    color: "white",
+    backgroundColor: "#6f42c1",
+    borderRadius: "50%",
+  };
+
   return (
     <>
       <div className="menu">
+        <div className="closeButton" onClick={() => setOpen(!open)}>
+          {open ? (
+            <ChevronLeftTwoToneIcon style={arrowIconStyle} />
+          ) : (
+            <ChevronRightTwoToneIcon style={arrowIconStyle} />
+          )}
+        </div>
         {menu.map((item) => (
           <div className="item" key={item.id}>
-            <div className="title">{item.title}</div>
+            {open ? <div className="title">{item.title}</div> : null}
             {item.listItems.map((listItem) => (
               <Link to={listItem.url} className="listItem" key={listItem.id}>
                 <img src={listItem.icon} alt={listItem.title} />
-                <span className="listItemTitle">{listItem.title}</span>
+                {open ? (
+                  <span className="listItemTitle">{listItem.title}</span>
+                ) : null}
               </Link>
             ))}
           </div>
