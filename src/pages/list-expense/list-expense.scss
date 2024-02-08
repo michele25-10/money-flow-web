@@ -1,28 +1,44 @@
 @import "../../styles/responsive.scss";
 .listExpense {
-    .info {
+    .tableContainer {
         width: 100%;
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        margin-bottom: 20px;
-        justify-content: space-between;
 
-        h1 {
-            @include md {
-                font-size: 18px;
+        @include xl {
+            width: 85%;
+        }
+
+        @include md {
+            width: 80%;
+        }
+
+        @include sm {
+            width: 75%;
+        }
+
+        .info {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+
+            h1 {
+                @include md {
+                    font-size: 18px;
+                }
+            }
+
+            .icon {
+                @include sm {
+                    display: none;
+                }
             }
         }
 
-        .addIcon {
-            background-color: orange;
-            border-radius: 10px;
-            margin-right: 10px;
+        button {
+            padding: 5px;
+            cursor: pointer;
         }
-    }
-
-    button {
-        padding: 5px;
-        cursor: pointer;
     }
 }

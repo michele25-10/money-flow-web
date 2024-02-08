@@ -23,6 +23,7 @@ a {
 .containerApp {
   display: flex;
   min-height: 75vh;
+  overflow: hidden;
 }
 
 .menuContainer {

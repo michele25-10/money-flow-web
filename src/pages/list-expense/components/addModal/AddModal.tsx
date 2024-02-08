@@ -60,7 +60,7 @@ const AddModal = (props: Props) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Aggiungi Spesa
+            {props.edit ? "Modifica " : "Aggiungi "} Spesa
           </Modal.Title>
         </Modal.Header>
         <form>

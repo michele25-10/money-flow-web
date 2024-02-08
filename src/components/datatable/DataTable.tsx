@@ -1,15 +1,17 @@
 import { useState } from "react";
 
 //Import material grid
-import { ResponsiveContainer } from "recharts";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
+
+//icons
+import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 
 //SASS
 import "./dataTable.scss";
 
 //components
-import DeleteModal from "../deleteModal/deleteModal";
+import DeleteModal from "../deleteModal/DeleteModal";
 import AddModal from "../../pages/list-expense/components/addModal/AddModal";
 
 type Props = {
@@ -42,7 +44,13 @@ const DataTable = (props: Props) => {
               setEditModalShow(true);
             }}
           >
-            <img src="/view.svg" alt="" />
+            <EditTwoToneIcon
+              style={{
+                color: "orange",
+                width: "20px",
+                height: "20px",
+              }}
+            />
           </div>
           <div
             className="delete"
@@ -60,7 +68,7 @@ const DataTable = (props: Props) => {
 
   return (
     <div className="dataTable">
-      <Box sx={{ height: "70vh", width: "75%" }}>
+      <Box sx={{ height: "70vh", width: "100%" }}>
         <DataGrid
           className="dataGrid"
           rows={props.rows}

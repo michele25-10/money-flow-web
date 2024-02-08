@@ -10,6 +10,7 @@ import { columnsTable, rowsTable } from "./data";
 
 //icone
 import AddIcon from "@mui/icons-material/Add";
+import Diversity1TwoToneIcon from "@mui/icons-material/Diversity1TwoTone";
 
 //SASS
 import "./list-expense.scss";
@@ -22,10 +23,25 @@ function ListExpense() {
 
   return (
     <div className="listExpense">
-      <div className="info">
-        <h1>Elenco Spese Familiari</h1>
-        <div className="addIcon">
-          <span onClick={() => setModalShow(true)}>
+      <div className="tableContainer">
+        <div className="info">
+          <h1>
+            <span className="icon">
+              <Diversity1TwoToneIcon
+                style={{
+                  color: "white",
+                  height: "40px",
+                  width: "40px",
+                  marginRight: "20px",
+                }}
+              />
+            </span>
+            Spese Familiari
+          </h1>
+          <button
+            className="btn btn-success"
+            onClick={() => setModalShow(true)}
+          >
             <AddIcon
               style={{
                 height: "30px",
@@ -34,24 +50,25 @@ function ListExpense() {
                 cursor: "pointer",
               }}
             />
-          </span>
+          </button>
         </div>
-      </div>
-      <DataTable
-        columns={columnsTable}
-        rows={rowsTable}
-        action={true}
-        deleteCallback={deleteElement}
-        editCallback={editElement}
-      />
 
-      <AddModal
-        show={modalShow}
-        setShow={setModalShow}
-        callback={addElement}
-        data={{}}
-        edit={false}
-      />
+        <DataTable
+          columns={columnsTable}
+          rows={rowsTable}
+          action={true}
+          deleteCallback={deleteElement}
+          editCallback={editElement}
+        />
+
+        <AddModal
+          show={modalShow}
+          setShow={setModalShow}
+          callback={addElement}
+          data={{}}
+          edit={false}
+        />
+      </div>
     </div>
   );
 }
