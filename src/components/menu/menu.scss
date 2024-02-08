@@ -11,7 +11,7 @@
             display: flex;
             float: right;
             clear: both;
-            margin-left: auto;
+
             align-items: center;
             cursor: pointer;
             z-index: 1;
@@ -49,6 +49,7 @@
 
             &:hover {
                 background-color: $soft-bg;
+                width: max-content;
             }
 
             .listItemTitle {

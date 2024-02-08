@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import "./authBox.scss";
 
 //function
-import { getAuthUser } from "./function/api";
+import { editAuthUser, getAuthUser } from "./function/api";
 
 //icons
 import LockTwoToneIcon from "@mui/icons-material/LockTwoTone";
@@ -37,6 +37,12 @@ const AuthBox = (props: Props) => {
     const res: AuthData[] = getAuthUser(props.itemData.id);
     setAuthList(res);
   }, [props.itemData.id]);
+
+  const refreshAuthData = () => {
+    console.log("sto refreshando i dati");
+    const res: AuthData[] = getAuthUser(props.itemData.id);
+    setAuthList(res);
+  };
 
   return (
     <div className="authBox">
@@ -81,7 +87,16 @@ const AuthBox = (props: Props) => {
                           }}
                         >
                           <div className="popoverBox">
-                            <span style={{ cursor: "pointer" }}>
+                            <span
+                              style={{
+                                cursor: item.value ? "not-allowed" : "pointer",
+                              }}
+                              onClick={() => {
+                                editAuthUser(item.id, true, props.itemData.id);
+                                refreshAuthData();
+                                document.body.click(); //per chiudere il popover
+                              }}
+                            >
                               <LockOpenTwoToneIcon
                                 style={{
                                   color: "limegreen",
@@ -90,7 +105,16 @@ const AuthBox = (props: Props) => {
                                 }}
                               />
                             </span>
-                            <span style={{ cursor: "pointer" }}>
+                            <span
+                              style={{
+                                cursor: !item.value ? "not-allowed" : "pointer",
+                              }}
+                              onClick={() => {
+                                editAuthUser(item.id, false, props.itemData.id);
+                                refreshAuthData();
+                                document.body.click(); //per chiudere il popover
+                              }}
+                            >
                               <LockTwoToneIcon
                                 style={{
                                   color: "#fe0000",

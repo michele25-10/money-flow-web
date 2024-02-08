@@ -30,3 +30,8 @@ export const getAuthUser = (id: any) => {
     },
   ];
 };
+
+export const editAuthUser = (id: any, value: any, idu: any) => {
+  console.log("Modificata: id " + id + " value " + value + " idu " + idu);
+  return;
+};
