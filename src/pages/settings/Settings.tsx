@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 //Components
 import SettingsMenu from "../../components/settingsMenu/SettingsMenu";
@@ -36,19 +36,17 @@ function Settings() {
           />
         </div>
 
-        <div className="containerSettings">
-          {Object.keys(item).length > 0 ? (
-            <>
-              {item.id == 1 ? <Profile /> : null}
-              {item.id == 2 ? <ChangePassword /> : null}
-              {item.id == 3 ? <Security /> : null}
-            </>
-          ) : (
-            <div className="avvisoUtente">
-              <h5 className=".avviso">Seleziona utente</h5>
-            </div>
-          )}
-        </div>
+        {Object.keys(item).length > 0 ? (
+          <div className="containerSettings">
+            {item.id == 1 ? <Profile /> : null}
+            {item.id == 2 ? <ChangePassword /> : null}
+            {item.id == 3 ? <Security /> : null}
+          </div>
+        ) : (
+          <div className="avvisoUtente">
+            <h5 className=".avviso">Seleziona utente</h5>
+          </div>
+        )}
       </div>
     </>
   );

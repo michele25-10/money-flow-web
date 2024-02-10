@@ -8,17 +8,16 @@ import { SvgIconProps } from "@mui/material";
 
 type Props = {
   title: string;
-  icon: SvgIconProps;
+  icon: React.ReactElement<SvgIconProps>;
   data: Data[];
   setSelectedItem: React.Dispatch<React.SetStateAction<{}>>;
 };
 
 type Data = {
   id: string;
-  img: string;
-  icon: SvgIconProps;
+  img?: string;
   name_surname: string;
-  email: string;
+  email?: string;
 };
 
 const SettingsMenu = (props: Props) => {
@@ -36,7 +35,9 @@ const SettingsMenu = (props: Props) => {
             onClick={() => props.setSelectedItem(item)}
           >
             <div className="itemImg">
-              <img src={item.img ? item.img : "/user.svg"} alt="" />
+              {item.img ? (
+                <img src={item.img ? item.img : "/user.svg"} alt="" />
+              ) : null}
             </div>
             <div className="itemData">
               <span className="name">{item.name_surname}</span>
