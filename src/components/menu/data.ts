@@ -34,12 +34,6 @@ export const menu = [
     title: "Impostazioni",
     listItems: [
       {
-        id: 1,
-        title: "Utente",
-        url: "/settings",
-        icon: "user.svg",
-      },
-      {
         id: 2,
         title: "Configurazione",
         url: "/settings",
