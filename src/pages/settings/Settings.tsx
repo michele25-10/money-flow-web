@@ -44,7 +44,7 @@ function Settings() {
           </div>
         ) : (
           <div className="avvisoUtente">
-            <h5 className=".avviso">Seleziona utente</h5>
+            <h5 className=".avviso">Seleziona opzione</h5>
           </div>
         )}
       </div>

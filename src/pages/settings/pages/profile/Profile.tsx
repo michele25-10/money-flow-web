@@ -9,8 +9,6 @@ const Profile = () => {
   const [submitButton, setSubmitButton] = useState(false);
 
   const HandleChange = (event: any) => {
-    event.preventDefault();
-
     let obj: any = users;
     obj[event.target.name] = event.target.value;
 
