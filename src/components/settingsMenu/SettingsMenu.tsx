@@ -4,10 +4,11 @@ import { useState } from "react";
 import "./settingsMenu.scss";
 
 //icons
-import PeopleIcon from "@mui/icons-material/People";
+import { SvgIconProps } from "@mui/material";
 
 type Props = {
   title: string;
+  icon: SvgIconProps;
   data: Data[];
   setSelectedItem: React.Dispatch<React.SetStateAction<{}>>;
 };
@@ -15,6 +16,7 @@ type Props = {
 type Data = {
   id: string;
   img: string;
+  icon: SvgIconProps;
   name_surname: string;
   email: string;
 };
@@ -23,7 +25,7 @@ const SettingsMenu = (props: Props) => {
   return (
     <div className="settingsMenu">
       <div className="title">
-        <PeopleIcon style={{ color: "white", height: "50px", width: "50px" }} />
+        {props.icon}
         <h1>{props.title}</h1>
       </div>
       <div className="menu">
@@ -38,7 +40,7 @@ const SettingsMenu = (props: Props) => {
             </div>
             <div className="itemData">
               <span className="name">{item.name_surname}</span>
-              <span className="email">{item.email}</span>
+              {item.email ? <span className="email">{item.email}</span> : null}
             </div>
           </div>
         ))}
