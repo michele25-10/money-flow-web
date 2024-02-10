@@ -1,0 +1,27 @@
+.profile {
+    .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+
+        img {
+            height: 100px;
+            width: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
+    .formUser {
+        gap: 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        .nameSurname {
+            display: flex;
+            gap: 20px;
+        }
+    }
+}

@@ -1,5 +1,3 @@
-import SecurityIcon from "@mui/icons-material/Security";
-
 export const settings = [
   {
     name_surname: "Profilo",
@@ -14,6 +12,6 @@ export const settings = [
   {
     name_surname: "Sicurezza",
     img: "/security.png",
-    id: 1,
+    id: 3,
   },
 ];
