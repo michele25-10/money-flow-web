@@ -17,11 +17,20 @@
         justify-content: end;
 
         .selectLayer {
+            min-width: 200px;
             width: auto;
+
+            @include sm {
+                min-width: 50px;
+            }
         }
 
         .inputLayer {
             min-width: 90px;
+
+            @include sm {
+                min-width: auto;
+            }
         }
     }
 
