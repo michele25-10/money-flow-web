@@ -11,6 +11,8 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/login";
 import Log from "./pages/log/Log";
 import Authorization from "./pages/authorization/Authorization";
+import History from "./pages/history/History";
+import FixedExpense from "./pages/fixed-expense/FixedExpense";
 
 //Component Common
 import Navbar from "./components/navbar/Navbar";
@@ -51,6 +53,14 @@ function App() {
         {
           path: "dashboard",
           element: <Dashboard />,
+        },
+        {
+          path: "history",
+          element: <History />,
+        },
+        {
+          path: "fixed-expense",
+          element: <FixedExpense />,
         },
         {
           path: "settings",
