@@ -47,6 +47,11 @@
             padding: 10px;
             border-radius: 5px;
 
+            img {
+                height: 23px;
+                width: 23px;
+            }
+
             &:hover {
                 background-color: $soft-bg;
                 width: max-content;

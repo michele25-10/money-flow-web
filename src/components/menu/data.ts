@@ -19,6 +19,30 @@ export const menu = [
   },
   {
     id: 2,
+    title: "Storico",
+    listItems: [
+      {
+        id: 1,
+        title: "Storico",
+        url: "/history",
+        icon: "calendar.svg",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Analisi",
+    listItems: [
+      {
+        id: 1,
+        title: "Spese fisse",
+        url: "/fixed-expense",
+        icon: "fattura.png",
+      },
+    ],
+  },
+  {
+    id: 3,
     title: "Spese",
     listItems: [
       {
@@ -30,23 +54,23 @@ export const menu = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "Impostazioni",
     listItems: [
       {
-        id: 2,
+        id: 1,
         title: "Configurazione",
         url: "/settings",
         icon: "setting.svg",
       },
       {
-        id: 3,
+        id: 2,
         title: "Autorizzazioni",
         url: "/authorization",
         icon: "element.svg",
       },
       {
-        id: 4,
+        id: 3,
         title: "Log",
         url: "/log",
         icon: "log.svg",
