@@ -1,22 +1,22 @@
 export const user = [
   {
-    id: 1,
-    name: "Gian Luca Gabrieli",
+    value: 1,
+    label: "Gian Luca Gabrieli",
   },
   {
-    id: 2,
-    name: "Elena Ferraresi",
+    value: 2,
+    label: "Elena Ferraresi",
   },
   {
-    id: 3,
-    name: "Michele Gabrieli",
+    value: 0,
+    label: "Michele Gabrieli",
   },
   {
-    id: 4,
-    name: "Angela Gabrieli",
+    value: 4,
+    label: "Angela Gabrieli",
   },
   {
-    id: 5,
-    name: "Pietro Gabrieli",
+    value: 5,
+    label: "Pietro Gabrieli",
   },
 ];
