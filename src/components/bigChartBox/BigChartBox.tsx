@@ -9,13 +9,20 @@ import {
 import "./bigChartBox.scss";
 
 type Props = {
+  title: string;
   chartData: object[];
+  dataKey: DataKey[];
+};
+
+type DataKey = {
+  name: string;
+  color: string;
 };
 
 const BigChartBox = (props: Props) => {
   return (
     <div className="bigChartBox">
-      <h1>Analisi Spese</h1>
+      <h1>{props.title}</h1>
       <div className="chart">
         <ResponsiveContainer width="99%" height="100%">
           <AreaChart
@@ -30,41 +37,15 @@ const BigChartBox = (props: Props) => {
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Area
-              type="monotone"
-              dataKey="gianluca_gabrieli"
-              stackId="1"
-              stroke="#0088fe"
-              fill="#0088fe"
-            />
-            <Area
-              type="monotone"
-              dataKey="angela_gabrieli"
-              stackId="1"
-              stroke="#82ca9d"
-              fill="#82ca9d"
-            />
-            <Area
-              type="monotone"
-              dataKey="pietro_gabrieli"
-              stackId="1"
-              stroke="#ffc658"
-              fill="#ffc658"
-            />
-            <Area
-              type="monotone"
-              dataKey="michele_gabrieli"
-              stackId="1"
-              stroke="#ff8042"
-              fill="#ff8042"
-            />
-            <Area
-              type="monotone"
-              dataKey="elena_ferraresi"
-              stackId="1"
-              stroke="#8884d8"
-              fill="#8884d8"
-            />
+            {props.dataKey.map((item) => (
+              <Area
+                type="monotone"
+                dataKey={item.name}
+                stackId="1"
+                stroke={item.color}
+                fill={item.color}
+              />
+            ))}
           </AreaChart>
         </ResponsiveContainer>
       </div>

@@ -299,7 +299,30 @@ const dataBigChart = [
 ];
 
 export const boxBar7 = {
+  title: "Ananlisi Spese",
   chartData: dataBigChart,
+  dataKey: [
+    {
+      name: "gianluca_gabrieli",
+      color: "#0088fe",
+    },
+    {
+      name: "angela_gabrieli",
+      color: "#82ca9d",
+    },
+    {
+      name: "angela_gabrieli",
+      color: "#ffc658",
+    },
+    {
+      name: "michele_gabrieli",
+      color: "#ff8042",
+    },
+    {
+      name: "elena_ferraresi",
+      color: "#8884d8",
+    },
+  ],
 };
 
 export const topBox = [
