@@ -3,6 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import FolderIcon from "@mui/icons-material/Folder";
 import ArticleIcon from "@mui/icons-material/Article";
 import AddToDriveIcon from "@mui/icons-material/AddToDrive";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 //SASS
 import "./documentation.scss";
@@ -52,6 +53,15 @@ const Documentation = () => {
         <div className="gridDocs">
           {docs.map((item) => (
             <div className="item">
+              <div className="menuOption">
+                <MoreVertIcon
+                  style={{
+                    height: "25px",
+                    width: "25px",
+                    cursor: "pointer",
+                  }}
+                />
+              </div>
               <div className="iconDoc">
                 {item.type === "folder" ? (
                   <FolderIcon style={styleIcons} />

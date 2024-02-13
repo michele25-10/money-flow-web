@@ -70,12 +70,16 @@
                 &:hover {
                     background-color: $soft-bg;
                     border-radius: 10px;
+
+                    .menuOption {
+                        width: 100%;
+                        display: flex;
+                        justify-content: end;
+                    }
                 }
 
-                .itemDoc {
-                    display: flex;
-                    align-items: center;
-                    width: auto;
+                .menuOption {
+                    display: none;
                 }
             }
         }
