@@ -119,5 +119,5 @@ export const dataGridTable = [
     2024: 7000,
   },
   { id: 5, category: "Mutuo", 2023: 1950, 2024: 2500 },
-  { id: 5, category: "TOTALE", 2023: 7500, 2024: 8000 },
+  { id: 6, category: "TOTALE", 2023: 7500, 2024: 8000 },
 ];
