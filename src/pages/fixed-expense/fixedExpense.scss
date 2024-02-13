@@ -9,6 +9,12 @@
     border-radius: 10px;
     border: 2px solid $soft-bg;
     margin-bottom: 20px;
+
+    .filterFormElement {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 }
 
 .gridFixedExpense {
