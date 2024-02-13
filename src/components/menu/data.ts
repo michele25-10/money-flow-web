@@ -55,6 +55,18 @@ export const menu = [
   },
   {
     id: 5,
+    title: "Documentazione",
+    listItems: [
+      {
+        id: 1,
+        title: "Documenti",
+        url: "/documentation",
+        icon: "element.svg",
+      },
+    ],
+  },
+  {
+    id: 6,
     title: "Impostazioni",
     listItems: [
       {

@@ -13,6 +13,7 @@ import Log from "./pages/log/Log";
 import Authorization from "./pages/authorization/Authorization";
 import History from "./pages/history/History";
 import FixedExpense from "./pages/fixed-expense/FixedExpense";
+import Documentation from "./pages/documentation/Documentation";
 
 //Component Common
 import Navbar from "./components/navbar/Navbar";
@@ -73,6 +74,10 @@ function App() {
         {
           path: "list-expense",
           element: <ListExpense />,
+        },
+        {
+          path: "documentation",
+          element: <Documentation />,
         },
         {
           path: "log",
