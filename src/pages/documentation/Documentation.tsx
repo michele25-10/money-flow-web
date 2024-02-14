@@ -12,6 +12,7 @@ import "./documentation.scss";
 import { docs } from "./data";
 
 type Doc = {
+  id: number;
   name: string;
   type: string;
 };
@@ -22,6 +23,15 @@ const Documentation = () => {
     height: "70px",
     width: "70px",
     cursor: "pointer",
+  };
+
+  const doSomething = (e) => {
+    var rightclick;
+    console.log(e);
+    if (!e) var e = window.event;
+    if (e.which) rightclick = e.which == 3;
+    else if (e.button) rightclick = e.button == 2;
+    alert("Rightclick: " + rightclick); // true or false
   };
 
   return (
@@ -52,15 +62,17 @@ const Documentation = () => {
       <div className="containerDocs">
         <div className="gridDocs">
           {docs.map((item) => (
-            <div className="item">
+            <div className="item" key={item.id}>
               <div className="menuOption">
-                <MoreVertIcon
-                  style={{
-                    height: "25px",
-                    width: "25px",
-                    cursor: "pointer",
-                  }}
-                />
+                <div className="iconMenu">
+                  <MoreVertIcon
+                    style={{
+                      height: "25px",
+                      width: "25px",
+                      cursor: "pointer",
+                    }}
+                  />
+                </div>
               </div>
               <div className="iconDoc">
                 {item.type === "folder" ? (

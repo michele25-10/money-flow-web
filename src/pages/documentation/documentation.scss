@@ -72,14 +72,21 @@
                     border-radius: 10px;
 
                     .menuOption {
-                        width: 100%;
-                        display: flex;
-                        justify-content: end;
+                        .iconMenu {
+                            display: flex;
+                        }
                     }
                 }
 
                 .menuOption {
-                    display: none;
+                    min-height: 25px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: end;
+
+                    .iconMenu {
+                        display: none;
+                    }
                 }
             }
         }
