@@ -11,6 +11,9 @@ import "./documentation.scss";
 //DATI
 import { docs } from "./data";
 
+//bootstrap components
+import { Dropdown } from "react-bootstrap";
+
 type Doc = {
   id: number;
   name: string;
@@ -23,15 +26,6 @@ const Documentation = () => {
     height: "70px",
     width: "70px",
     cursor: "pointer",
-  };
-
-  const doSomething = (e) => {
-    var rightclick;
-    console.log(e);
-    if (!e) var e = window.event;
-    if (e.which) rightclick = e.which == 3;
-    else if (e.button) rightclick = e.button == 2;
-    alert("Rightclick: " + rightclick); // true or false
   };
 
   return (
@@ -64,15 +58,7 @@ const Documentation = () => {
           {docs.map((item) => (
             <div className="item" key={item.id}>
               <div className="menuOption">
-                <div className="iconMenu">
-                  <MoreVertIcon
-                    style={{
-                      height: "25px",
-                      width: "25px",
-                      cursor: "pointer",
-                    }}
-                  />
-                </div>
+                <div className="iconMenu"></div>
               </div>
               <div className="iconDoc">
                 {item.type === "folder" ? (
