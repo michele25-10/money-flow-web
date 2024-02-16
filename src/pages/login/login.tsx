@@ -9,7 +9,7 @@ import GroupIcon from "@mui/icons-material/Group";
 import PersonIcon from "@mui/icons-material/Person";
 
 const handleLogin = () => {
-  console.log("Login");
+  console.log(process.env.VITE_API_URL);
   location.href = "http://localhost:5173/";
 };
 
@@ -17,7 +17,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e: any) => {
     setPassword(e.target.value);
   };
 
