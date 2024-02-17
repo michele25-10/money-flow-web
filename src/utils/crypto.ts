@@ -7,24 +7,13 @@ const generateSecretKey = (secretKey: any) => {
   return hashedKey;
 };
 
-export const decrypt = (encryptedData: any, secretKey: any): string => {
+export const decrypt = (encryptedData: any, secretKey: any): any => {
   secretKey = generateSecretKey(secretKey);
-
-  console.log(secretKey);
-
-  const iv = CryptoJS.enc.Hex.parse(encryptedData.iv);
-
-  // Decrittografia con CryptoJS
-  const decryptedText = CryptoJS.AES.decrypt(
+  const decrypted = CryptoJS.AES.decrypt(
     encryptedData.encryptedText,
     secretKey,
-    { iv: iv }
-  ); //.toString(CryptoJS.enc.Utf8);
-  const wordArray = CryptoJS.lib.WordArray.create(decryptedText.words);
-
-  // Converte il WordArray in una stringa
-  const stringData = wordArray.toString(CryptoJS.enc.Utf8);
-  console.log(stringData);
-
-  return decryptedText;
+    { iv: CryptoJS.enc.Hex.parse(encryptedData.iv) }
+  );
+  const originalString = decrypted.toString(CryptoJS.enc.Utf8);
+  return originalString;
 };

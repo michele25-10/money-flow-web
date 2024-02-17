@@ -12,23 +12,17 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import GroupIcon from "@mui/icons-material/Group";
 import PersonIcon from "@mui/icons-material/Person";
 
-//AXIOS REQUEST
-import axios from "axios";
-
 //function
 import { decrypt } from "../../utils/crypto";
-import { getCookie } from "../../utils/cookie";
+import { deleteCookie, getCookie, setCookie } from "../../utils/cookie";
 import { ws, gestioneSnackbar } from "../../utils/common";
 
 //common components
-import SnackBar from "../../components/snackbar/snackbar";
+import SnackBar from "../../components/snackbar/SnackBar";
+import { gridColumnPositionsSelector } from "@mui/x-data-grid";
 
 function Login() {
   const navigate = useNavigate();
-  /*
-  const [open, setOpen] = useState(false);
-  const [type, setType] = useState("error");
-  const [message, setMessage] = useState("");*/
 
   const [famiglia, setFamiglia] = useState("");
   const [email, setEmail] = useState("");
@@ -38,14 +32,20 @@ function Login() {
 
   useEffect(() => {
     const credentials = getCookie("ricordami");
-    const encryptedData = {
-      iv: credentials.substring(credentials.length - 32),
-      encryptedText: credentials.slice(0, -32),
-    };
-    console.log(encryptedData);
+    if (credentials) {
+      const encryptedData = {
+        iv: credentials.substring(credentials.length - 32),
+        encryptedText: credentials.slice(0, -32),
+      };
+      const decryptedJson = decrypt(encryptedData, process.env.SECRET_KEY);
 
-    //const decryptedJson = decrypt(encryptedData, process.env.SECRET_KEY);
-    //console.log(decryptedJson);
+      const objCredentials = JSON.parse(decryptedJson);
+
+      setEmail(objCredentials.email);
+      setFamiglia(objCredentials.famiglia);
+      setPassword(objCredentials.password);
+      setRicordami(true);
+    }
   }, []);
 
   const handleTogglePassword = () => {
@@ -58,7 +58,7 @@ function Login() {
     return passwordRegex.test(password);
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (event: React.SyntheticEvent | Event) => {
     if (famiglia || email || password) {
       if (!isPasswordValid(password)) {
         gestioneSnackbar(
@@ -87,7 +87,9 @@ function Login() {
       } else {
         sessionStorage.setItem("accessToken", res.data.accessToken);
         if (ricordami) {
-          document.cookie = `ricordami=${res.data.ricordami}`;
+          setCookie("ricordami", res.data.ricordami, 14);
+        } else {
+          deleteCookie("ricordami");
         }
 
         navigate("/");
@@ -195,9 +197,7 @@ function Login() {
           </div>
         </div>
       </div>
-
-      <SnackBar /*type={type} message={message} open={open} setOpen={setOpen}*/
-      />
+      <SnackBar />
     </div>
   );
 }
