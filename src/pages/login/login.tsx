@@ -74,7 +74,7 @@ function Login() {
         process.env.VITE_API_URL + "/auth/login",
         null,
         {
-          famiglia,
+          famiglia: famiglia.toLowerCase(),
           email,
           password,
           ricordami,

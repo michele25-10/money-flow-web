@@ -1,4 +1,9 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
 
 //scss
 import "./styles/global.scss";
@@ -38,6 +43,17 @@ function App() {
     );
   };
 
+  type ProtectedRouteProps = {
+    children: any;
+  };
+  const ProtectedRoute = (props: ProtectedRouteProps) => {
+    if (!sessionStorage.getItem("accessToken")) {
+      return <Navigate to="../login" replace />;
+    }
+
+    return props.children;
+  };
+
   const router = createBrowserRouter([
     {
       path: "/login",
@@ -49,39 +65,75 @@ function App() {
       children: [
         {
           path: "/",
-          element: <Home />,
+          element: (
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "dashboard",
-          element: <Dashboard />,
+          element: (
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "history",
-          element: <History />,
+          element: (
+            <ProtectedRoute>
+              <History />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "fixed-expense",
-          element: <FixedExpense />,
+          element: (
+            <ProtectedRoute>
+              <FixedExpense />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "settings",
-          element: <Settings />,
+          element: (
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "authorization",
-          element: <Authorization />,
+          element: (
+            <ProtectedRoute>
+              <Authorization />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "list-expense",
-          element: <ListExpense />,
+          element: (
+            <ProtectedRoute>
+              <ListExpense />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "documentation",
-          element: <Documentation />,
+          element: (
+            <ProtectedRoute>
+              <Documentation />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "log",
-          element: <Log />,
+          element: (
+            <ProtectedRoute>
+              <Log />
+            </ProtectedRoute>
+          ),
         },
       ],
     },
