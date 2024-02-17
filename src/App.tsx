@@ -24,6 +24,7 @@ import Documentation from "./pages/documentation/Documentation";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Menu from "./components/menu/menu";
+import SnackBar from "./components/snackbar/SnackBar";
 
 function App() {
   const Layout = () => {
@@ -39,6 +40,7 @@ function App() {
           </div>
         </div>
         <Footer />
+        <SnackBar />
       </div>
     );
   };

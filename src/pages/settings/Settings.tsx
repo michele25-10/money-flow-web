@@ -18,7 +18,9 @@ import ChangePassword from "./pages/changePassword/ChangePassword";
 import Security from "./pages/security/Security";
 
 function Settings() {
-  const [item, setItem] = useState({});
+  const [item, setItem] = useState({
+    id: 0,
+  });
 
   return (
     <>

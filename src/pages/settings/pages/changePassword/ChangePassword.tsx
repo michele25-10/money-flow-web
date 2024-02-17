@@ -6,14 +6,28 @@ import "./changePassword.scss";
 //ICONS
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { changePasswordWS } from "./function/api";
 
 const ChangePassword = () => {
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showNewAgainPassword, setShowNewAgainPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const HandleSave = () => {
-    console.log("Salvo");
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const HandleSave = async () => {
+    const res = await changePasswordWS({
+      oldPassword,
+      newPassword,
+      confirmPassword,
+    });
+    if (res) {
+      setOldPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
+    }
   };
 
   return (
@@ -31,6 +45,8 @@ const ChangePassword = () => {
               id="oldPassword"
               name="oldPassword"
               placeholder="Vecchia password..."
+              value={oldPassword}
+              onChange={(e) => setOldPassword(e.target.value)}
               required
             />
             <span
@@ -52,6 +68,8 @@ const ChangePassword = () => {
               id="nuovaPassword"
               name="newPassword"
               placeholder="Nuova password..."
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
               required
             />
             <span
@@ -68,23 +86,21 @@ const ChangePassword = () => {
           <label className="form-label">Ripeti password:</label>
           <div className="input-group">
             <input
-              type={showNewAgainPassword ? "text" : "password"}
+              type={showConfirmPassword ? "text" : "password"}
               className="form-control"
               id="againPassword"
               name="againPassword"
               placeholder="Ripeti password..."
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
             <span
               className="input-group-text"
               id="basic-addon2"
-              onClick={() => setShowNewAgainPassword(!showNewAgainPassword)}
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
-              {showNewAgainPassword ? (
-                <VisibilityIcon />
-              ) : (
-                <VisibilityOffIcon />
-              )}{" "}
+              {showConfirmPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}{" "}
             </span>
           </div>
         </div>

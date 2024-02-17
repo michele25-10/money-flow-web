@@ -1,18 +1,6 @@
-import { useNavigate } from "react-router-dom";
-
 import { deleteCookie, setCookie } from "../../../utils/cookie";
 import { ws, gestioneSnackbar } from "../../../utils/common";
-
-const isPasswordValid = (password: string): boolean => {
-  const passwordRegex =
-    /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()-_+=])[A-Za-z0-9!@#$%^&*()-_+=]{8,}$/;
-  return passwordRegex.test(password);
-};
-
-function isValidEmail(email: string): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
+import { isValidPassword, isValidEmail } from "../../../utils/validation";
 
 export const loginWS = async (
   famiglia: string,
@@ -21,7 +9,7 @@ export const loginWS = async (
   ricordami: boolean
 ) => {
   if (famiglia || email || password) {
-    if (!isPasswordValid(password)) {
+    if (!isValidPassword(password)) {
       gestioneSnackbar(
         true,
         "La password non soddisfa i criteri standard",
