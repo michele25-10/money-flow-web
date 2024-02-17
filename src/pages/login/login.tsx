@@ -18,17 +18,17 @@ import axios from "axios";
 //function
 import { decrypt } from "../../utils/crypto";
 import { getCookie } from "../../utils/cookie";
-import { ws } from "../../utils/common";
+import { ws, gestioneSnackbar } from "../../utils/common";
 
 //common components
 import SnackBar from "../../components/snackbar/snackbar";
 
 function Login() {
   const navigate = useNavigate();
-
+  /*
   const [open, setOpen] = useState(false);
   const [type, setType] = useState("error");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");*/
 
   const [famiglia, setFamiglia] = useState("");
   const [email, setEmail] = useState("");
@@ -61,9 +61,11 @@ function Login() {
   const handleLogin = async () => {
     if (famiglia || email || password) {
       if (!isPasswordValid(password)) {
-        //gestione snackbar
-        setMessage("La password non soddisfa i criteri standard");
-        setOpen(true);
+        gestioneSnackbar(
+          true,
+          "La password non soddisfa i criteri standard",
+          "error"
+        );
         return;
       }
 
@@ -81,9 +83,7 @@ function Login() {
       );
 
       if (res.error) {
-        //gestione snackbar
-        setMessage(res.data.message);
-        setOpen(true);
+        gestioneSnackbar(true, res.data.message, "error");
       } else {
         sessionStorage.setItem("accessToken", res.data.accessToken);
         if (ricordami) {
@@ -93,9 +93,7 @@ function Login() {
         navigate("/");
       }
     } else {
-      //gestione snackbar
-      setMessage("Mancano campi dati");
-      setOpen(true);
+      gestioneSnackbar(true, "Mancano campi dati", "error");
       return;
     }
   };
@@ -198,7 +196,8 @@ function Login() {
         </div>
       </div>
 
-      <SnackBar type={type} message={message} open={open} setOpen={setOpen} />
+      <SnackBar /*type={type} message={message} open={open} setOpen={setOpen}*/
+      />
     </div>
   );
 }

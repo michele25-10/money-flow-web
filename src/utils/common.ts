@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setGlobalState } from "./state";
 
 export const ws = async (
   method: string,
@@ -46,4 +47,15 @@ export const ws = async (
     });
 
   return apiResponse;
+};
+
+export const gestioneSnackbar = (
+  open: boolean,
+  message: string,
+  type: string
+): void => {
+  setGlobalState("message", message);
+  setGlobalState("type", type);
+  setGlobalState("open", open);
+  return;
 };
