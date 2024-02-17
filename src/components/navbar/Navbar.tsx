@@ -1,9 +1,19 @@
+import { useNavigate } from "react-router-dom";
+
+//sass
 import "./navbar.scss";
 
 //Material ICONS
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("accessToken");
+    navigate("login");
+  };
+
   return (
     <>
       <div className="navbar">
@@ -20,7 +30,7 @@ function Navbar() {
             <span>Michele Gabrieli</span>
           </div>
           <div className="logout">
-            <span>
+            <span onClick={() => handleLogout()}>
               <ExitToAppIcon
                 style={{ color: "tomato", height: "25px", width: "25px" }}
               />
