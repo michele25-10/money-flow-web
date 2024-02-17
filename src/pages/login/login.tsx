@@ -50,16 +50,28 @@ function Login() {
     setShowPassword(!showPassword);
   };
 
+  const isPasswordValid = (password: string): boolean => {
+    const passwordRegex =
+      /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()-_+=])[A-Za-z0-9!@#$%^&*()-_+=]{8,}$/;
+    return passwordRegex.test(password);
+  };
+
   const handleLogin = () => {
-    const obj = {
-      famiglia,
-      email,
-      password,
-      ricordami,
-    };
     if (famiglia || email || password) {
+      if (!isPasswordValid(password)) {
+        //gestione snackbar
+        setMessage("La password non soddisfa i criteri standard");
+        setOpen(true);
+        return;
+      }
+
       axios
-        .post(process.env.VITE_API_URL + "/auth/login", obj)
+        .post(process.env.VITE_API_URL + "/auth/login", {
+          famiglia,
+          email,
+          password,
+          ricordami,
+        })
         .then(function (response) {
           sessionStorage.setItem("accessToken", response.data.accessToken);
           if (ricordami) {
@@ -79,6 +91,7 @@ function Login() {
       //gestione snackbar
       setMessage("Mancano campi dati");
       setOpen(true);
+      return;
     }
   };
 

@@ -11,16 +11,27 @@ type Props = {
 };
 
 const SnackBar = (props: Props) => {
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    props.setOpen(false);
+  };
+
   return (
     <div>
       <Snackbar
         open={props.open}
         autoHideDuration={5000}
-        onClose={() => props.setOpen(false)}
+        onClose={handleClose}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
       >
         <Alert
-          onClose={() => props.setOpen(false)}
+          onClose={handleClose}
           severity={props.type}
           variant="filled"
           sx={{ width: "100%" }}
