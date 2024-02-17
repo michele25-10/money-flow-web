@@ -14,12 +14,11 @@ import PersonIcon from "@mui/icons-material/Person";
 
 //function
 import { decrypt } from "../../utils/crypto";
-import { deleteCookie, getCookie, setCookie } from "../../utils/cookie";
-import { ws, gestioneSnackbar } from "../../utils/common";
+import { getCookie } from "../../utils/cookie";
+import { loginWS } from "./function/api";
 
 //common components
 import SnackBar from "../../components/snackbar/SnackBar";
-import { gridColumnPositionsSelector } from "@mui/x-data-grid";
 
 function Login() {
   const navigate = useNavigate();
@@ -52,51 +51,10 @@ function Login() {
     setShowPassword(!showPassword);
   };
 
-  const isPasswordValid = (password: string): boolean => {
-    const passwordRegex =
-      /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()-_+=])[A-Za-z0-9!@#$%^&*()-_+=]{8,}$/;
-    return passwordRegex.test(password);
-  };
-
-  const handleLogin = async (event: React.SyntheticEvent | Event) => {
-    if (famiglia || email || password) {
-      if (!isPasswordValid(password)) {
-        gestioneSnackbar(
-          true,
-          "La password non soddisfa i criteri standard",
-          "error"
-        );
-        return;
-      }
-
-      const res = await ws(
-        "POST",
-        process.env.VITE_API_URL + "/auth/login",
-        null,
-        {
-          famiglia: famiglia.toLowerCase(),
-          email,
-          password,
-          ricordami,
-        },
-        false
-      );
-
-      if (res.error) {
-        gestioneSnackbar(true, res.data.message, "error");
-      } else {
-        sessionStorage.setItem("accessToken", res.data.accessToken);
-        if (ricordami) {
-          setCookie("ricordami", res.data.ricordami, 14);
-        } else {
-          deleteCookie("ricordami");
-        }
-
-        navigate("/");
-      }
-    } else {
-      gestioneSnackbar(true, "Mancano campi dati", "error");
-      return;
+  const handleLogin = async () => {
+    const res = await loginWS(famiglia, email, password, ricordami);
+    if (res) {
+      navigate("/");
     }
   };
 
