@@ -18,7 +18,9 @@ import axios from "axios";
 //function
 import { decrypt } from "../../utils/crypto";
 import { getCookie } from "../../utils/cookie";
+import { ws } from "../../utils/common";
 
+//common components
 import SnackBar from "../../components/snackbar/snackbar";
 
 function Login() {
@@ -56,7 +58,7 @@ function Login() {
     return passwordRegex.test(password);
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (famiglia || email || password) {
       if (!isPasswordValid(password)) {
         //gestione snackbar
@@ -65,28 +67,31 @@ function Login() {
         return;
       }
 
-      axios
-        .post(process.env.VITE_API_URL + "/auth/login", {
+      const res = await ws(
+        "POST",
+        process.env.VITE_API_URL + "/auth/login",
+        null,
+        {
           famiglia,
           email,
           password,
           ricordami,
-        })
-        .then(function (response) {
-          sessionStorage.setItem("accessToken", response.data.accessToken);
-          if (ricordami) {
-            document.cookie = `ricordami=${response.data.ricordami}`;
-          }
+        },
+        false
+      );
 
-          navigate("/");
-        })
-        .catch(function (error) {
-          console.log(error);
+      if (res.error) {
+        //gestione snackbar
+        setMessage(res.data.message);
+        setOpen(true);
+      } else {
+        sessionStorage.setItem("accessToken", res.data.accessToken);
+        if (ricordami) {
+          document.cookie = `ricordami=${res.data.ricordami}`;
+        }
 
-          //gestione snackbar
-          setMessage(error.response.data.message);
-          setOpen(true);
-        });
+        navigate("/");
+      }
     } else {
       //gestione snackbar
       setMessage("Mancano campi dati");
