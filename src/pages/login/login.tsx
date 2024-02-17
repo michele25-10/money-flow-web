@@ -18,10 +18,15 @@ import axios from "axios";
 //function
 import { decrypt } from "../../utils/crypto";
 import { getCookie } from "../../utils/cookie";
-import { ConnectingAirportsOutlined } from "@mui/icons-material";
+
+import SnackBar from "../../components/snackbar/snackbar";
 
 function Login() {
   const navigate = useNavigate();
+
+  const [open, setOpen] = useState(false);
+  const [type, setType] = useState("error");
+  const [message, setMessage] = useState("");
 
   const [famiglia, setFamiglia] = useState("");
   const [email, setEmail] = useState("");
@@ -65,9 +70,15 @@ function Login() {
         })
         .catch(function (error) {
           console.log(error);
+
+          //gestione snackbar
+          setMessage(error.response.data.message);
+          setOpen(true);
         });
     } else {
-      console.log("Mancano campi dati");
+      //gestione snackbar
+      setMessage("Mancano campi dati");
+      setOpen(true);
     }
   };
 
@@ -168,6 +179,8 @@ function Login() {
           </div>
         </div>
       </div>
+
+      <SnackBar type={type} message={message} open={open} setOpen={setOpen} />
     </div>
   );
 }
