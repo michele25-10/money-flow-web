@@ -8,6 +8,7 @@ export default defineConfig({
     react(),
     EnvironmentPlugin({
       VITE_API_URL: "http://localhost:5001/api",
+      SECRET_KEY: "QWERTY123456",
     }),
   ],
 });
