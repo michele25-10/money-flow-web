@@ -13,7 +13,7 @@ export const ws = async (
     return;
   }
 
-  let headers: object = {};
+  let headers: any = {};
 
   if (token) {
     headers.Authorization = "Bearer " + sessionStorage.getItem("accessToken");
@@ -39,7 +39,7 @@ export const ws = async (
   let apiResponse: any = {};
 
   await result
-    .then((res) => {
+    .then((res: any) => {
       apiResponse = { error: false, ...res };
     })
     .catch((err: object) => {

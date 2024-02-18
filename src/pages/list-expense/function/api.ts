@@ -140,3 +140,21 @@ export const addElement = async ({
     return true;
   }
 };
+
+export const getAllCategory = async () => {
+  console.log("Sono qua dentro");
+  const result = await ws(
+    "GET",
+    process.env.VITE_API_URL + "/category/",
+    null,
+    null,
+    true
+  );
+
+  if (result.error) {
+    gestioneSnackbar(true, result.data.message, "error");
+    return;
+  } else {
+    return result.data;
+  }
+};

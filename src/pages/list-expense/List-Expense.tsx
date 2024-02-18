@@ -21,18 +21,19 @@ import {
   editElement,
   addElement,
   getAllElement,
+  getAllCategory,
 } from "./function/api";
 
 function ListExpense() {
   const [modalShow, setModalShow] = useState(false);
-  const [refresh, setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(true);
   const [rowsTable, setRowsTable] = useState([
     {
       id: "",
       nome_cognome: "",
       luogo: "",
-      data: new Date(),
-      importo: 0,
+      data: "",
+      importo: "",
       tipo_pagamento: "",
       descrizione: "",
       categoria: "",
@@ -40,10 +41,16 @@ function ListExpense() {
       documento: "",
     },
   ]);
+  const [categorie, setCategorie] = useState([
+    {
+      id: "",
+      nome: "",
+      spesa_fissa: "",
+    },
+  ]);
 
   useEffect(() => {
     if (refresh) {
-      console.log("refresh");
       const result = getAllElement();
       result.then((res) => {
         setRowsTable(res);
@@ -51,6 +58,14 @@ function ListExpense() {
       });
     }
   }, [refresh]);
+
+  useEffect(() => {
+    const result = getAllCategory();
+    result.then((res) => {
+      setCategorie(res);
+      console.log(categorie);
+    });
+  }, []);
 
   return (
     <div className="listExpense">
