@@ -106,6 +106,7 @@ export const addElement = async ({
   categoria,
   documento,
 }: any) => {
+  console.log(documento);
   if (!luogo || !data || !importo || tipoPagamento === "" || !categoria) {
     gestioneSnackbar(true, "Inserisci i dati obbligatori", "error");
     return false;
@@ -142,7 +143,6 @@ export const addElement = async ({
 };
 
 export const getAllCategory = async () => {
-  console.log("Sono qua dentro");
   const result = await ws(
     "GET",
     process.env.VITE_API_URL + "/category/",
