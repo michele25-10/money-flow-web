@@ -187,7 +187,6 @@ const AddModal = (props: Props) => {
                 className="form-select"
                 aria-label="Tipo Pagamento"
                 defaultValue={tipoPagamento}
-                value={tipoPagamento}
                 onChange={(e) => setTipoPagamento(e.target.value)}
               >
                 <option value="0">Contante</option>
@@ -206,7 +205,6 @@ const AddModal = (props: Props) => {
                 className="form-select"
                 aria-label="Tipo Pagamento"
                 defaultValue={categoria}
-                value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
               >
                 <option value="5">Amici</option>

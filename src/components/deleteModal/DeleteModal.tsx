@@ -8,6 +8,7 @@ type Props = {
   id: number;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
   callback: (params: any) => any;
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const DeleteModal = (props: Props) => {
@@ -40,7 +41,11 @@ const DeleteModal = (props: Props) => {
               className="btn btn-danger"
               onClick={() => {
                 props.setShow(false);
-                props.callback(props.id);
+                props.callback(props.id).then((res: any) => {
+                  if (res) {
+                    props.setRefresh(true);
+                  }
+                });
               }}
             >
               Confermo

@@ -111,6 +111,7 @@ const DataTable = (props: Props) => {
         setShow={setDeleteModalShow}
         id={idDelete}
         callback={props.deleteCallback}
+        setRefresh={props.setRefresh}
       />
 
       <AddModal

@@ -29,8 +29,26 @@ export const editElement = async (data: any) => {
 };
 
 export const deleteElement = async (id: number) => {
-  console.log("Eliminazione item: " + id);
-  return;
+  if (!id) {
+    gestioneSnackbar(true, "Errore interno al server", "warning");
+    return false;
+  }
+
+  const result = await ws(
+    "DELETE",
+    process.env.VITE_API_URL + "/expense/" + id,
+    null,
+    null,
+    true
+  );
+
+  if (result.error) {
+    gestioneSnackbar(true, result.data.message, "error");
+    return false;
+  } else {
+    gestioneSnackbar(true, "Spesa eliminata!", "success");
+    return true;
+  }
 };
 
 export const addElement = async ({
