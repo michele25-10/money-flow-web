@@ -42,10 +42,14 @@ function ListExpense() {
   ]);
 
   useEffect(() => {
-    const result = getAllElement();
-    result.then((res) => {
-      setRowsTable(res);
-    });
+    if (refresh) {
+      console.log("refresh");
+      const result = getAllElement();
+      result.then((res) => {
+        setRowsTable(res);
+        setRefresh(false);
+      });
+    }
   }, [refresh]);
 
   return (

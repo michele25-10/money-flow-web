@@ -15,6 +15,8 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
 
+import moment from "moment";
+
 type Props = {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -51,30 +53,44 @@ const AddModal = (props: Props) => {
 
   useEffect(() => {
     if (props.edit) {
-      setLuogo(props.data.place);
-      setDate(props.data.date);
-      setImporto(props.data.import);
-      setDescrizione(props.data.description);
-      if (props.data.type_payment == "Contante") {
+      setLuogo(props.data.luogo);
+      setDate(moment(props.data.data).format("YYYY-MM-DD"));
+      setImporto(props.data.importo);
+      setDescrizione(props.data.descrizione ? props.data.descrizione : "");
+      if (props.data.tipo_pagamento == "Contante") {
         setTipoPagamento("0");
       } else if (props.data.type_payment == "Bacnomat") {
         setTipoPagamento("1");
       }
-      setCategoria("");
-      setDocumento(props.data.document);
+      setCategoria(props.data.id_categoria);
+      setDocumento(props.data.documento ? props.data.documento : "");
     }
   }, [props.show]);
 
   const handleSave = async () => {
-    const result = await props.callback({
-      luogo,
-      date,
-      importo,
-      tipoPagamento,
-      descrizione,
-      categoria,
-      documento,
-    });
+    let result;
+    if (props.edit) {
+      result = await props.callback({
+        id: props.data.id,
+        luogo,
+        date,
+        importo,
+        tipoPagamento,
+        descrizione,
+        categoria,
+        documento,
+      });
+    } else {
+      result = await props.callback({
+        luogo,
+        date,
+        importo,
+        tipoPagamento,
+        descrizione,
+        categoria,
+        documento,
+      });
+    }
 
     if (result) {
       resetVariable();
@@ -186,7 +202,7 @@ const AddModal = (props: Props) => {
               <select
                 className="form-select"
                 aria-label="Tipo Pagamento"
-                defaultValue={tipoPagamento}
+                value={tipoPagamento}
                 onChange={(e) => setTipoPagamento(e.target.value)}
               >
                 <option value="0">Contante</option>
@@ -204,7 +220,7 @@ const AddModal = (props: Props) => {
               <select
                 className="form-select"
                 aria-label="Tipo Pagamento"
-                defaultValue={categoria}
+                value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
               >
                 <option value="5">Amici</option>

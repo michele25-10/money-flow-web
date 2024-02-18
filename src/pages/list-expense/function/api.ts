@@ -20,12 +20,58 @@ export const getAllElement = async () => {
   }
 };
 
-export const editElement = async (data: any) => {
-  console.log("Modificati i seguenti dati:");
-  for (const i in data) {
-    console.log(i + ": " + data[i]);
+export const editElement = async ({
+  id,
+  luogo,
+  date: data,
+  importo,
+  descrizione,
+  tipoPagamento,
+  categoria,
+  documento,
+}: any) => {
+  if (
+    !luogo ||
+    !data ||
+    !importo ||
+    tipoPagamento === "" ||
+    !categoria ||
+    !id
+  ) {
+    gestioneSnackbar(true, "Inserisci i dati obbligatori", "error");
+    return false;
   }
-  return;
+
+  if (!isValidDate(data)) {
+    gestioneSnackbar(true, "Inserisci una data valida", "error");
+    return false;
+  }
+
+  const result = await ws(
+    "PUT",
+    process.env.VITE_API_URL + "/expense/" + id,
+    null,
+    {
+      luogo,
+      data,
+      importo,
+      descrizione,
+      tipoPagamento,
+      categoria,
+      documento,
+    },
+    true
+  );
+
+  console.log(result);
+
+  if (result.error) {
+    gestioneSnackbar(true, result.data.message, "error");
+    return false;
+  } else {
+    gestioneSnackbar(true, result.data.message, "success");
+    return true;
+  }
 };
 
 export const deleteElement = async (id: number) => {
@@ -60,8 +106,6 @@ export const addElement = async ({
   categoria,
   documento,
 }: any) => {
-  console.log("tipoPagamento: " + tipoPagamento);
-  console.log("categoria: " + categoria);
   if (!luogo || !data || !importo || tipoPagamento === "" || !categoria) {
     gestioneSnackbar(true, "Inserisci i dati obbligatori", "error");
     return false;
