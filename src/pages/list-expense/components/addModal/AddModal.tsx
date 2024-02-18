@@ -20,20 +20,8 @@ type Props = {
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
   setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
   callback: (params: any) => any;
-  data: Data;
+  data: any;
   edit: boolean;
-};
-
-type Data = {
-  id: number;
-  name_surname: string;
-  place: string;
-  date: string;
-  import: string;
-  type_payment: string;
-  description: string;
-  category: string;
-  document: string;
 };
 
 const CarattereObbligatiorio = () => {
@@ -48,7 +36,7 @@ const AddModal = (props: Props) => {
   const [importo, setImporto] = useState("");
   const [descrizione, setDescrizione] = useState("");
   const [tipoPagamento, setTipoPagamento] = useState("0");
-  const [categoria, setCategoria] = useState("");
+  const [categoria, setCategoria] = useState("1");
   const [documento, setDocumento] = useState("");
 
   const resetVariable = () => {
@@ -57,7 +45,7 @@ const AddModal = (props: Props) => {
     setImporto("");
     setDescrizione("");
     setTipoPagamento("0");
-    setCategoria("");
+    setCategoria("1");
     setDocumento("");
   };
 
@@ -199,6 +187,7 @@ const AddModal = (props: Props) => {
                 className="form-select"
                 aria-label="Tipo Pagamento"
                 defaultValue={tipoPagamento}
+                value={tipoPagamento}
                 onChange={(e) => setTipoPagamento(e.target.value)}
               >
                 <option value="0">Contante</option>
@@ -217,6 +206,7 @@ const AddModal = (props: Props) => {
                 className="form-select"
                 aria-label="Tipo Pagamento"
                 defaultValue={categoria}
+                value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
               >
                 <option value="5">Amici</option>

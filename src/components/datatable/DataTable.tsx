@@ -20,6 +20,7 @@ type Props = {
   rows: object[];
   deleteCallback: (params: any) => any;
   editCallback: (params: any) => any;
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const DataTable = (props: Props) => {
@@ -116,6 +117,7 @@ const DataTable = (props: Props) => {
         show={editModalShow}
         setShow={setEditModalShow}
         callback={props.editCallback}
+        setRefresh={props.setRefresh}
         data={dataEdit}
         edit={true}
       />

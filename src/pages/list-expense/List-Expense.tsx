@@ -6,7 +6,7 @@ import DataTable from "../../components/datatable/DataTable";
 import AddModal from "./components/addModal/AddModal";
 
 //Dati
-import { columnsTable, rowsTable } from "./data";
+import { columnsTable } from "./data";
 
 //icone
 import AddIcon from "@mui/icons-material/Add";
@@ -16,14 +16,36 @@ import Diversity1TwoToneIcon from "@mui/icons-material/Diversity1TwoTone";
 import "./list-expense.scss";
 
 //function
-import { deleteElement, editElement, addElement } from "./function/api";
+import {
+  deleteElement,
+  editElement,
+  addElement,
+  getAllElement,
+} from "./function/api";
 
 function ListExpense() {
   const [modalShow, setModalShow] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const [rowsTable, setRowsTable] = useState([
+    {
+      id: "",
+      nome_cognome: "",
+      luogo: "",
+      data: new Date(),
+      importo: 0,
+      tipo_pagamento: "",
+      descrizione: "",
+      categoria: "",
+      id_categoria: "",
+      documento: "",
+    },
+  ]);
 
   useEffect(() => {
-    console.log("pagina");
+    const result = getAllElement();
+    result.then((res) => {
+      setRowsTable(res);
+    });
   }, [refresh]);
 
   return (
@@ -64,6 +86,7 @@ function ListExpense() {
           action={true}
           deleteCallback={deleteElement}
           editCallback={editElement}
+          setRefresh={setRefresh}
         />
 
         <AddModal

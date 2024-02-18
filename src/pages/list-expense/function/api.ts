@@ -1,7 +1,26 @@
 import { gestioneSnackbar, ws } from "../../../utils/common";
 import { isValidDate } from "../../../utils/validation";
 
-export const editElement = (data: any) => {
+export const getAllElement = async () => {
+  const result = await ws(
+    "GET",
+    process.env.VITE_API_URL + "/expense/",
+    null,
+    null,
+    true
+  );
+
+  if (result.error) {
+    gestioneSnackbar(true, result.data.message, "error");
+  } else {
+    for (const rows of result.data) {
+      rows["data"] = new Date(rows["data"]);
+    }
+    return result.data;
+  }
+};
+
+export const editElement = async (data: any) => {
   console.log("Modificati i seguenti dati:");
   for (const i in data) {
     console.log(i + ": " + data[i]);
@@ -9,7 +28,7 @@ export const editElement = (data: any) => {
   return;
 };
 
-export const deleteElement = (id: number) => {
+export const deleteElement = async (id: number) => {
   console.log("Eliminazione item: " + id);
   return;
 };
@@ -23,6 +42,8 @@ export const addElement = async ({
   categoria,
   documento,
 }: any) => {
+  console.log("tipoPagamento: " + tipoPagamento);
+  console.log("categoria: " + categoria);
   if (!luogo || !data || !importo || tipoPagamento === "" || !categoria) {
     gestioneSnackbar(true, "Inserisci i dati obbligatori", "error");
     return false;
@@ -48,8 +69,6 @@ export const addElement = async ({
     },
     true
   );
-
-  console.log(result);
 
   if (result.error) {
     gestioneSnackbar(true, result.data.message, "error");
