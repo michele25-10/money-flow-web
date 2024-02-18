@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 //SASS
 import "./addModal.scss";
 
@@ -16,6 +18,7 @@ import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
 type Props = {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
   callback: (params: any) => any;
   data: Data;
   edit: boolean;
@@ -25,12 +28,12 @@ type Data = {
   id: number;
   name_surname: string;
   place: string;
-  date: Date;
-  import: number;
+  date: string;
+  import: string;
   type_payment: string;
   description: string;
   category: string;
-  document: HTMLInputElement;
+  document: string;
 };
 
 const CarattereObbligatiorio = () => {
@@ -40,6 +43,58 @@ const CarattereObbligatiorio = () => {
 };
 
 const AddModal = (props: Props) => {
+  const [luogo, setLuogo] = useState("");
+  const [date, setDate] = useState("");
+  const [importo, setImporto] = useState("");
+  const [descrizione, setDescrizione] = useState("");
+  const [tipoPagamento, setTipoPagamento] = useState("0");
+  const [categoria, setCategoria] = useState("");
+  const [documento, setDocumento] = useState("");
+
+  const resetVariable = () => {
+    setLuogo("");
+    setDate("");
+    setImporto("");
+    setDescrizione("");
+    setTipoPagamento("0");
+    setCategoria("");
+    setDocumento("");
+  };
+
+  useEffect(() => {
+    if (props.edit) {
+      setLuogo(props.data.place);
+      setDate(props.data.date);
+      setImporto(props.data.import);
+      setDescrizione(props.data.description);
+      if (props.data.type_payment == "Contante") {
+        setTipoPagamento("0");
+      } else if (props.data.type_payment == "Bacnomat") {
+        setTipoPagamento("1");
+      }
+      setCategoria("");
+      setDocumento(props.data.document);
+    }
+  }, [props.show]);
+
+  const handleSave = async () => {
+    const result = await props.callback({
+      luogo,
+      date,
+      importo,
+      tipoPagamento,
+      descrizione,
+      categoria,
+      documento,
+    });
+
+    if (result) {
+      resetVariable();
+      props.setShow(!result);
+      props.setRefresh(true);
+    }
+  };
+
   const styleIcon = {
     color: "gray",
     height: "17px",
@@ -63,134 +118,143 @@ const AddModal = (props: Props) => {
             {props.edit ? "Modifica " : "Aggiungi "} Spesa
           </Modal.Title>
         </Modal.Header>
-        <form>
-          <Modal.Body>
-            <div className="form">
-              <div className="inputLayer">
-                <label className="label">
-                  <div className="iconInput">
-                    <PlaceIcon style={styleIcon} />
-                  </div>
-                  Luogo:
-                  <CarattereObbligatiorio />
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  aria-describedby="Luogo"
-                  placeholder="Luogo..."
-                  value={props.data.place ? props.data.place : ""}
-                />
-              </div>
-              <div className="inputLayer">
-                <label className="">
-                  <div className="iconInput">
-                    <CalendarMonthIcon style={styleIcon} />
-                  </div>
-                  Data:
-                  <CarattereObbligatiorio />
-                </label>
-                <input
-                  type="date"
-                  className="form-control"
-                  aria-describedby="Data"
-                  placeholder="Data..."
-                  value={props.data.date ? new Date(props.data.date) : null}
-                />
-              </div>
-              <div className="inputLayer">
-                <label className="">
-                  <div className="iconInput">
-                    <PointOfSaleIcon style={styleIcon} />
-                  </div>
-                  Importo:
-                  <CarattereObbligatiorio />
-                </label>
-                <input
-                  type="number"
-                  className="form-control"
-                  aria-describedby="Importo"
-                  placeholder="Importo..."
-                  value={props.data.import ? props.data.import : ""}
-                />
-              </div>
-              <div className="inputLayer">
-                <label className="">
-                  <div className="iconInput">
-                    <TextFieldsIcon style={styleIcon} />
-                  </div>
-                  Descrizione:
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  aria-describedby="Descrizione"
-                  placeholder="Descrizione..."
-                  value={props.data.description ? props.data.description : ""}
-                />
-              </div>
-              <div className="inputLayer">
-                <label className="">
-                  <div className="iconInput">
-                    <PaymentIcon style={styleIcon} />
-                  </div>
-                  Tipo Pagamento:
-                  <CarattereObbligatiorio />
-                </label>
-                <select className="form-select" aria-label="Tipo Pagamento">
-                  <option value="0" selected>
-                    Contante
-                  </option>
-                  <option value="1">Bancomat</option>
-                </select>
-              </div>
-              <div className="inputLayer">
-                <label className="">
-                  <div className="iconInput">
-                    <FormatListBulletedIcon style={styleIcon} />
-                  </div>
-                  Categoria:
-                  <CarattereObbligatiorio />
-                </label>
-                <select className="form-select" aria-label="Tipo Pagamento">
-                  <option value="0" selected>
-                    Amici
-                  </option>
-                  <option value="1">Fattura elettricità</option>
-                  <option value="2">Abbigliamento</option>
-                  <option value="3">Cibo</option>
-                  <option value="4">Carburante</option>
-                </select>
-              </div>
-              <div className="inputLayer">
-                <label className="">
-                  <div className="iconInput">
-                    <DocumentScannerIcon style={styleIcon} />
-                  </div>
-                  Documento:
-                </label>
-                <input
-                  type="file"
-                  className="form-control"
-                  aria-describedby="Documento"
-                  placeholder="Documento..."
-                  accept=".pdf"
-                />
-              </div>
+        <Modal.Body>
+          <div className="form">
+            <div className="inputLayer">
+              <label className="label">
+                <div className="iconInput">
+                  <PlaceIcon style={styleIcon} />
+                </div>
+                Luogo:
+                <CarattereObbligatiorio />
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                aria-describedby="Luogo"
+                placeholder="Luogo..."
+                value={luogo}
+                onChange={(e) => setLuogo(e.target.value)}
+              />
             </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <button
-              className={props.edit ? "btn btn-warning" : "btn btn-success"}
-              onClick={() => {
-                props.setShow(false);
-                props.callback(props.data);
-              }}
-            >
-              Salva
-            </button>
-          </Modal.Footer>
-        </form>
+            <div className="inputLayer">
+              <label className="">
+                <div className="iconInput">
+                  <CalendarMonthIcon style={styleIcon} />
+                </div>
+                Data:
+                <CarattereObbligatiorio />
+              </label>
+              <input
+                type="date"
+                className="form-control"
+                aria-describedby="Data"
+                placeholder="Data..."
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </div>
+            <div className="inputLayer">
+              <label className="">
+                <div className="iconInput">
+                  <PointOfSaleIcon style={styleIcon} />
+                </div>
+                Importo:
+                <CarattereObbligatiorio />
+              </label>
+              <input
+                type="number"
+                className="form-control"
+                aria-describedby="Importo"
+                placeholder="Importo..."
+                value={importo}
+                onChange={(e) => setImporto(e.target.value)}
+              />
+            </div>
+            <div className="inputLayer">
+              <label className="">
+                <div className="iconInput">
+                  <TextFieldsIcon style={styleIcon} />
+                </div>
+                Descrizione:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                aria-describedby="Descrizione"
+                placeholder="Descrizione..."
+                value={descrizione}
+                onChange={(e) => setDescrizione(e.target.value)}
+              />
+            </div>
+            <div className="inputLayer">
+              <label className="">
+                <div className="iconInput">
+                  <PaymentIcon style={styleIcon} />
+                </div>
+                Tipo Pagamento:
+                <CarattereObbligatiorio />
+              </label>
+              <select
+                className="form-select"
+                aria-label="Tipo Pagamento"
+                defaultValue={tipoPagamento}
+                onChange={(e) => setTipoPagamento(e.target.value)}
+              >
+                <option value="0">Contante</option>
+                <option value="1">Bancomat</option>
+              </select>
+            </div>
+            <div className="inputLayer">
+              <label className="">
+                <div className="iconInput">
+                  <FormatListBulletedIcon style={styleIcon} />
+                </div>
+                Categoria:
+                <CarattereObbligatiorio />
+              </label>
+              <select
+                className="form-select"
+                aria-label="Tipo Pagamento"
+                defaultValue={categoria}
+                onChange={(e) => setCategoria(e.target.value)}
+              >
+                <option value="5">Amici</option>
+                <option value="1">Fattura elettricità</option>
+                <option value="2">Abbigliamento</option>
+                <option value="3">Cibo</option>
+                <option value="4">Carburante</option>
+              </select>
+            </div>
+            <div className="inputLayer">
+              <label className="">
+                <div className="iconInput">
+                  <DocumentScannerIcon style={styleIcon} />
+                </div>
+                Documento:
+              </label>
+              <input
+                type="file"
+                className="form-control"
+                aria-describedby="Documento"
+                placeholder="Documento..."
+                accept=".pdf"
+                value={documento}
+                onChange={(e) => setDocumento(e.target.value)}
+              />
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button
+            className={props.edit ? "btn btn-warning" : "btn btn-success"}
+            onClick={() => {
+              handleSave();
+            }}
+          >
+            Salva
+          </button>
+        </Modal.Footer>
       </Modal>
     </div>
   );

@@ -8,3 +8,11 @@ export const isValidEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
+
+export const isValidDate = (dateString: string): boolean => {
+  const dateObject = new Date(dateString);
+  return (
+    !isNaN(dateObject.getTime()) &&
+    dateObject.toISOString().slice(0, 10) === dateString
+  );
+};

@@ -1,5 +1,5 @@
 //COMPONENT
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //component
 import DataTable from "../../components/datatable/DataTable";
@@ -20,6 +20,11 @@ import { deleteElement, editElement, addElement } from "./function/api";
 
 function ListExpense() {
   const [modalShow, setModalShow] = useState(false);
+  const [refresh, setRefresh] = useState(false);
+
+  useEffect(() => {
+    console.log("pagina");
+  }, [refresh]);
 
   return (
     <div className="listExpense">
@@ -66,6 +71,7 @@ function ListExpense() {
           setShow={setModalShow}
           callback={addElement}
           data={{}}
+          setRefresh={setRefresh}
           edit={false}
         />
       </div>
