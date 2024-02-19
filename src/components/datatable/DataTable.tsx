@@ -14,6 +14,7 @@ import "./dataTable.scss";
 //components
 import DeleteModal from "../deleteModal/DeleteModal";
 import AddModal from "../../pages/list-expense/components/addModal/AddModal";
+import { json } from "stream/consumers";
 
 type Props = {
   action: boolean;
@@ -49,19 +50,21 @@ const DataTable = (props: Props) => {
             <div
               className="document"
               onClick={() => {
-                /*const blobPdf = new Blob(["lorem ipsum"], {
-                  type: "application/pdf",
-                });
-                // Crea un URL oggetto per il blob
-                //const url = URL.createObjectURL(params.row.documento.data);
-
+                console.log(params.row.documento);
+                /*const blobPdf = new Blob(
+                  [JSON.stringify(params.row.documento)],
+                  {
+                    type: "application/pdf",
+                  }
+                );
+                //Crea un URL oggetto per il blob
                 const url = URL.createObjectURL(blobPdf);
 
                 console.log(url);
 
                 // Apri il PDF in una nuova scheda
                 window.open(url);
-              */
+                  */
               }}
             >
               <DescriptionIcon

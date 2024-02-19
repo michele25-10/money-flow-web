@@ -47,6 +47,20 @@ export const editElement = async ({
     return false;
   }
 
+  if (documento) {
+    try {
+      //documento = new Blob();
+      //documento = await documento.blob();
+
+      documento = new FileReader();
+      documento.readAsArrayBuffer(documento);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  console.log(documento);
+
   const result = await ws(
     "PUT",
     process.env.VITE_API_URL + "/expense/" + id,
@@ -106,7 +120,6 @@ export const addElement = async ({
   categoria,
   documento,
 }: any) => {
-  console.log(documento);
   if (!luogo || !data || !importo || tipoPagamento === "" || !categoria) {
     gestioneSnackbar(true, "Inserisci i dati obbligatori", "error");
     return false;

@@ -39,7 +39,8 @@ const AddModal = (props: Props) => {
   const [descrizione, setDescrizione] = useState("");
   const [tipoPagamento, setTipoPagamento] = useState("0");
   const [categoria, setCategoria] = useState("1");
-  const [documento, setDocumento] = useState("");
+  const [documento, setDocumento] = useState<File | null>(null);
+  const [documentoName, setDocumentoName] = useState("");
 
   const CarattereObbligatiorio = () => {
     return (
@@ -56,7 +57,7 @@ const AddModal = (props: Props) => {
     setDescrizione("");
     setTipoPagamento("0");
     setCategoria("1");
-    setDocumento("");
+    setDocumento(null);
   };
 
   useEffect(() => {
@@ -71,11 +72,12 @@ const AddModal = (props: Props) => {
         setTipoPagamento("1");
       }
       setCategoria(props.data.id_categoria);
-      setDocumento(props.data.documento ? props.data.documento : "");
+      //setDocumento(props.data.documento ? props.data.documento : "");
     }
   }, [props.show]);
 
   const handleSave = async () => {
+    console.log(documento);
     let result;
     if (props.edit) {
       result = await props.callback({
@@ -253,8 +255,11 @@ const AddModal = (props: Props) => {
                 aria-describedby="Documento"
                 placeholder="Documento..."
                 accept=".pdf"
-                value={documento}
-                onChange={(e) => setDocumento(e.target.value)}
+                value={documentoName}
+                onChange={(e) => {
+                  setDocumento(e.target.files ? e.target.files[0] : null);
+                  setDocumentoName(e.target.value);
+                }}
               />
             </div>
           </div>
