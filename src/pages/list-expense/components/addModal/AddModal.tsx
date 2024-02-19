@@ -67,7 +67,7 @@ const AddModal = (props: Props) => {
       setDescrizione(props.data.descrizione ? props.data.descrizione : "");
       if (props.data.tipo_pagamento == "Contante") {
         setTipoPagamento("0");
-      } else if (props.data.type_payment == "Bacnomat") {
+      } else if (props.data.tipo_pagamento == "Bancomat") {
         setTipoPagamento("1");
       }
       setCategoria(props.data.id_categoria);
