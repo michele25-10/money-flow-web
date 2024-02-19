@@ -45,7 +45,6 @@ function ListExpense() {
     {
       id: "",
       nome: "",
-      spesa_fissa: "",
     },
   ]);
 
@@ -106,6 +105,7 @@ function ListExpense() {
           deleteCallback={deleteElement}
           editCallback={editElement}
           setRefresh={setRefresh}
+          categorie={categorie}
         />
 
         <AddModal
@@ -115,6 +115,7 @@ function ListExpense() {
           data={{}}
           setRefresh={setRefresh}
           edit={false}
+          categorie={categorie}
         />
       </div>
     </div>

@@ -24,12 +24,12 @@ type Props = {
   callback: (params: any) => any;
   data: any;
   edit: boolean;
+  categorie: Categorie[];
 };
 
-const CarattereObbligatiorio = () => {
-  return (
-    <span style={{ fontSize: "16px", color: "red", fontWeight: "500" }}>*</span>
-  );
+type Categorie = {
+  id: string;
+  nome: string;
 };
 
 const AddModal = (props: Props) => {
@@ -40,6 +40,14 @@ const AddModal = (props: Props) => {
   const [tipoPagamento, setTipoPagamento] = useState("0");
   const [categoria, setCategoria] = useState("1");
   const [documento, setDocumento] = useState("");
+
+  const CarattereObbligatiorio = () => {
+    return (
+      <span style={{ fontSize: "16px", color: "red", fontWeight: "500" }}>
+        *
+      </span>
+    );
+  };
 
   const resetVariable = () => {
     setLuogo("");
@@ -223,11 +231,13 @@ const AddModal = (props: Props) => {
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
               >
-                <option value="5">Amici</option>
-                <option value="1">Fattura elettricità</option>
-                <option value="2">Abbigliamento</option>
-                <option value="3">Cibo</option>
-                <option value="4">Carburante</option>
+                {props.categorie?.map((item) => (
+                  <>
+                    <option key={item.id} value={item.id}>
+                      {item.nome}
+                    </option>
+                  </>
+                ))}
               </select>
             </div>
             <div className="inputLayer">

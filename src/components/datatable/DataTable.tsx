@@ -21,6 +21,12 @@ type Props = {
   deleteCallback: (params: any) => any;
   editCallback: (params: any) => any;
   setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
+  categorie: Categorie[];
+};
+
+type Categorie = {
+  id: string;
+  nome: string;
 };
 
 const DataTable = (props: Props) => {
@@ -121,6 +127,7 @@ const DataTable = (props: Props) => {
         setRefresh={props.setRefresh}
         data={dataEdit}
         edit={true}
+        categorie={props.categorie}
       />
     </div>
   );
