@@ -6,6 +6,7 @@ import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 
 //icons
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
+import DescriptionIcon from "@mui/icons-material/Description";
 
 //SASS
 import "./dataTable.scss";
@@ -44,6 +45,35 @@ const DataTable = (props: Props) => {
     renderCell: (params) => {
       return (
         <div className="action">
+          {params.row.documento ? (
+            <div
+              className="document"
+              onClick={() => {
+                /*const blobPdf = new Blob(["lorem ipsum"], {
+                  type: "application/pdf",
+                });
+                // Crea un URL oggetto per il blob
+                //const url = URL.createObjectURL(params.row.documento.data);
+
+                const url = URL.createObjectURL(blobPdf);
+
+                console.log(url);
+
+                // Apri il PDF in una nuova scheda
+                window.open(url);
+              */
+              }}
+            >
+              <DescriptionIcon
+                style={{
+                  color: "#007fff",
+                  width: "20px",
+                  height: "20px",
+                  cursor: "pointer",
+                }}
+              />
+            </div>
+          ) : null}
           <div
             className="edit"
             onClick={() => {
@@ -56,6 +86,7 @@ const DataTable = (props: Props) => {
                 color: "orange",
                 width: "20px",
                 height: "20px",
+                cursor: "pointer",
               }}
             />
           </div>
@@ -65,6 +96,7 @@ const DataTable = (props: Props) => {
               setIdDelete(params.row.id);
               setDeleteModalShow(true);
             }}
+            style={{ cursor: "pointer" }}
           >
             <img src="/delete.svg" alt="" />
           </div>

@@ -62,7 +62,6 @@ function ListExpense() {
     const result = getAllCategory();
     result.then((res) => {
       setCategorie(res);
-      console.log(categorie);
     });
   }, []);
 
