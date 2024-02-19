@@ -40,6 +40,7 @@ const AuthBox = (props: Props) => {
     const result = getAuthUser(props.itemData.id);
     result.then((res) => {
       setAuthList(res);
+      console.log(authList);
     });
   };
 
@@ -91,9 +92,17 @@ const AuthBox = (props: Props) => {
                                 cursor: item.valore ? "not-allowed" : "pointer",
                               }}
                               onClick={() => {
-                                editAuthUser(item.id, true, props.itemData.id);
-                                refreshAuthData();
-                                document.body.click(); //per chiudere il popover
+                                const result = editAuthUser(
+                                  item.id,
+                                  true,
+                                  props.itemData.id
+                                );
+                                result.then((res) => {
+                                  if (res === true) {
+                                    refreshAuthData();
+                                    document.body.click(); //per chiudere il popover
+                                  }
+                                });
                               }}
                             >
                               <LockOpenTwoToneIcon
@@ -130,7 +139,7 @@ const AuthBox = (props: Props) => {
                     }
                     rootClose
                   >
-                    {item.valore ? (
+                    {item.valore == "true" ? (
                       <LockOpenTwoToneIcon
                         style={{
                           color: "limegreen",

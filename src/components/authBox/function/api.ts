@@ -1,4 +1,4 @@
-import { ws } from "../../../utils/common";
+import { gestioneSnackbar, ws } from "../../../utils/common";
 
 export const getAuthUser = async (id: any) => {
   const result = await ws(
@@ -12,7 +12,23 @@ export const getAuthUser = async (id: any) => {
   return result.data;
 };
 
-export const editAuthUser = (id: any, value: any, idu: any) => {
-  console.log("Modificata: id " + id + " value " + value + " idu " + idu);
-  return;
+export const editAuthUser = async (id: any, value: any, idu: any) => {
+  const result = await ws(
+    "PUT",
+    process.env.VITE_API_URL + "/authorization/user/" + id,
+    null,
+    {
+      valore: value,
+      idu,
+    },
+    true
+  );
+
+  if (result.error) {
+    gestioneSnackbar(true, result.data.message, "error");
+    return false;
+  } else {
+    gestioneSnackbar(true, result.data.message, "success");
+    return true;
+  }
 };

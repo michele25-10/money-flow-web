@@ -8,7 +8,6 @@ export const getAllUserFamily = async () => {
     null,
     true
   );
-
   let response = [];
   for (const row in result.data) {
     response.push({
