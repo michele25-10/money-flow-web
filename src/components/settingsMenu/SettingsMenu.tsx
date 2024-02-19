@@ -10,14 +10,21 @@ type Props = {
   title: string;
   icon: React.ReactElement<SvgIconProps>;
   data: Data[];
-  setSelectedItem: React.Dispatch<React.SetStateAction<{}>>;
+  setSelectedItem: React.Dispatch<
+    React.SetStateAction<{
+      id: string;
+      name_surname: string;
+      email: string;
+      img: string;
+    }>
+  >;
 };
 
 type Data = {
   id: string;
-  img?: string;
+  img: string;
   name_surname: string;
-  email?: string;
+  email: string;
 };
 
 const SettingsMenu = (props: Props) => {
@@ -32,7 +39,14 @@ const SettingsMenu = (props: Props) => {
           <div
             className="item"
             key={item.id}
-            onClick={() => props.setSelectedItem(item)}
+            onClick={() =>
+              props.setSelectedItem({
+                name_surname: item.name_surname,
+                img: item.img ? item.img : "",
+                email: item.email,
+                id: item.id,
+              })
+            }
           >
             <div className="itemImg">
               {item.img ? (

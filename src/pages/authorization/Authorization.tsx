@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //component
 import SettingsMenu from "../../components/settingsMenu/SettingsMenu";
@@ -6,8 +6,8 @@ import SettingsMenu from "../../components/settingsMenu/SettingsMenu";
 //sass
 import "./authorization.scss";
 
-//dati
-import { users } from "./data";
+//function
+import { getAllUserFamily } from "./function/api";
 
 //component pages
 import AuthBox from "../../components/authBox/AuthBox";
@@ -16,7 +16,28 @@ import AuthBox from "../../components/authBox/AuthBox";
 import PeopleIcon from "@mui/icons-material/People";
 
 const Authorization = () => {
-  const [item, setItem] = useState({});
+  const [item, setItem] = useState({
+    id: "",
+    name_surname: "",
+    email: "",
+    img: "",
+  });
+  const [users, setUsers] = useState([
+    {
+      id: "",
+      name_surname: "",
+      email: "",
+      img: "",
+    },
+  ]);
+
+  useEffect(() => {
+    const result = getAllUserFamily();
+    result.then((res: any) => {
+      console.log(res);
+      setUsers(res);
+    });
+  }, []);
 
   return (
     <div className="authorization">
@@ -32,7 +53,7 @@ const Authorization = () => {
           setSelectedItem={setItem}
         />
       </div>
-      {Object.keys(item).length > 0 ? (
+      {item.id ? (
         <div className="auth">
           <AuthBox itemData={item} />
         </div>

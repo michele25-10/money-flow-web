@@ -23,9 +23,9 @@ type Data = {
 };
 
 type AuthData = {
-  name: string;
-  description?: string;
-  value: boolean;
+  nome: string;
+  descrizione?: string;
+  valore: boolean;
   id: number;
 };
 
@@ -33,15 +33,14 @@ const AuthBox = (props: Props) => {
   const [authList, setAuthList] = useState([]);
 
   useEffect(() => {
-    console.log("get auth");
-    const res: AuthData[] = getAuthUser(props.itemData.id);
-    setAuthList(res);
+    refreshAuthData();
   }, [props.itemData.id]);
 
   const refreshAuthData = () => {
-    console.log("sto refreshando i dati");
-    const res: AuthData[] = getAuthUser(props.itemData.id);
-    setAuthList(res);
+    const result = getAuthUser(props.itemData.id);
+    result.then((res) => {
+      setAuthList(res);
+    });
   };
 
   return (
@@ -89,7 +88,7 @@ const AuthBox = (props: Props) => {
                           <div className="popoverBox">
                             <span
                               style={{
-                                cursor: item.value ? "not-allowed" : "pointer",
+                                cursor: item.valore ? "not-allowed" : "pointer",
                               }}
                               onClick={() => {
                                 editAuthUser(item.id, true, props.itemData.id);
@@ -107,7 +106,9 @@ const AuthBox = (props: Props) => {
                             </span>
                             <span
                               style={{
-                                cursor: !item.value ? "not-allowed" : "pointer",
+                                cursor: !item.valore
+                                  ? "not-allowed"
+                                  : "pointer",
                               }}
                               onClick={() => {
                                 editAuthUser(item.id, false, props.itemData.id);
@@ -129,7 +130,7 @@ const AuthBox = (props: Props) => {
                     }
                     rootClose
                   >
-                    {item.value ? (
+                    {item.valore ? (
                       <LockOpenTwoToneIcon
                         style={{
                           color: "limegreen",
@@ -149,8 +150,8 @@ const AuthBox = (props: Props) => {
                   </OverlayTrigger>
                 </div>
                 <div className="infoItem">
-                  <h3>{item.name}</h3>
-                  <span>{item.description}</span>
+                  <h3>{item.nome}</h3>
+                  <span>{item.descrizione}</span>
                 </div>
               </div>
             ))

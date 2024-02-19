@@ -1,34 +1,15 @@
-export const getAuthUser = (id: any) => {
-  console.log("Sono dentro la funzione");
-  return [
-    {
-      name: "Dashboard",
-      description: "Schermata di visualizzazione utente di tipo admin",
-      value: true,
-      id: 1,
-    },
-    {
-      name: "Homepage",
-      description: "Visualizzazione proprie statistiche",
-      value: true,
-      id: 2,
-    },
-    {
-      name: "Log",
-      value: false,
-      id: 3,
-    },
-    {
-      name: "Impostazioni/Utenti",
-      value: true,
-      id: 4,
-    },
-    {
-      name: "Impostazioni/Autorizzazioni",
-      value: true,
-      id: 5,
-    },
-  ];
+import { ws } from "../../../utils/common";
+
+export const getAuthUser = async (id: any) => {
+  const result = await ws(
+    "GET",
+    process.env.VITE_API_URL + "/authorization/user/",
+    null,
+    null,
+    true
+  );
+
+  return result.data;
 };
 
 export const editAuthUser = (id: any, value: any, idu: any) => {
