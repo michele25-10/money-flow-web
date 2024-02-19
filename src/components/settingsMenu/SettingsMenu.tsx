@@ -28,6 +28,8 @@ type Data = {
 };
 
 const SettingsMenu = (props: Props) => {
+  console.log(props.data);
+  console.log(props.data[0].img ? props.data[0].img : "/user.svg");
   return (
     <div className="settingsMenu">
       <div className="title">
@@ -49,9 +51,7 @@ const SettingsMenu = (props: Props) => {
             }
           >
             <div className="itemImg">
-              {item.img ? (
-                <img src={item.img ? item.img : "/user.svg"} alt="" />
-              ) : null}
+              <img src={item.img ? item.img : "/user.svg"} alt="" />
             </div>
             <div className="itemData">
               <span className="name">{item.name_surname}</span>
