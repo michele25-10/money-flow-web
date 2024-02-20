@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 //sass
 import "./settingsMenu.scss";
 
