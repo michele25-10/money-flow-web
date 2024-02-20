@@ -5,11 +5,14 @@ import "./navbar.scss";
 
 //Material ICONS
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { setGlobalState } from "../../utils/state";
 
 function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    setGlobalState("auth", []);
+    setGlobalState("dev", false);
     sessionStorage.removeItem("accessToken");
     navigate("login");
   };

@@ -5,6 +5,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
   message: "",
   type: "error",
   auth: [],
+  dev: false,
 });
 
 export { setGlobalState, useGlobalState };

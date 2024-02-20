@@ -10,14 +10,28 @@ import "./menu.scss";
 //icons
 import ChevronLeftTwoToneIcon from "@mui/icons-material/ChevronLeftTwoTone";
 import ChevronRightTwoToneIcon from "@mui/icons-material/ChevronRightTwoTone";
+import { useGlobalState } from "../../utils/state";
 
 function Menu() {
+  const autorizzazioni: any = useGlobalState("auth");
   const [open, setOpen] = useState(true);
 
   const arrowIconStyle = {
     color: "white",
     backgroundColor: "#6f42c1",
     borderRadius: "50%",
+  };
+
+  const showElementMenu = (id_autorizzazione: number): any => {
+    if (!useGlobalState("dev")[0]) {
+      for (const row of autorizzazioni[0]) {
+        if (row.id === id_autorizzazione) {
+          return row.valore;
+        }
+      }
+    } else {
+      return true;
+    }
   };
 
   return (
@@ -33,14 +47,16 @@ function Menu() {
         {menu.map((item) => (
           <div className="item" key={item.id}>
             {open ? <div className="title">{item.title}</div> : null}
-            {item.listItems.map((listItem) => (
-              <Link to={listItem.url} className="listItem" key={listItem.id}>
-                <img src={listItem.icon} alt={listItem.title} />
-                {open ? (
-                  <span className="listItemTitle">{listItem.title}</span>
-                ) : null}
-              </Link>
-            ))}
+            {item.listItems.map((listItem) =>
+              showElementMenu(listItem.id_autorizzazione) ? (
+                <Link to={listItem.url} className="listItem" key={listItem.id}>
+                  <img src={listItem.icon} alt={listItem.title} />
+                  {open ? (
+                    <span className="listItemTitle">{listItem.title}</span>
+                  ) : null}
+                </Link>
+              ) : null
+            )}
           </div>
         ))}
       </div>

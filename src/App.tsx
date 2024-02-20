@@ -58,11 +58,13 @@ function App() {
     }
 
     const authorization: any = useGlobalState("auth");
-    for (const row of authorization[0]) {
-      if (row.id === props.id_autorizzazione) {
-        if (!row.valore) {
-          gestioneSnackbar(true, "Non hai i permessi!", "error");
-          return <Navigate to="../login" replace />;
+    if (!useGlobalState("dev")[0]) {
+      for (const row of authorization[0]) {
+        if (row.id === props.id_autorizzazione) {
+          if (!row.valore) {
+            gestioneSnackbar(true, "Non hai i permessi!", "error");
+            return <Navigate to="../login" replace />;
+          }
         }
       }
     }
