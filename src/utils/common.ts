@@ -46,6 +46,12 @@ export const ws = async (
       apiResponse = { error: true, ...err };
     });
 
+  if (apiResponse.status === 401) {
+    sessionStorage.removeItem("accessToken");
+    location.href = "../login";
+    gestioneSnackbar(true, "Token scaduto!", "error");
+  }
+
   return apiResponse;
 };
 
