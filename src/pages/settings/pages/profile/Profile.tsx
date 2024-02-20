@@ -1,100 +1,127 @@
 import { useEffect, useState } from "react";
 
-import { infoProfile } from "./data";
-
 import "./profile.scss";
+import { saveUserInfo, userInfo } from "./function/api";
 
 const Profile = () => {
-  const [users, setUsers] = useState({});
   const [submitButton, setSubmitButton] = useState(false);
+  const [nome, setNome] = useState("");
+  const [cognome, setCognome] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [email, setEmail] = useState("");
+  const [img, setImg] = useState("");
 
-  const HandleChange = (event: any) => {
-    let obj: any = users;
-    obj[event.target.name] = event.target.value;
+  const HandleSave = () => {
+    const result = saveUserInfo({
+      nome,
+      cognome,
+      email,
+      telefono,
+      img,
+    });
+    result.then((res) => {
+      if (res) {
+        refreshInfo();
+        setSubmitButton(false);
+      }
+    });
+  };
 
-    setUsers(obj);
+  const checkSave = () => {
     setSubmitButton(true);
   };
 
-  const HandleSave = () => {
-    console.log("Salvo");
-    setSubmitButton(false);
+  const refreshInfo = () => {
+    const result = userInfo();
+    result.then((res) => {
+      setNome(res.nome);
+      setCognome(res.cognome);
+      setEmail(res.email);
+      setTelefono(res.telefono);
+      setImg(res.img);
+    });
   };
 
   useEffect(() => {
-    console.log("Info profilo acquisite");
-    setUsers(infoProfile);
+    refreshInfo();
   }, []);
 
   return (
     <div className="profile">
-      {users ? (
-        <>
-          <div className="header">
-            <img src={users.img} alt="" />
-          </div>
-          <div className="formUser">
-            <div className="nameSurname">
-              <div className="inputLayer">
-                <label className="label">Nome:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  aria-describedby="Surname"
-                  placeholder="Nome..."
-                  name="name"
-                  value={users.name ? users.name : ""}
-                  onChange={HandleChange}
-                />
-              </div>
-              <div className="inputLayer">
-                <label className="label">Cognome:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  aria-describedby="Surname"
-                  placeholder="Cognome..."
-                  name="surname"
-                  value={users.surname ? users.surname : ""}
-                  onChange={HandleChange}
-                />
-              </div>
-            </div>
+      <>
+        <div className="header">
+          <img src={img ? img : "/user.svg"} alt="" />
+        </div>
+        <div className="formUser">
+          <div className="nameSurname">
             <div className="inputLayer">
-              <label className="label">Telefono:</label>
+              <label className="label">Nome:</label>
               <input
                 type="text"
                 className="form-control"
-                aria-describedby="Tel"
-                placeholder="Telefono..."
-                name="tel"
-                value={users.tel ? users.tel : ""}
-                onChange={HandleChange}
+                aria-describedby="Surname"
+                placeholder="Nome..."
+                name="name"
+                value={nome}
+                onChange={(e) => {
+                  setNome(e.target.value);
+                  checkSave();
+                }}
               />
             </div>
             <div className="inputLayer">
-              <label className="label">Email:</label>
+              <label className="label">Cognome:</label>
               <input
-                type="email"
+                type="text"
                 className="form-control"
-                aria-describedby="Email"
-                placeholder="Email..."
-                name="email"
-                value={users.email ? users.email : ""}
-                onChange={HandleChange}
+                aria-describedby="Surname"
+                placeholder="Cognome..."
+                name="surname"
+                value={cognome}
+                onChange={(e) => {
+                  setCognome(e.target.value);
+                  checkSave();
+                }}
               />
             </div>
-            {submitButton ? (
-              <button
-                className="btn btn-warning"
-                onClick={() => HandleSave(users)}
-              >
-                Salva
-              </button>
-            ) : null}
           </div>
-        </>
-      ) : null}
+          <div className="inputLayer">
+            <label className="label">Telefono:</label>
+            <input
+              type="text"
+              className="form-control"
+              aria-describedby="Tel"
+              placeholder="Telefono..."
+              name="tel"
+              value={telefono}
+              onChange={(e) => {
+                setTelefono(e.target.value);
+                checkSave();
+              }}
+            />
+          </div>
+          <div className="inputLayer">
+            <label className="label">Email:</label>
+            <input
+              type="email"
+              className="form-control"
+              aria-describedby="Email"
+              placeholder="Email..."
+              name="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                checkSave();
+              }}
+            />
+          </div>
+          {submitButton ? (
+            <button className="btn btn-warning" onClick={() => HandleSave()}>
+              Salva
+            </button>
+          ) : null}
+        </div>
+      </>
     </div>
   );
 };

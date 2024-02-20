@@ -16,3 +16,8 @@ export const isValidDate = (dateString: string): boolean => {
     dateObject.toISOString().slice(0, 10) === dateString
   );
 };
+
+export const isValidPhoneNumber = (phoneNumber: string): boolean => {
+  var phoneRegex = /^\d{10}$/;
+  return phoneRegex.test(phoneNumber);
+};

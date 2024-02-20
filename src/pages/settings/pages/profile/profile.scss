@@ -22,6 +22,9 @@
         .nameSurname {
             display: flex;
             gap: 20px;
+            .inputLayer {
+                width: 100%;
+            }
         }
     }
 }
