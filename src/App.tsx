@@ -25,6 +25,9 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Menu from "./components/menu/menu";
 import SnackBar from "./components/snackbar/SnackBar";
+import { authList } from "./utils/enum";
+import { useGlobalState } from "./utils/state";
+import { gestioneSnackbar } from "./utils/common";
 
 function App() {
   const Layout = () => {
@@ -46,11 +49,22 @@ function App() {
   };
 
   type ProtectedRouteProps = {
+    id_autorizzazione: number;
     children: any;
   };
   const ProtectedRoute = (props: ProtectedRouteProps) => {
     if (!sessionStorage.getItem("accessToken")) {
       return <Navigate to="../login" replace />;
+    }
+
+    const authorization: any = useGlobalState("auth");
+    for (const row of authorization[0]) {
+      if (row.id === props.id_autorizzazione) {
+        if (!row.valore) {
+          gestioneSnackbar(true, "Non hai i permessi!", "error");
+          return <Navigate to="../login" replace />;
+        }
+      }
     }
 
     return props.children;
@@ -68,7 +82,7 @@ function App() {
         {
           path: "/",
           element: (
-            <ProtectedRoute>
+            <ProtectedRoute id_autorizzazione={authList.homepage}>
               <Home />
             </ProtectedRoute>
           ),
@@ -76,7 +90,7 @@ function App() {
         {
           path: "dashboard",
           element: (
-            <ProtectedRoute>
+            <ProtectedRoute id_autorizzazione={authList.dashboard}>
               <Dashboard />
             </ProtectedRoute>
           ),
@@ -84,7 +98,7 @@ function App() {
         {
           path: "history",
           element: (
-            <ProtectedRoute>
+            <ProtectedRoute id_autorizzazione={authList.storico}>
               <History />
             </ProtectedRoute>
           ),
@@ -92,7 +106,7 @@ function App() {
         {
           path: "fixed-expense",
           element: (
-            <ProtectedRoute>
+            <ProtectedRoute id_autorizzazione={authList.speseFisse}>
               <FixedExpense />
             </ProtectedRoute>
           ),
@@ -100,7 +114,7 @@ function App() {
         {
           path: "settings",
           element: (
-            <ProtectedRoute>
+            <ProtectedRoute id_autorizzazione={authList.configurazione}>
               <Settings />
             </ProtectedRoute>
           ),
@@ -108,7 +122,7 @@ function App() {
         {
           path: "authorization",
           element: (
-            <ProtectedRoute>
+            <ProtectedRoute id_autorizzazione={authList.autorizzazioni}>
               <Authorization />
             </ProtectedRoute>
           ),
@@ -116,7 +130,7 @@ function App() {
         {
           path: "list-expense",
           element: (
-            <ProtectedRoute>
+            <ProtectedRoute id_autorizzazione={authList.listaSpesa}>
               <ListExpense />
             </ProtectedRoute>
           ),
@@ -124,7 +138,7 @@ function App() {
         {
           path: "documentation",
           element: (
-            <ProtectedRoute>
+            <ProtectedRoute id_autorizzazione={authList.documenti}>
               <Documentation />
             </ProtectedRoute>
           ),
@@ -132,7 +146,7 @@ function App() {
         {
           path: "log",
           element: (
-            <ProtectedRoute>
+            <ProtectedRoute id_autorizzazione={authList.log}>
               <Log />
             </ProtectedRoute>
           ),

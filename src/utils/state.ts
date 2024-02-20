@@ -4,6 +4,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
   open: false,
   message: "",
   type: "error",
+  auth: [],
 });
 
 export { setGlobalState, useGlobalState };
