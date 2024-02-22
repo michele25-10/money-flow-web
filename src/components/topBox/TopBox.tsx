@@ -2,15 +2,17 @@ import "./topBox.scss";
 
 type Props = {
   title: string;
-  data: object[];
+  data: any;
 };
 
 const TopBox = (props: Props) => {
+  console.log(props.data);
+
   return (
     <div className="topBox">
       <h1>Categoria</h1>
       <div className="list">
-        {props.data.map((category) => (
+        {props.data.map((category: any) => (
           <div className="listItem" key={category.id}>
             <div className="category">
               <div className="categoryTexts">

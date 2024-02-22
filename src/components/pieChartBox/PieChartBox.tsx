@@ -4,7 +4,7 @@ import "./pieChartBox.scss";
 type Props = {
   title: string;
   legend: boolean;
-  chartData: object[];
+  chartData: any;
 };
 
 const PieChartBox = (props: Props) => {
@@ -27,7 +27,7 @@ const PieChartBox = (props: Props) => {
               paddingAngle={5}
               dataKey="value"
             >
-              {props.chartData.map((item) => (
+              {props.chartData.map((item: any) => (
                 <Cell key={item.name} fill={item.color} />
               ))}
             </Pie>
@@ -37,7 +37,7 @@ const PieChartBox = (props: Props) => {
       <div className="options">
         {props.legend ? (
           <>
-            {props.chartData.map((item) => (
+            {props.chartData.map((item: any) => (
               <div className="option" key={item.name}>
                 <div className="title">
                   <div

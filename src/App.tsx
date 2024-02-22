@@ -58,6 +58,7 @@ function App() {
     }
 
     const authorization: any = useGlobalState("auth");
+    console.log(authorization[0]);
     if (!useGlobalState("dev")[0]) {
       for (const row of authorization[0]) {
         if (row.id === props.id_autorizzazione) {
