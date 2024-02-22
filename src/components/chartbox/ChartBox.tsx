@@ -4,18 +4,7 @@ import { Link } from "react-router-dom";
 //SASS
 import "./chartBox.scss";
 
-type Props = {
-  color: string;
-  icon: string;
-  name: string;
-  surname: string;
-  amount: number;
-  percentuage: number;
-  chartData: object[];
-  when: string;
-};
-
-const ChartBox = (props: Props) => {
+const ChartBox = (props: any) => {
   return (
     <div className="chartBox">
       <div className="boxInfo">
@@ -23,7 +12,7 @@ const ChartBox = (props: Props) => {
           <span>{props.name + " " + props.surname}</span>
         </div>
         <h1>{props.amount}€</h1>
-        <Link to="/">Visualizza Altro</Link>
+        <Link to="list-expense">Visualizza Altro</Link>
       </div>
       <div className="chartInfo">
         <div className="chart">
@@ -37,7 +26,7 @@ const ChartBox = (props: Props) => {
 
               <Line
                 type="monotone"
-                dataKey="pv"
+                dataKey="importo"
                 stroke={props.color}
                 strokeWidth={2}
                 dot={false}
@@ -48,7 +37,7 @@ const ChartBox = (props: Props) => {
         <div className="texts">
           <span
             className="percentuage"
-            style={{ color: props.percentuage < 0 ? "tomato" : "limegreen" }}
+            style={{ color: props.percentuage > 0 ? "tomato" : "limegreen" }}
           >
             {props.percentuage}%
           </span>

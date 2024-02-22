@@ -10,28 +10,46 @@ import GridBox from "../../components/gridBox/GridBox";
 //CSS
 import "./home.scss";
 
-import {
-  box1,
-  box2,
-  gridColumnsTable,
-  dataGridTable,
-  boxBar8,
-  boxBar9,
-} from "./data";
+import { gridColumnsTable } from "./config";
 
 //API
-import { getDataCategory } from "./function/api";
+import {
+  getAverageUser,
+  getDataCategory,
+  getLastExpense,
+  getTotalExpense,
+} from "./function/api";
 
 function Home() {
   const [topTenCategory, setTopTenCategory] = useState([]);
   const [pieChartCategory, setPieChartCategory] = useState([]);
 
+  const [averageMonth, setAverageMonth] = useState({});
+  const [averageYear, setAverageYear] = useState({});
+
+  const [totWeek, setTotWeek] = useState({});
+  const [totYear, setTotYear] = useState({});
+
+  const [lastExpense, setLastExpense] = useState([]);
+
   useEffect(() => {
     getDataCategory().then((res: any) => {
       setTopTenCategory(res.topTen);
       setPieChartCategory(res.pieChart);
+    });
 
-      console.log(pieChartCategory);
+    getAverageUser().then((res: any) => {
+      setAverageMonth(res.month);
+      setAverageYear(res.year);
+    });
+
+    getTotalExpense().then((res: any) => {
+      setTotWeek(res.week);
+      setTotYear(res.year);
+    });
+
+    getLastExpense().then((res: any) => {
+      setLastExpense(res);
     });
   }, []);
 
@@ -44,12 +62,17 @@ function Home() {
           </div>
         ) : null}
 
-        <div className="box box2">
-          <ChartBox {...box1} />
-        </div>
-        <div className="box box3">
-          <ChartBox {...box2} />
-        </div>
+        {Object.keys(averageMonth).length > 0 ? (
+          <div className="box box2">
+            <ChartBox {...averageMonth} />
+          </div>
+        ) : null}
+
+        {Object.keys(averageYear).length > 0 ? (
+          <div className="box box3">
+            <ChartBox {...averageYear} />
+          </div>
+        ) : null}
 
         {pieChartCategory ? (
           <div className="box box4">
@@ -61,20 +84,38 @@ function Home() {
           </div>
         ) : null}
 
-        <div className="box gridBox">
-          <GridBox
-            title="Ultime Spese"
-            action={false}
-            data={dataGridTable}
-            columns={gridColumnsTable}
-          />
-        </div>
-        <div className="box box8">
-          <BarChartBox {...boxBar8} />
-        </div>
-        <div className="box box9">
-          <BarChartBox {...boxBar9} />
-        </div>
+        {lastExpense.length > 0 ? (
+          <div className="box gridBox">
+            <GridBox
+              title="Ultime Spese"
+              action={false}
+              data={lastExpense}
+              columns={gridColumnsTable}
+            />
+          </div>
+        ) : null}
+
+        {Object.keys(totWeek).length > 0 ? (
+          <div className="box box8">
+            <BarChartBox
+              title="Totale Settimanale"
+              xDataKey="name"
+              dataKey="tot"
+              {...totWeek}
+            />
+          </div>
+        ) : null}
+
+        {Object.keys(averageYear).length > 0 ? (
+          <div className="box box9">
+            <BarChartBox
+              title="Totale Annuale"
+              xDataKey="name"
+              dataKey="tot"
+              {...totYear}
+            />
+          </div>
+        ) : null}
       </div>
     </>
   );

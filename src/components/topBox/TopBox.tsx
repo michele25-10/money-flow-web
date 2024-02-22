@@ -6,8 +6,6 @@ type Props = {
 };
 
 const TopBox = (props: Props) => {
-  console.log(props.data);
-
   return (
     <div className="topBox">
       <h1>Categoria</h1>

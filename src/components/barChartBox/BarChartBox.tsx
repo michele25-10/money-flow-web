@@ -1,15 +1,7 @@
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import "./barChartBox.scss";
 
-type Props = {
-  title: string;
-  color: string;
-  dataKey: string;
-  xDataKey: string;
-  chartData: object[];
-};
-
-const BarChartBox = (props: Props) => {
+const BarChartBox = (props: any) => {
   return (
     <div className="barChartBox">
       <h1>{props.title}</h1>
