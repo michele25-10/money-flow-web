@@ -44,6 +44,7 @@ export const loginWS = async (
       setGlobalState("auth", res.data.auth);
       setGlobalState("dev", res.data.dev ? res.data.dev : false);
       sessionStorage.setItem("accessToken", res.data.accessToken);
+      sessionStorage.setItem("name", res.data.name);
       if (ricordami) {
         setCookie("ricordami", res.data.ricordami, 14);
       } else {

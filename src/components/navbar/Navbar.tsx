@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 //sass
@@ -10,10 +12,16 @@ import { setGlobalState } from "../../utils/state";
 function Navbar() {
   const navigate = useNavigate();
 
+  const [nameUser, setNameUser] = useState("");
+
+  useEffect(() => {
+    setNameUser(sessionStorage.getItem("name") || "");
+  }, []);
+
   const handleLogout = () => {
     setGlobalState("auth", []);
     setGlobalState("dev", false);
-    sessionStorage.removeItem("accessToken");
+    sessionStorage.clear();
     navigate("login");
   };
 
@@ -26,11 +34,10 @@ function Navbar() {
         </div>
         <div className="icons">
           <div className="user">
-            <img
+            {/*<img
               src="https://avatars.githubusercontent.com/u/72445614?v=4"
-              alt="img-profilo"
-            />
-            <span>Michele Gabrieli</span>
+              alt="img-profilo"/>*/}
+            <span>{nameUser}</span>
           </div>
           <div className="logout">
             <span onClick={() => handleLogout()}>

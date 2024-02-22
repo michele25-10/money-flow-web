@@ -10,17 +10,7 @@ import BigChartBox from "../../components/bigChartBox/BigChartBox";
 //CSS
 import "./dashboard.scss";
 
-import {
-  topBox,
-  box1,
-  box2,
-  box3,
-  box4,
-  boxBar7,
-  boxBar8,
-  boxBar9,
-  boxPie4,
-} from "./data";
+import { box3, box4 } from "./data";
 
 import {
   getAnalyseExpenseFamily,
