@@ -1,5 +1,4 @@
 import { GridColDef } from "@mui/x-data-grid";
-import moment from "moment";
 
 export const gridColumnsTable: GridColDef[] = [
   { field: "id", headerName: "ID", width: 60 },
