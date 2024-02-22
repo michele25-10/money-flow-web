@@ -4,7 +4,9 @@ function Footer() {
   return (
     <>
       <footer className="footer">
-        <span>Money-Flow</span>
+        <span>
+          <img src="mainLogo.png" alt="logo" />
+        </span>
         <span>@Michele Gabrieli production</span>
       </footer>
     </>

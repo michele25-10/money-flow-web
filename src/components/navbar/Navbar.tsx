@@ -29,8 +29,7 @@ function Navbar() {
     <>
       <div className="navbar">
         <div className="logo">
-          <img src="logo.svg" alt="logo" />
-          <span>Money-Flow</span>
+          <img src="mainLogo.png" alt="logo" />
         </div>
         <div className="icons">
           <div className="user">

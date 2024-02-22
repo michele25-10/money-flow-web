@@ -62,10 +62,7 @@ function Login() {
     <div className="background">
       <div className="containerLogin">
         <div className="imgLogo">
-          <img
-            src="https://us.123rf.com/450wm/popcornarts/popcornarts2311/popcornarts231102334/218740987-asset-and-money-icon-concept.jpg?ver=6"
-            alt=""
-          />
+          <img src="/loginLogo.png" alt="" />
         </div>
         <div className="formData">
           <div className="mb-3">

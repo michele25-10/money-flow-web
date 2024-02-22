@@ -1,43 +1,55 @@
 @import "../../styles/responsive.scss";
-
+@import "../../styles/variable.scss";
 .navbar {
     width: 100%;
     padding: 20px;
     display: flex;
     justify-content: space-between;
-}
-
-.logo {
-    display: flex;
     align-items: center;
-    font-weight: bold;
-    gap: 10px;
-}
 
-.icons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    .user {
+    .logo {
         display: flex;
         align-items: center;
-        gap: 10px;
-        @include sm {
-            display: none;
-        }
+
         img {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid greenyellow;
+            height: 100%;
+            width: 30%;
+
+            @include xl {
+                width: 150px;
+            }
         }
     }
 
-    .logout {
-        cursor: pointer;
+    .icons {
+        display: flex;
         align-items: center;
-        margin-left: 20px;
+        gap: 20px;
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            @include sm {
+                display: none;
+            }
+            img {
+                width: 26px;
+                height: 26px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid greenyellow;
+            }
+        }
+
+        .logout {
+            cursor: pointer;
+            align-items: center;
+
+            &:hover {
+                background-color: $soft-bg;
+                border-radius: 10px;
+            }
+        }
     }
 }

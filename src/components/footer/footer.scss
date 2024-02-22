@@ -1,12 +1,21 @@
+@import "../../styles/responsive.scss";
+
 .footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 30px;
-
+    gap: 20px;
     span {
         &:first-child {
-            font-weight: bold;
+            img {
+                height: 100%;
+                width: 30%;
+
+                @include xl {
+                    width: 150px;
+                }
+            }
         }
 
         &:last-child {
