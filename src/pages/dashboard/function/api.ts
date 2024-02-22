@@ -68,3 +68,15 @@ export const getFamilyExpensePieChart = async () => {
 
   return result.data;
 };
+
+export const getAnalyseExpenseFamily = async () => {
+  const result = await ws(
+    "GET",
+    process.env.VITE_API_URL + "/stats/expense/analyse",
+    null,
+    null,
+    true
+  );
+
+  return result.data;
+};

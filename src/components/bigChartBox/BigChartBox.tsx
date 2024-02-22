@@ -8,18 +8,7 @@ import {
 } from "recharts";
 import "./bigChartBox.scss";
 
-type Props = {
-  title: string;
-  chartData: object[];
-  dataKey: DataKey[];
-};
-
-type DataKey = {
-  name: string;
-  color: string;
-};
-
-const BigChartBox = (props: Props) => {
+const BigChartBox = (props: any) => {
   return (
     <div className="bigChartBox">
       <h1>{props.title}</h1>
@@ -37,8 +26,9 @@ const BigChartBox = (props: Props) => {
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            {props.dataKey.map((item) => (
+            {props.dataKey.map((item: any) => (
               <Area
+                key={item.id}
                 type="monotone"
                 dataKey={item.name}
                 stackId="1"

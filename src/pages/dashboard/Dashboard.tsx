@@ -23,6 +23,7 @@ import {
 } from "./data";
 
 import {
+  getAnalyseExpenseFamily,
   getAverageUser,
   getDataCategory,
   getFamilyExpensePieChart,
@@ -39,6 +40,8 @@ function Dashboard() {
   const [totYear, setTotYear] = useState({});
 
   const [totalFamilyExpense, setTotalFamilyExpense] = useState([]);
+
+  const [analyseExpenseFamily, setAnalyseExpenseFamily] = useState({});
 
   useEffect(() => {
     getDataCategory().then((res: any) => {
@@ -58,6 +61,10 @@ function Dashboard() {
     getFamilyExpensePieChart().then((res: any) => {
       setTotalFamilyExpense(res);
       console.log(res);
+    });
+
+    getAnalyseExpenseFamily().then((res: any) => {
+      setAnalyseExpenseFamily(res);
     });
   }, []);
   return (
@@ -96,10 +103,11 @@ function Dashboard() {
         <div className="box box6">
           <ChartBox {...box4} />
         </div>
-
-        <div className="box box7">
-          <BigChartBox {...boxBar7} />
-        </div>
+        {Object.keys(analyseExpenseFamily).length > 0 ? (
+          <div className="box box7">
+            <BigChartBox title="Analisi Spese" {...analyseExpenseFamily} />
+          </div>
+        ) : null}
 
         {Object.keys(totWeek).length > 0 ? (
           <div className="box box8">
