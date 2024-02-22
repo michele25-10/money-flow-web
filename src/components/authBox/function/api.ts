@@ -4,7 +4,9 @@ export const getAuthUser = async (id: any) => {
   const result = await ws(
     "GET",
     process.env.VITE_API_URL + "/authorization/user/",
-    null,
+    {
+      idUser: id,
+    },
     null,
     true
   );
