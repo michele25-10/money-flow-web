@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -25,12 +27,29 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Menu from "./components/menu/menu";
 import SnackBar from "./components/snackbar/SnackBar";
+
 import { authList } from "./utils/enum";
-import { useGlobalState } from "./utils/state";
-import { gestioneSnackbar } from "./utils/common";
+
+import { setGlobalState, useGlobalState } from "./utils/state";
+
+import { gestioneSnackbar, ws } from "./utils/common";
 
 function App() {
   const Layout = () => {
+    useEffect(() => {
+      ws(
+        "GET",
+        process.env.VITE_API_URL + "/user/info/",
+        null,
+        null,
+        true
+      ).then((res: any) => {
+        setGlobalState("auth", res.data.auth);
+        setGlobalState("dev", res.data.info.dev ? res.data.info.dev : false);
+        setGlobalState("flagGenitore", res.data.info.flag_genitore);
+      });
+    }, []);
+
     return (
       <div className="main">
         <Navbar />
@@ -58,8 +77,9 @@ function App() {
     }
 
     const authorization: any = useGlobalState("auth");
-    console.log(authorization[0]);
-    if (!useGlobalState("dev")[0]) {
+    const dev: any = useGlobalState("dev");
+
+    if (!dev[0]) {
       for (const row of authorization[0]) {
         if (row.id === props.id_autorizzazione) {
           if (!row.valore) {

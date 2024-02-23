@@ -41,10 +41,9 @@ export const loginWS = async (
       gestioneSnackbar(true, res.data.message, "error");
       return false;
     } else {
-      setGlobalState("auth", res.data.auth);
-      setGlobalState("dev", res.data.dev ? res.data.dev : false);
       sessionStorage.setItem("accessToken", res.data.accessToken);
       sessionStorage.setItem("name", res.data.name);
+      sessionStorage.setItem("idu", res.data.idu);
       if (ricordami) {
         setCookie("ricordami", res.data.ricordami, 14);
       } else {

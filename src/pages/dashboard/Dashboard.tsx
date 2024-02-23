@@ -6,7 +6,7 @@ import ChartBox from "../../components/chartbox/ChartBox";
 import TopBox from "../../components/topBox/TopBox";
 import PieChartBox from "../../components/pieChartBox/PieChartBox";
 import BigChartBox from "../../components/bigChartBox/BigChartBox";
-import MiddleBox from "../../components/middleBox/middleBox";
+import MiddleBox from "../../components/middleBox/MiddleBox";
 
 //CSS
 import "./dashboard.scss";
@@ -39,6 +39,7 @@ function Dashboard() {
   useEffect(() => {
     getDataCategory().then((res: any) => {
       setTopTenCategory(res.topTen);
+      console.log(res.topTen);
     });
 
     getAverageUser().then((res: any) => {
@@ -85,6 +86,7 @@ function Dashboard() {
             <ChartBox {...averageYear} />
           </div>
         ) : null}
+
         {totalFamilyExpense.length > 0 ? (
           <div className="box box4">
             <PieChartBox

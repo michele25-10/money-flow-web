@@ -6,6 +6,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
   type: "error",
   auth: [],
   dev: false,
+  flagGenitore: false,
 });
 
 export { setGlobalState, useGlobalState };
