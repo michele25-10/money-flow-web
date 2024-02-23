@@ -6,7 +6,7 @@ import DataTable from "../../components/datatable/DataTable";
 import AddModal from "./components/addModal/AddModal";
 
 //Dati
-import { columnsTable } from "./data";
+import { columnsTable } from "./config";
 
 //icone
 import AddIcon from "@mui/icons-material/Add";

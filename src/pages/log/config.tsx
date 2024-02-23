@@ -15,11 +15,10 @@ export const columnsTable: GridColDef[] = [
   {
     field: "dataora",
     headerName: "Data ora",
-    type: "datetime",
+    type: "dateTime",
     width: 150,
-    renderCell: (params) => {
-      return moment(params.row.dataora).format("DD/MM/YYYY HH:mm:ss");
-    },
+    valueFormatter: (params) =>
+      moment(params.value).format("DD/MM/YYYY HH:mm:ss"),
   },
   {
     field: "tipo_operazione",
