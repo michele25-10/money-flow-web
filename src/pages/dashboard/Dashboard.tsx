@@ -6,11 +6,10 @@ import ChartBox from "../../components/chartbox/ChartBox";
 import TopBox from "../../components/topBox/TopBox";
 import PieChartBox from "../../components/pieChartBox/PieChartBox";
 import BigChartBox from "../../components/bigChartBox/BigChartBox";
+import MiddleBox from "../../components/middleBox/middleBox";
 
 //CSS
 import "./dashboard.scss";
-
-import { box3, box4 } from "./data";
 
 import {
   getAnalyseExpenseFamily,
@@ -18,6 +17,7 @@ import {
   getDataCategory,
   getFamilyExpensePieChart,
   getTotalExpense,
+  getTotalFamilyExpenseCategory,
 } from "./function/api";
 
 function Dashboard() {
@@ -32,6 +32,9 @@ function Dashboard() {
   const [totalFamilyExpense, setTotalFamilyExpense] = useState([]);
 
   const [analyseExpenseFamily, setAnalyseExpenseFamily] = useState({});
+
+  const [categoryFigli, setCategoryFigli] = useState([]);
+  const [categoryGenitori, setCategoryGenitori] = useState([]);
 
   useEffect(() => {
     getDataCategory().then((res: any) => {
@@ -50,13 +53,18 @@ function Dashboard() {
 
     getFamilyExpensePieChart().then((res: any) => {
       setTotalFamilyExpense(res);
-      console.log(res);
     });
 
     getAnalyseExpenseFamily().then((res: any) => {
       setAnalyseExpenseFamily(res);
     });
+
+    getTotalFamilyExpenseCategory().then((res: any) => {
+      setCategoryFigli(res.figli);
+      setCategoryGenitori(res.genitori);
+    });
   }, []);
+
   return (
     <>
       <div className="dashboard">
@@ -87,12 +95,18 @@ function Dashboard() {
           </div>
         ) : null}
 
-        <div className="box box5">
-          <ChartBox {...box3} />
-        </div>
-        <div className="box box6">
-          <ChartBox {...box4} />
-        </div>
+        {categoryFigli.length > 0 ? (
+          <div className="box box5">
+            <MiddleBox title="Figli" data={categoryFigli} />
+          </div>
+        ) : null}
+
+        {categoryGenitori.length > 0 ? (
+          <div className="box box6">
+            <MiddleBox title="Genitori" data={categoryGenitori} />
+          </div>
+        ) : null}
+
         {Object.keys(analyseExpenseFamily).length > 0 ? (
           <div className="box box7">
             <BigChartBox title="Analisi Spese" {...analyseExpenseFamily} />

@@ -1,0 +1,30 @@
+.middleBox {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+
+    .listItem {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+
+            .name {
+                span {
+                    font-weight: 500;
+                }
+            }
+
+            .amount {
+                span {
+                    color: tomato;
+                }
+            }
+        }
+    }
+}

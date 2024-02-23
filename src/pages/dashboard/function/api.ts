@@ -80,3 +80,15 @@ export const getAnalyseExpenseFamily = async () => {
 
   return result.data;
 };
+
+export const getTotalFamilyExpenseCategory = async () => {
+  const result = await ws(
+    "GET",
+    process.env.VITE_API_URL + "/stats/user/",
+    null,
+    null,
+    true
+  );
+
+  return result.data;
+};
