@@ -23,4 +23,11 @@
     .MuiDataGrid-toolbarContainer {
         flex-direction: row-reverse;
     }
+
+    .MuiDataGrid-columnHeaderTitle.css-t89xny-MuiDataGrid-columnHeaderTitle {
+        font-weight: bold;
+    }
+    .bold-cell {
+        font-weight: bold;
+    }
 }
