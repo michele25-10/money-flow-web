@@ -1,16 +1,3 @@
-import { GridColDef } from "@mui/x-data-grid";
-
-const pieData = [
-  { name: "2023", value: 7500, color: "#8884d8" },
-  { name: "2024", value: 8000, color: "#ff8042" },
-];
-
-export const boxPie4 = {
-  title: "Totale",
-  legend: true,
-  chartData: pieData,
-};
-
 const dataBigChart = [
   {
     name: "Gennaio",
@@ -81,4 +68,3 @@ export const boxBar7 = {
     },
   ],
 };
-

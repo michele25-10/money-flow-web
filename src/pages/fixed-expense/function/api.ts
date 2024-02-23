@@ -11,3 +11,15 @@ export const getDataGrid = async (year: number) => {
 
   return result.data;
 };
+
+export const getPieData = async (year: number) => {
+  const result = await ws(
+    "GET",
+    process.env.VITE_API_URL + "/stats/fixed-expense/total/",
+    { year },
+    null,
+    true
+  );
+
+  return result.data;
+};

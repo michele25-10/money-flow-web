@@ -12,18 +12,20 @@ import "./fixedExpense.scss";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 //data
-import { boxBar7, boxPie4 } from "./data";
+import { boxBar7 } from "./data";
 import { GridColDef } from "@mui/x-data-grid";
-import { getDataGrid } from "./function/api";
+import { getDataGrid, getPieData } from "./function/api";
 
 function FixedExpense() {
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const currentYear = new Date().getFullYear();
 
   const [year, setYear] = useState(new Date().getFullYear() - 1);
   const [showData, setShowData] = useState(false);
 
   const [gridColumnsTable, setGridColumnsTable] = useState<GridColDef[]>([]);
   const [dataGridTable, setDataGridTable] = useState([]);
+
+  const [pieData, setPieData] = useState([]);
 
   const handleSubmit = () => {
     setGridColumnsTable([
@@ -79,7 +81,12 @@ function FixedExpense() {
     ]);
 
     getDataGrid(year).then((res: any) => {
+      console.log(res);
       setDataGridTable(res);
+    });
+
+    getPieData(year).then((res: any) => {
+      setPieData(res.chartData);
     });
 
     setShowData(true);
@@ -133,9 +140,11 @@ function FixedExpense() {
                 columns={gridColumnsTable}
               />
             </div>
-            <div className="box suddivisioneSpese">
-              <PieChartBox {...boxPie4} />
-            </div>
+            {pieData.length > 0 ? (
+              <div className="box suddivisioneSpese">
+                <PieChartBox title="Totale" legend={true} chartData={pieData} />
+              </div>
+            ) : null}
             <div className="box analisiAnnua">
               <BigChartBox {...boxBar7} />
             </div>
