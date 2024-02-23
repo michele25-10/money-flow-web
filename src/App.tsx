@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import {
   createBrowserRouter,
@@ -36,6 +36,8 @@ import { gestioneSnackbar, ws } from "./utils/common";
 
 function App() {
   const Layout = () => {
+    const [show, setShow] = useState(false);
+
     useEffect(() => {
       ws(
         "GET",
@@ -47,22 +49,27 @@ function App() {
         setGlobalState("auth", res.data.auth);
         setGlobalState("dev", res.data.info.dev ? res.data.info.dev : false);
         setGlobalState("flagGenitore", res.data.info.flag_genitore);
+        setShow(true);
       });
     }, []);
 
     return (
       <div className="main">
-        <Navbar />
-        <div className="containerApp">
-          <div className="menuContainer">
-            <Menu />
-          </div>
-          <div className="contentContainer">
-            <Outlet />
-          </div>
-        </div>
-        <Footer />
-        <SnackBar />
+        {show ? (
+          <>
+            <Navbar />
+            <div className="containerApp">
+              <div className="menuContainer">
+                <Menu />
+              </div>
+              <div className="contentContainer">
+                <Outlet />
+              </div>
+            </div>
+            <Footer />
+            <SnackBar />
+          </>
+        ) : null}
       </div>
     );
   };
