@@ -23,3 +23,15 @@ export const getPieData = async (year: number) => {
 
   return result.data;
 };
+
+export const getBigChartData = async (year: number) => {
+  const result = await ws(
+    "GET",
+    process.env.VITE_API_URL + "/stats/fixed-expense/analyse/",
+    { year },
+    null,
+    true
+  );
+
+  return result.data;
+};

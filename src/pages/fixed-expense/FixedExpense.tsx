@@ -12,9 +12,8 @@ import "./fixedExpense.scss";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 //data
-import { boxBar7 } from "./data";
 import { GridColDef } from "@mui/x-data-grid";
-import { getDataGrid, getPieData } from "./function/api";
+import { getBigChartData, getDataGrid, getPieData } from "./function/api";
 
 function FixedExpense() {
   const currentYear = new Date().getFullYear();
@@ -26,6 +25,11 @@ function FixedExpense() {
   const [dataGridTable, setDataGridTable] = useState([]);
 
   const [pieData, setPieData] = useState([]);
+
+  const [bigChartData, setBigChartData] = useState({
+    chartData: [],
+    dataKey: [],
+  });
 
   const handleSubmit = () => {
     setGridColumnsTable([
@@ -81,12 +85,15 @@ function FixedExpense() {
     ]);
 
     getDataGrid(year).then((res: any) => {
-      console.log(res);
       setDataGridTable(res);
     });
 
     getPieData(year).then((res: any) => {
       setPieData(res.chartData);
+    });
+
+    getBigChartData(year).then((res: any) => {
+      setBigChartData(res);
     });
 
     setShowData(true);
@@ -146,7 +153,11 @@ function FixedExpense() {
               </div>
             ) : null}
             <div className="box analisiAnnua">
-              <BigChartBox {...boxBar7} />
+              <BigChartBox
+                title="Andamento spese"
+                chartData={bigChartData.chartData}
+                dataKey={bigChartData.dataKey}
+              />
             </div>
           </div>
         ) : null}
