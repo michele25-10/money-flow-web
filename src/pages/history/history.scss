@@ -9,6 +9,20 @@
         border-radius: 10px;
         border: 2px solid $soft-bg;
         margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+
+        .titlePage {
+            @include sm {
+                display: none;
+            }
+        }
+
+        .filterFormElement {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
     }
     .historyGrid {
         display: grid;
@@ -40,21 +54,54 @@
             border: 2px solid $soft-bg;
         }
 
-        .box1 {
+        .categoria {
             grid-column: span 1;
-            grid-row: span 3;
-        }
-        .box4 {
-            grid-column: span 1;
-            grid-row: span 3;
-        }
-        .box7 {
-            grid-column: span 2;
             grid-row: span 2;
+        }
+
+        .divisione {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+
+        .totaleAnnuale {
+            grid-column: span 2;
+            grid-row: span 1;
 
             @include md {
-                display: none;
+                grid-column: span 1;
+                grid-row: span 1;
             }
+        }
+
+        .anno {
+            grid-column: span 2;
+            grid-row: span 1;
+
+            @include md {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        .analisi {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .totaleAnnualeGenitore {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .annoGenitore {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .tableExpense {
+            grid-column: span 4;
+            grid-row: span 3;
         }
     }
 }

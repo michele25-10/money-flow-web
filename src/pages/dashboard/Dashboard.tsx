@@ -39,7 +39,6 @@ function Dashboard() {
   useEffect(() => {
     getDataCategory().then((res: any) => {
       setTopTenCategory(res.topTen);
-      console.log(res.topTen);
     });
 
     getAverageUser().then((res: any) => {
