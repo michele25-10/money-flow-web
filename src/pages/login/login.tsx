@@ -51,6 +51,13 @@ function Login() {
     setShowPassword(!showPassword);
   };
 
+  const handleKeyPress = (event: any) => {
+    if (event.key === "Enter") {
+      // Chiama la tua funzione quando viene premuto il tasto Enter
+      handleLogin();
+    }
+  };
+
   const handleLogin = async () => {
     const res = await loginWS(famiglia, email, password, ricordami);
     if (res) {
@@ -102,7 +109,7 @@ function Login() {
                 placeholder="Email..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
+                onKeyDown={handleKeyPress}
               />
             </div>
           </div>
@@ -119,7 +126,7 @@ function Login() {
                 className="form-control"
                 id="password"
                 placeholder="Password..."
-                required
+                onKeyDown={handleKeyPress}
               />
               <span
                 className="input-group-text bg-white opacity-75 text-decoration-none hover-pointer"
@@ -136,6 +143,7 @@ function Login() {
               role="switch"
               id="flexSwitchCheckDefault"
               checked={ricordami}
+              onKeyDown={handleKeyPress}
               onChange={(e) => setRicordami(e.target.checked)}
             />
             <label
