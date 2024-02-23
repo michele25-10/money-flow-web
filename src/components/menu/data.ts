@@ -23,19 +23,6 @@ export const menu = [
   },
   {
     id: 2,
-    title: "Storico",
-    listItems: [
-      {
-        id: 1,
-        title: "Storico",
-        url: "/history",
-        icon: "calendar.svg",
-        id_autorizzazione: authList.storico,
-      },
-    ],
-  },
-  {
-    id: 3,
     title: "Analisi",
     listItems: [
       {
@@ -45,10 +32,17 @@ export const menu = [
         icon: "fattura.png",
         id_autorizzazione: authList.speseFisse,
       },
+      {
+        id: 2,
+        title: "Storico",
+        url: "/history",
+        icon: "calendar.svg",
+        id_autorizzazione: authList.storico,
+      },
     ],
   },
   {
-    id: 4,
+    id: 3,
     title: "Spese",
     listItems: [
       {
@@ -57,19 +51,6 @@ export const menu = [
         url: "/list-expense",
         icon: "post2.svg",
         id_autorizzazione: authList.listaSpesa,
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "Documentazione",
-    listItems: [
-      {
-        id: 1,
-        title: "Documenti",
-        url: "/documentation",
-        icon: "element.svg",
-        id_autorizzazione: authList.documenti,
       },
     ],
   },
@@ -101,3 +82,17 @@ export const menu = [
     ],
   },
 ];
+
+/*{
+    id: 5,
+    title: "Documentazione",
+    listItems: [
+      {
+        id: 1,
+        title: "Documenti",
+        url: "/documentation",
+        icon: "element.svg",
+        id_autorizzazione: authList.documenti,
+      },
+    ],
+  },*/

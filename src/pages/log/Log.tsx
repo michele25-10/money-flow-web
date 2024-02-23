@@ -33,7 +33,9 @@ function Log() {
       <div className="info">
         <h1>Log</h1>
       </div>
-      <DataTable columns={columnsTable} rows={rowsTable} action={false} />
+      {rowsTable?.length > 0 ? (
+        <DataTable columns={columnsTable} rows={rowsTable} action={false} />
+      ) : null}
     </div>
   );
 }
