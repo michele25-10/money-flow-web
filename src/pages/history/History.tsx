@@ -34,13 +34,14 @@ function History() {
   const genitore: any = useGlobalState("flagGenitore");
 
   const [topTenCategory, setTopTenCategory] = useState([]);
+  const [pieChartCategory, setPieChartCategory] = useState([]);
   const [averageYear, setAverageYear] = useState({
     amount: "",
     percentuage: "",
     name: "",
     surname: "",
     color: "",
-    chartDat: [],
+    chartData: [],
   });
   const [totYear, setTotYear] = useState({});
   const [totalFamilyExpense, setTotalFamilyExpense] = useState([]);
@@ -68,7 +69,18 @@ function History() {
         setAnalyseExpenseFamily(res);
       });
     } else {
-      console.log("Non sono genitore faccio queste altre chiamate");
+      getDataCategory(year, false).then((res: any) => {
+        setTopTenCategory(res.topTen);
+        setPieChartCategory(res.pieChart);
+      });
+
+      getAverageUser(year, false).then((res: any) => {
+        setAverageYear(res.year);
+      });
+
+      getTotalExpense(year, false).then((res: any) => {
+        setTotYear(res.year);
+      });
     }
     setShowData(true);
   };
@@ -156,7 +168,6 @@ function History() {
 
                   <div className="box annoGenitore">
                     <ChartBox
-                      {...averageYear}
                       percentuage=""
                       amount={averageYear.amount}
                       name={averageYear.name}
@@ -172,18 +183,47 @@ function History() {
                 </>
               ) : (
                 <>
-                  <div className="box categoria">
-                    <TopBox title="Categoria" data={topBox} />
-                  </div>
-                  <div className="box totaleAnnuale">
-                    <BarChartBox {...boxBar9} />
-                  </div>
-                  <div className="box divisione">
-                    <PieChartBox {...boxPie4} />
-                  </div>
-                  <div className="box anno">
-                    <ChartBox {...box2} />
-                  </div>
+                  {topTenCategory.length > 0 ? (
+                    <div className="box categoria">
+                      <TopBox title="Categoria" data={topTenCategory} />
+                    </div>
+                  ) : null}
+
+                  {Object.keys(averageYear).length > 0 ? (
+                    <div className="box totaleAnnuale">
+                      <BarChartBox
+                        title="Totale Annuale"
+                        xDataKey="name"
+                        dataKey="tot"
+                        {...totYear}
+                      />
+                    </div>
+                  ) : null}
+
+                  {pieChartCategory ? (
+                    <div className="box divisione">
+                      <PieChartBox
+                        title="Divisione Spese"
+                        legend={false}
+                        chartData={pieChartCategory}
+                      />
+                    </div>
+                  ) : null}
+
+                  {Object.keys(averageYear).length > 0 ? (
+                    <div className="box anno">
+                      <ChartBox
+                        percentuage=""
+                        amount={averageYear.amount}
+                        name={averageYear.name}
+                        surname={averageYear.surname}
+                        when={year}
+                        color={averageYear.color}
+                        chartData={averageYear.chartData}
+                      />
+                    </div>
+                  ) : null}
+
                   <div className="box tableExpense">
                     <ChartBox {...box3} />
                   </div>
