@@ -10,10 +10,11 @@ import "./menu.scss";
 //icons
 import ChevronLeftTwoToneIcon from "@mui/icons-material/ChevronLeftTwoTone";
 import ChevronRightTwoToneIcon from "@mui/icons-material/ChevronRightTwoTone";
-import { useGlobalState } from "../../utils/state";
+
+//FUNCTION
+import { isAuthorised } from "../../utils/auth";
 
 function Menu() {
-  const autorizzazioni: any = useGlobalState("auth");
   const [open, setOpen] = useState(true);
 
   const arrowIconStyle = {
@@ -23,15 +24,8 @@ function Menu() {
   };
 
   const showElementMenu = (id_autorizzazione: number): any => {
-    if (!useGlobalState("dev")[0]) {
-      for (const row of autorizzazioni[0]) {
-        if (row.id === id_autorizzazione) {
-          return row.valore;
-        }
-      }
-    } else {
-      return true;
-    }
+    const check = isAuthorised(id_autorizzazione);
+    return check.value;
   };
 
   return (

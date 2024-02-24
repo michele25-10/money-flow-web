@@ -30,9 +30,10 @@ import SnackBar from "./components/snackbar/SnackBar";
 
 import { authList } from "./utils/enum";
 
-import { setGlobalState, useGlobalState } from "./utils/state";
+import { setGlobalState } from "./utils/state";
 
 import { gestioneSnackbar, ws } from "./utils/common";
+import { isAuthorised } from "./utils/auth";
 
 function App() {
   const Layout = () => {
@@ -82,19 +83,10 @@ function App() {
     if (!sessionStorage.getItem("accessToken")) {
       return <Navigate to="../login" replace />;
     }
-
-    const authorization: any = useGlobalState("auth");
-    const dev: any = useGlobalState("dev");
-
-    if (!dev[0]) {
-      for (const row of authorization[0]) {
-        if (row.id === props.id_autorizzazione) {
-          if (!row.valore) {
-            gestioneSnackbar(true, "Non hai i permessi!", "error");
-            return <Navigate to="../login" replace />;
-          }
-        }
-      }
+    const check: any = isAuthorised(props.id_autorizzazione);
+    if (!check.value) {
+      gestioneSnackbar(true, check.message, "error");
+      return <Navigate to={check.path} replace />;
     }
 
     return props.children;
