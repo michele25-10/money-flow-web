@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 //COMPONENT
 import BarChartBox from "../../components/barChartBox/BarChartBox";
@@ -6,6 +6,7 @@ import ChartBox from "../../components/chartbox/ChartBox";
 import TopBox from "../../components/topBox/TopBox";
 import PieChartBox from "../../components/pieChartBox/PieChartBox";
 import BigChartBox from "../../components/bigChartBox/BigChartBox";
+import GridBox from "../../components/gridBox/GridBox";
 // import Filter from "./components/filter/Filter";
 
 //icon
@@ -14,7 +15,7 @@ import FilterAltIcon from "@mui/icons-material/FilterAlt";
 //CSS
 import "./history.scss";
 
-import { topBox, box2, box3, boxBar9, boxPie4 } from "./data";
+import { columnsTable } from "./config";
 
 import { useGlobalState } from "../../utils/state";
 import {
@@ -22,11 +23,11 @@ import {
   getAverageUser,
   getDataCategory,
   getFamilyExpensePieChart,
+  getLastExpense,
   getTotalExpense,
 } from "./function/api";
 
 function History() {
-  //const currentYear = new Date().getFullYear();
   const [year, setYear] = useState(new Date().getFullYear() - 1);
 
   const [showData, setShowData] = useState(false);
@@ -46,6 +47,7 @@ function History() {
   const [totYear, setTotYear] = useState({});
   const [totalFamilyExpense, setTotalFamilyExpense] = useState([]);
   const [analyseExpenseFamily, setAnalyseExpenseFamily] = useState({});
+  const [listExpense, setListExpense] = useState([]);
 
   const handleSubmit = () => {
     if (genitore[0]) {
@@ -82,6 +84,11 @@ function History() {
         setTotYear(res.year);
       });
     }
+
+    getLastExpense(year).then((res: any) => {
+      setListExpense(res);
+    });
+
     setShowData(true);
   };
   return (
@@ -90,9 +97,9 @@ function History() {
         {/*<div className="filter">
           <Filter />
         </div>*/}
-        <div className="filter">
-          <div className="titlePage">
-            <h2>Storico</h2>
+        <div className="filterHeader">
+          <div className="title">
+            <h1>Storico</h1>
           </div>
           <div className="filterFormElement">
             <div className="inputLayer">
@@ -177,9 +184,16 @@ function History() {
                       chartData={averageYear.chartData}
                     />
                   </div>
-                  <div className="box tableExpense">
-                    <ChartBox {...box3} />
-                  </div>
+                  {listExpense.length > 0 ? (
+                    <div className="box tableExpense">
+                      <GridBox
+                        title={"Spese " + (year ? year.toString() : "")}
+                        action={false}
+                        data={listExpense}
+                        columns={columnsTable}
+                      />
+                    </div>
+                  ) : null}
                 </>
               ) : (
                 <>
@@ -224,9 +238,16 @@ function History() {
                     </div>
                   ) : null}
 
-                  <div className="box tableExpense">
-                    <ChartBox {...box3} />
-                  </div>
+                  {listExpense.length > 0 ? (
+                    <div className="box tableExpense">
+                      <GridBox
+                        title={"Spese " + (year ? year.toString() : "")}
+                        action={false}
+                        data={listExpense}
+                        columns={columnsTable}
+                      />
+                    </div>
+                  ) : null}
                 </>
               )}
             </>

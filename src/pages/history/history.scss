@@ -1,107 +1,99 @@
 @import "../../styles/variable.scss";
 @import "../../styles/responsive.scss";
 
-.history {
-    .filter {
-        width: 100%;
-        min-height: 70px;
+.filterHeader {
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid $soft-bg;
+    margin-bottom: 20px;
+
+    .filterFormElement {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+.historyGrid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+    grid-auto-flow: dense;
+
+    @include xl {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include lg {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include md {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    @include sm {
+        grid-auto-rows: minmax(120px, auto);
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .box {
         padding: 20px;
         border-radius: 10px;
         border: 2px solid $soft-bg;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: space-between;
-
-        .titlePage {
-            @include sm {
-                display: none;
-            }
-        }
-
-        .filterFormElement {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
     }
-    .historyGrid {
-        display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: minmax(180px, auto);
-        grid-auto-flow: dense;
 
-        @include xl {
-            grid-template-columns: repeat(3, 1fr);
-        }
+    .categoria {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
 
-        @include lg {
-            grid-template-columns: repeat(2, 1fr);
-        }
+    .divisione {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+
+    .totaleAnnuale {
+        grid-column: span 2;
+        grid-row: span 1;
 
         @include md {
-            grid-template-columns: repeat(1, 1fr);
-        }
-
-        @include sm {
-            grid-auto-rows: minmax(120px, auto);
-            grid-template-columns: repeat(1, 1fr);
-        }
-
-        .box {
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid $soft-bg;
-        }
-
-        .categoria {
-            grid-column: span 1;
-            grid-row: span 2;
-        }
-
-        .divisione {
-            grid-column: span 1;
-            grid-row: span 2;
-        }
-
-        .totaleAnnuale {
-            grid-column: span 2;
-            grid-row: span 1;
-
-            @include md {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-        }
-
-        .anno {
-            grid-column: span 2;
-            grid-row: span 1;
-
-            @include md {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-        }
-
-        .analisi {
-            grid-column: span 2;
-            grid-row: span 1;
-        }
-
-        .totaleAnnualeGenitore {
             grid-column: span 1;
             grid-row: span 1;
         }
+    }
 
-        .annoGenitore {
+    .anno {
+        grid-column: span 2;
+        grid-row: span 1;
+
+        @include md {
             grid-column: span 1;
             grid-row: span 1;
         }
+    }
 
-        .tableExpense {
-            grid-column: span 4;
-            grid-row: span 3;
-        }
+    .analisi {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .totaleAnnualeGenitore {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .annoGenitore {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .tableExpense {
+        grid-column: span 4;
+        grid-row: span 3;
     }
 }

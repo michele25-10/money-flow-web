@@ -73,3 +73,21 @@ export const getAnalyseExpenseFamily = async (year: any) => {
 
   return result.data;
 };
+
+export const getLastExpense = async (year: any) => {
+  const result = await ws(
+    "GET",
+    process.env.VITE_API_URL + "/expense/",
+    {
+      year,
+    },
+    null,
+    true
+  );
+
+  for (const row of result.data) {
+    row.data = new Date(row.data);
+  }
+
+  return result.data;
+};
