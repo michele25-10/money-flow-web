@@ -13,7 +13,7 @@ import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 import TextFieldsIcon from "@mui/icons-material/TextFields";
 import PaymentIcon from "@mui/icons-material/Payment";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
+//import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
 
 import moment from "moment";
 
@@ -40,7 +40,7 @@ const AddModal = (props: Props) => {
   const [tipoPagamento, setTipoPagamento] = useState("0");
   const [categoria, setCategoria] = useState("1");
   const [documento, setDocumento] = useState<File | null>(null);
-  const [documentoName, setDocumentoName] = useState("");
+//  const [documentoName, setDocumentoName] = useState("");
 
   const CarattereObbligatiorio = () => {
     return (
