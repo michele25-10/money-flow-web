@@ -242,7 +242,7 @@ const AddModal = (props: Props) => {
                 ))}
               </select>
             </div>
-            <div className="inputLayer">
+            {/*<div className="inputLayer">
               <label className="">
                 <div className="iconInput">
                   <DocumentScannerIcon style={styleIcon} />
@@ -261,7 +261,7 @@ const AddModal = (props: Props) => {
                   setDocumentoName(e.target.value);
                 }}
               />
-            </div>
+              </div>*/}
           </div>
         </Modal.Body>
         <Modal.Footer>

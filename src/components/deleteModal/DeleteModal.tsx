@@ -17,7 +17,7 @@ const DeleteModal = (props: Props) => {
       <Modal
         show={props.show}
         onHide={() => props.setShow(false)}
-        size="lg"
+        size="sm"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
