@@ -1,5 +1,5 @@
 //COMPONENT MATERIAL
-import { Alert, Snackbar } from "@mui/material";
+import { Alert, Snackbar, SnackbarCloseReason } from "@mui/material";
 
 //global state
 import { setGlobalState, useGlobalState } from "../../utils/state";
@@ -13,9 +13,9 @@ import { setGlobalState, useGlobalState } from "../../utils/state";
 
 const SnackBar = (/*props: Props*/) => {
   const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
+    _: Event | React.SyntheticEvent<any, Event>,
+    reason: SnackbarCloseReason
+  ): any => {
     if (reason === "clickaway") {
       return;
     }

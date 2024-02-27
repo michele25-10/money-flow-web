@@ -14,9 +14,8 @@ import "./dataTable.scss";
 //components
 import DeleteModal from "../deleteModal/DeleteModal";
 import AddModal from "../../pages/list-expense/components/addModal/AddModal";
-import { json } from "stream/consumers";
 
-type Props = {
+/*type Props = {
   action: boolean;
   columns: GridColDef[];
   rows: object[];
@@ -29,9 +28,8 @@ type Props = {
 type Categorie = {
   id: string;
   nome: string;
-};
-
-const DataTable = (props: Props) => {
+};*/
+const DataTable = (props: any) => {
   const [editModalShow, setEditModalShow] = useState(false);
   const [dataEdit, setDataEdit] = useState({});
   const [deleteModalShow, setDeleteModalShow] = useState(false);

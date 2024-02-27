@@ -1,7 +1,6 @@
 import { deleteCookie, setCookie } from "../../../utils/cookie";
 import { ws, gestioneSnackbar } from "../../../utils/common";
 import { isValidPassword, isValidEmail } from "../../../utils/validation";
-import { setGlobalState } from "../../../utils/state";
 
 export const loginWS = async (
   famiglia: string,

@@ -2,9 +2,9 @@
 import "./settingsMenu.scss";
 
 //icons
-import { SvgIconProps } from "@mui/material";
+//import { SvgIconProps } from "@mui/material";
 
-type Props = {
+/*type Props = {
   title: string;
   icon: React.ReactElement<SvgIconProps>;
   data: Data[];
@@ -23,9 +23,9 @@ type Data = {
   img: string;
   name_surname: string;
   email: string;
-};
+};*/
 
-const SettingsMenu = (props: Props) => {
+const SettingsMenu = (props: any) => {
   console.log(props.data);
   console.log(props.data[0].img ? props.data[0].img : "/user.svg");
   return (
@@ -35,7 +35,7 @@ const SettingsMenu = (props: Props) => {
         <h1>{props.title}</h1>
       </div>
       <div className="menu">
-        {props.data.map((item) => (
+        {props.data.map((item: any) => (
           <div
             className="item"
             key={item.id}

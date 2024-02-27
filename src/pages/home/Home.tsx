@@ -62,13 +62,13 @@ function Home() {
           </div>
         ) : null}
 
-        {Object.keys(averageMonth).length > 0 ? (
+        {averageMonth && Object.keys(averageMonth).length > 0 ? (
           <div className="box box2">
             <ChartBox {...averageMonth} />
           </div>
         ) : null}
 
-        {Object.keys(averageYear).length > 0 ? (
+        {averageYear && Object.keys(averageYear).length > 0 ? (
           <div className="box box3">
             <ChartBox {...averageYear} />
           </div>
@@ -95,7 +95,7 @@ function Home() {
           </div>
         ) : null}
 
-        {Object.keys(totWeek).length > 0 ? (
+        {totWeek && Object.keys(totWeek).length > 0 ? (
           <div className="box box8">
             <BarChartBox
               title="Totale Settimanale"
@@ -106,7 +106,7 @@ function Home() {
           </div>
         ) : null}
 
-        {Object.keys(averageYear).length > 0 ? (
+        {averageYear && Object.keys(averageYear).length > 0 ? (
           <div className="box box9">
             <BarChartBox
               title="Totale Annuale"

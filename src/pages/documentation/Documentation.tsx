@@ -3,24 +3,24 @@ import SearchIcon from "@mui/icons-material/Search";
 import FolderIcon from "@mui/icons-material/Folder";
 import ArticleIcon from "@mui/icons-material/Article";
 import AddToDriveIcon from "@mui/icons-material/AddToDrive";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+//import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 //SASS
 import "./documentation.scss";
 
 //DATI
-import { docs } from "./data";
+//import { docs } from "./data";
 
 //bootstrap components
-import { Dropdown } from "react-bootstrap";
+//import { Dropdown } from "react-bootstrap";
 
-type Doc = {
+/*type Doc = {
   id: number;
   name: string;
   type: string;
-};
+};*/
 
-const Documentation = () => {
+const Documentation = (props: any) => {
   const styleIcons = {
     color: "white",
     height: "70px",
@@ -55,7 +55,7 @@ const Documentation = () => {
       </div>
       <div className="containerDocs">
         <div className="gridDocs">
-          {docs.map((item) => (
+          {props.docs.map((item: any) => (
             <div className="item" key={item.id}>
               <div className="menuOption">
                 <div className="iconMenu"></div>
