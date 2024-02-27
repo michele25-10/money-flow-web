@@ -68,25 +68,25 @@ function Dashboard() {
   return (
     <>
       <div className="dashboard">
-        {topTenCategory.length > 0 ? (
+        {topTenCategory?.length > 0 ? (
           <div className="box box1">
             <TopBox title="Categoria" data={topTenCategory} />
           </div>
         ) : null}
 
-        {Object.keys(averageMonth).length > 0 ? (
+        {averageMonth && Object.keys(averageMonth).length > 0 ? (
           <div className="box box2">
             <ChartBox {...averageMonth} />
           </div>
         ) : null}
 
-        {Object.keys(averageYear).length > 0 ? (
+        {averageYear && Object.keys(averageYear).length > 0 ? (
           <div className="box box3">
             <ChartBox {...averageYear} />
           </div>
         ) : null}
 
-        {totalFamilyExpense.length > 0 ? (
+        {totalFamilyExpense?.length > 0 ? (
           <div className="box box4">
             <PieChartBox
               title="Divisione Spese"
@@ -96,25 +96,26 @@ function Dashboard() {
           </div>
         ) : null}
 
-        {categoryFigli.length > 0 ? (
+        {categoryFigli?.length > 0 ? (
           <div className="box box5">
             <MiddleBox title="Figli" data={categoryFigli} />
           </div>
         ) : null}
 
-        {categoryGenitori.length > 0 ? (
+        {categoryGenitori?.length > 0 ? (
           <div className="box box6">
             <MiddleBox title="Genitori" data={categoryGenitori} />
           </div>
         ) : null}
 
-        {Object.keys(analyseExpenseFamily).length > 0 ? (
+        {analyseExpenseFamily &&
+        Object.keys(analyseExpenseFamily).length > 0 ? (
           <div className="box box7">
             <BigChartBox title="Analisi Spese" {...analyseExpenseFamily} />
           </div>
         ) : null}
 
-        {Object.keys(totWeek).length > 0 ? (
+        {totWeek && Object.keys(totWeek).length > 0 ? (
           <div className="box box8">
             <BarChartBox
               title="Totale Settimanale"
@@ -125,7 +126,7 @@ function Dashboard() {
           </div>
         ) : null}
 
-        {Object.keys(averageYear).length > 0 ? (
+        {averageYear && Object.keys(averageYear).length > 0 ? (
           <div className="box box9">
             <BarChartBox
               title="Totale Annuale"

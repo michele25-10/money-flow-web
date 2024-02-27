@@ -137,13 +137,14 @@ function History() {
             <>
               {genitore[0] ? (
                 <>
-                  {topTenCategory.length > 0 ? (
+                  {topTenCategory?.length > 0 ? (
                     <div className="box categoria">
                       <TopBox title="Categoria" data={topTenCategory} />
                     </div>
                   ) : null}
 
-                  {Object.keys(analyseExpenseFamily).length > 0 ? (
+                  {analyseExpenseFamily &&
+                  Object.keys(analyseExpenseFamily).length > 0 ? (
                     <div className="box analisi">
                       <BigChartBox
                         title="Analisi Spese"
@@ -152,7 +153,7 @@ function History() {
                     </div>
                   ) : null}
 
-                  {totalFamilyExpense.length > 0 ? (
+                  {totalFamilyExpense?.length > 0 ? (
                     <div className="box divisione">
                       <PieChartBox
                         title="Divisione Spese"
@@ -162,7 +163,7 @@ function History() {
                     </div>
                   ) : null}
 
-                  {Object.keys(totYear).length > 0 ? (
+                  {totYear && Object.keys(totYear).length > 0 ? (
                     <div className="box totaleAnnualeGenitore">
                       <BarChartBox
                         title="Totale Annuale"
@@ -184,7 +185,8 @@ function History() {
                       chartData={averageYear.chartData}
                     />
                   </div>
-                  {listExpense.length > 0 ? (
+
+                  {listExpense?.length > 0 ? (
                     <div className="box tableExpense">
                       <GridBox
                         title={"Spese " + (year ? year.toString() : "")}
@@ -197,13 +199,13 @@ function History() {
                 </>
               ) : (
                 <>
-                  {topTenCategory.length > 0 ? (
+                  {topTenCategory?.length > 0 ? (
                     <div className="box categoria">
                       <TopBox title="Categoria" data={topTenCategory} />
                     </div>
                   ) : null}
 
-                  {Object.keys(averageYear).length > 0 ? (
+                  {averageYear && Object.keys(averageYear).length > 0 ? (
                     <div className="box totaleAnnuale">
                       <BarChartBox
                         title="Totale Annuale"
@@ -224,7 +226,7 @@ function History() {
                     </div>
                   ) : null}
 
-                  {Object.keys(averageYear).length > 0 ? (
+                  {averageYear && Object.keys(averageYear).length > 0 ? (
                     <div className="box anno">
                       <ChartBox
                         percentuage=""
@@ -238,7 +240,7 @@ function History() {
                     </div>
                   ) : null}
 
-                  {listExpense.length > 0 ? (
+                  {listExpense?.length > 0 ? (
                     <div className="box tableExpense">
                       <GridBox
                         title={"Spese " + (year ? year.toString() : "")}
