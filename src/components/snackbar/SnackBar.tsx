@@ -1,5 +1,5 @@
 //COMPONENT MATERIAL
-import { Alert, Snackbar, SnackbarCloseReason } from "@mui/material";
+import { Alert, Snackbar } from "@mui/material";
 
 //global state
 import { setGlobalState, useGlobalState } from "../../utils/state";
