@@ -26,8 +26,6 @@ type Data = {
 };*/
 
 const SettingsMenu = (props: any) => {
-  console.log(props.data);
-  console.log(props.data[0].img ? props.data[0].img : "/user.svg");
   return (
     <div className="settingsMenu">
       <div className="title">

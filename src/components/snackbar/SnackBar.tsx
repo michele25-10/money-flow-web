@@ -13,9 +13,9 @@ import { setGlobalState, useGlobalState } from "../../utils/state";
 
 const SnackBar = (/*props: Props*/) => {
   const handleClose = (
-    _: Event | React.SyntheticEvent<any, Event>,
-    reason: SnackbarCloseReason
-  ): any => {
+    _: React.SyntheticEvent | Event,
+    reason?: string
+  ): void => {
     if (reason === "clickaway") {
       return;
     }
