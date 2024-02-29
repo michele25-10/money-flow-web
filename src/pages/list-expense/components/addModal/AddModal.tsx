@@ -40,7 +40,7 @@ const AddModal = (props: Props) => {
   const [tipoPagamento, setTipoPagamento] = useState("0");
   const [categoria, setCategoria] = useState("1");
   const [documento, setDocumento] = useState<File | null>(null);
-//  const [documentoName, setDocumentoName] = useState("");
+  //  const [documentoName, setDocumentoName] = useState("");
 
   const CarattereObbligatiorio = () => {
     return (
@@ -73,6 +73,8 @@ const AddModal = (props: Props) => {
       }
       setCategoria(props.data.id_categoria);
       //setDocumento(props.data.documento ? props.data.documento : "");
+    } else {
+      setCategoria(props.categorie[0].id);
     }
   }, [props.show]);
 
