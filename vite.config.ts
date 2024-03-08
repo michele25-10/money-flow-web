@@ -12,3 +12,5 @@ export default defineConfig({
     }),
   ],
 });
+
+//VITE_API_URL: "https://money-flow.it:2000/api",
