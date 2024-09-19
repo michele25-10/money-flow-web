@@ -7,10 +7,12 @@ export default defineConfig({
   plugins: [
     react(),
     EnvironmentPlugin({
-      VITE_API_URL: "http://localhost:5001/api",
+      VITE_API_URL: "https://money-flow.it:2000/api",
       SECRET_KEY: "QWERTY123456",
     }),
   ],
 });
 
 //VITE_API_URL: "https://money-flow.it:2000/api",
+
+//http://51.75.30.166:5001/api
