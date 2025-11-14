@@ -16,7 +16,7 @@ docker build -t my-react:latest .
 docker run -p 80:80 my-react:latest
 
 docker login
-docker tag my-react:1 <username>/my-react:latest
+docker tag my-react:latest <username>/my-react:latest
 docker push <username>/my-react:latest
 
 kubectl apply -f frontend-deployment.yaml
