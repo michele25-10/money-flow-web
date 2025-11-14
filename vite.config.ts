@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     react(),
     EnvironmentPlugin({
-      VITE_API_URL: "https://backend-service:5000/api",
+      VITE_API_URL: "http://backend-service:5000/api",
       SECRET_KEY: "QWERTY123456",
     }),
   ],
