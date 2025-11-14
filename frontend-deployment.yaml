@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: my-react:1
+          image: my-react:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           resources:
