@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: michelegabrieli/my-react:latest
+          image: docker.io/michelegabrieli/my-react:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -42,7 +42,7 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 5
         - name: nginx-exporter
-          image: nginx/nginx-prometheus-exporter:latest
+          image: docker.io/nginx/nginx-prometheus-exporter:latest
           args:
             - -nginx.scrape-uri=http://127.0.0.1:8080/stub_status
           ports:
