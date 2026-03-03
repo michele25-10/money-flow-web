@@ -16,6 +16,8 @@ spec:
         prometheus.io/port: "9113"
         prometheus.io/path: "/metrics"
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: frontend
           image: docker.io/michelegabrieli/my-react:latest
